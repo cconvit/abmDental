@@ -1,0 +1,5 @@
+{>"layouts/master" /}
+{<path}http://d11or7sbz4vm1i.cloudfront.net{/path}
+{<body}
+    <h1>{@pre type="content" key="greeting"/}</h1>
+{/body}

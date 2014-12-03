@@ -1,0 +1,964 @@
+{>"layouts/role_admin" /}
+{<path}
+http://d11or7sbz4vm1i.cloudfront.net
+{/path}
+{<first_lg_image}us{/first_lg_image}
+{! ---BEGIN CSS--- !}
+{<page_styles}
+<link rel="stylesheet" type="text/css" href="{+path /}/assets/global/plugins/bootstrap-select/bootstrap-select.min.css">
+{/page_styles}
+{! ---END CSS--- !}
+
+{! ---BEGIN PARAMETERS MENU--- !}
+
+{! ---BEGIN DASHBOARD SUBMENU--- !}
+{<dashboard_select}{/dashboard_select}
+{<dashboard}
+<span class="title">{@pre type="content" key="dashboard"/}</span>
+<span class="arrow"></span>
+{/dashboard}
+{<dashboard_stats}{/dashboard_stats}
+{<stats}{@pre type="content" key="stats"/}{/stats}
+{! ---END DASHBOARD SUBMENU--- !}
+
+{! ---BEGIN PATIENTS SUBMENU--- !}
+{<patients_select}class="start active open"{/patients_select}
+{<patients}
+<span class="title">{@pre type="content" key="patients"/}</span>
+<span class="selected"></span>
+<span class="arrow open"></span>
+{/patients}
+
+{<patient_medical_record}class="start active open"{/patient_medical_record}
+{<medical_record}{@pre type="content" key="medical_record"/}{/medical_record}
+
+{<patient_treatment}{/patient_treatment}
+{<treatment}{@pre type="content" key="treatment"/}{/treatment}
+
+{<patient_list}{/patient_list}
+{<list}{@pre type="content" key="list"/}{/list}
+{! ---END PATIENTS SUBMENU--- !}
+
+{! ---END PARAMETERS MENU--- !}
+
+{! ---BEGIN HEAD PARAMETERS MENU--- !}
+{<notifications}
+
+{/notifications}
+{<messages}
+
+{/messages}
+{<tasks}
+
+{/tasks}
+{<firsr_lg_image}us{/firsr_lg_image}
+{<first_lg_name}US{/first_lg_name}
+{<second_lg_image}es{/second_lg_image}
+{<second_lg_name}Spanish{/second_lg_name}
+
+{! ---END HEAD PARAMETERS MENU--- !}
+
+
+{<content}
+    <div class="page-content-wrapper">
+      <div class="page-content">
+
+      <!-- NEW PATIENT MODAL -->
+							<div id="new_patient" class="modal fade" tabindex="-1" aria-hidden="true">
+              <form id="newPatient" name="newPatient" action="patient/new" method="get">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header-blue">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+											<h4 class="modal-title">{@pre type="content" key="new_patient"/}</h4>
+										</div>
+										<div class="modal-body">
+											<div class="scroller" style="height:220px" data-always-visible="1" data-rail-visible1="1">
+												<div class="row">
+													<div class="col-md-12">
+														<p>
+                                <div class="col-md-12 form-group">
+              										<label class="col-md-3 control-label">
+                                       {@pre type="content" key="names"/}
+                                       <span class="required" aria-required="true"> * </span>
+                                   </label>
+              										<div class="col-md-9">
+              											<input type="text" class="form-control" id="modalNames" name="modalNames" placeholder="{@pre type="content" key="names"/}">
+              										</div>
+              									</div>
+														</p>
+                            <p>
+                                <div class="col-md-12 form-group">
+                                  <label class="col-md-3 control-label">
+                                       {@pre type="content" key="last_name"/}
+                                       <span class="required" aria-required="true"> * </span>
+                                   </label>
+                                  <div class="col-md-9">
+                                    <input type="text" class="form-control" id="modalLastName" name="modalLastName" placeholder="{@pre type="content" key="last_name"/}">
+                                  </div>
+                                </div>
+                            </p>
+                            <p>
+                                <div class="col-md-12 form-group">
+                                  <label class="col-md-3 control-label">
+                                       {@pre type="content" key="identity"/}
+                                       <span class="required" aria-required="true"> * </span>
+                                   </label>
+                                  <div class="col-md-9">
+                                    <input type="text" class="form-control" id="modalIdentity" name="modalIdentity" placeholder="{@pre type="content" key="identity"/}">
+                                  </div>
+                                </div>
+                            </p>
+                            <p>
+                                <div class="col-md-12 form-group">
+                                  <label class="col-md-3 control-label">
+                                       {@pre type="content" key="identity_type"/}
+                                       <span class="required" aria-required="true"> * </span>
+                                   </label>
+                                  <div class="col-md-9">
+                                    <select id="modalIdentityType" name="modalIdentityType" class="form-control">
+                													<option value="1">CC</option>
+                                          <option value="2">CE</option>
+                                          <option value="3">TI</option>
+                                          <option value="4">PA</option>
+                										</select>
+                                  </div>
+                                </div>
+                            </p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" data-dismiss="modal" class="btn default">{@pre type="content" key="close"/}</button>
+											<button type="submit" class="btn blue-steel">{@pre type="content" key="save"/}</button>
+										</div>
+									</div>
+								</div>
+                </form>
+							</div>
+      <!-- END NEW PATIENT MODAL -->
+
+      <!-- BEGIN PAGE HEADER-->
+      <h3 class="page-title">
+      {@pre type="content" key="patients"/}
+      </h3>
+      <div class="page-bar">
+        <ul class="page-breadcrumb">
+          <li>
+            <i class="fa fa-users"></i>
+            <a href="#">{@pre type="content" key="patients"/}</a>
+            <i class="fa fa-angle-right"></i>
+          </li>
+          <li>
+            <i class="icon-docs"></i>
+            <a href="#">{@pre type="content" key="medical_record"/}</a>
+          </li>
+        </ul>
+        <div class="page-toolbar">
+					<div class="btn-group pull-right">
+						<button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+						{@pre type="content" key="actions"/} <i class="fa fa-angle-down"></i>
+						</button>
+						<ul class="dropdown-menu pull-right" role="menu">
+							<li>
+								<a data-toggle="modal" href="#new_patient">{@pre type="content" key="new_patient"/}</a>
+							</li>
+						</ul>
+					</div>
+			   </div>
+      </div>
+      <!-- END PAGE HEADER-->
+      <!-- BEGIN FIND -->
+      <div class="inbox-header" style="padding-left: 0px;margin-bottom: 10px;">
+          <form action="#" method="POST" class="form" style="padding-left: 0px;" role="search">
+            <input type="hidden" name="_csrf" value="{_csrf}">
+            <div class="input-group input-medium">
+              <input type="text" class="form-control" id="sa_identity" name="sa_identity" placeholder="{@pre type="content" key="identity"/}">
+              <span class="input-group-btn">
+                <button type="submit" class="btn blue"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+      </div>
+      <!-- END FIND-->
+      {#patient}
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-1" style="width: 110px;">
+                <img src="{+path /}/img/default-portrait.png" class="img-responsive" alt="" style="width: 80px;height: 80px;">
+                </div>
+                <div class="col-md-6">
+                <h1>Carlos Convit<h1>
+                </div>
+            </div>
+            <!-- BEGIN TABLETS-->
+            <div class="row">
+                    <div class="col-md-12">
+                      <!-- BEGIN  PORTLET BODY-->
+                      <div class="tabbable-line tabs-below" style="margin-bottom: 30px;">
+            							<ul class="nav nav-tabs">
+            								<li class="active">
+            									<a href="#tab_2_1" data-toggle="tab">
+            									{@pre type="content" key="general_information"/} </a>
+            								</li>
+            								<li class="">
+            									<a href="#tab_2_2" data-toggle="tab">
+            									{@pre type="content" key="medical_history"/} </a>
+            								</li>
+            							</ul>
+            							<div class="tab-content">
+                          <!-- BEGIN  GENERAL INFORMATION-->
+            								<div class="tab-pane fade active in" id="tab_2_1">
+                            <!-- BEGIN PERSONAL INFORMATION YELLOW BOX-->
+                            <div class="portlet box yellow">
+                    						<div class="portlet-title">
+                    							<div class="caption">
+                    								<i class="fa fa-child"></i>{@pre type="content" key="personal_information"/}
+                    							</div>
+                    							<div class="tools">
+                    								<a href="javascript:;" class="expand">
+                    								</a>
+                    							</div>
+                    						</div>
+                    						<div class="portlet-body form" style="display: none;">
+                                 <form action="patient/pi/update" method="get" class="horizontal-form">
+                                    <input type="hidden" name="identity" value="{identity}">
+                                    <div class="form-body">
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="names"/}</label>
+                                            <input type="text" id="names" name="names" class="form-control" placeholder="{@pre type="content" key="names"/}" value={names}>
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="last_name"/}</label>
+                                            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="{@pre type="content" key="last_name"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                      </div>
+                                      <!--/row-->
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="identity"/}</label>
+                                            <input type="text" id="identity" disabled class="form-control" placeholder="{@pre type="content" key="identity"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="identity_type"/}</label>
+                                                <select id="identityType" name="identityType" class="form-control">
+                                                  <option value="1">CC</option>
+                                                  <option value="2">CE</option>
+                                                  <option value="3">TI</option>
+                                                  <option value="4">PA</option>
+                                                </select>
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                      </div>
+                                      <!--/row-->
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="date_of_birth"/}</label>
+                                            <div class="input-group input-large date date-picker" data-date-format="{@pre type="content" key="date_format"/}" data-date="12-12-2014">
+                                              <input type="text" class="form-control" readonly="" id="dateOfBirth" name="dateOfBirth">
+                                              <span class="input-group-btn">
+                                              <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="place_of_birth"/}</label>
+                                            <input type="text" id="placeOfBirth" name="placeOfBirth" class="form-control" placeholder="{@pre type="content" key="place_of_birth"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                      </div>
+                                      <!--/row-->
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="age"/}</label>
+                                            <input type="text" id="age" name="age" class="form-control" placeholder="{@pre type="content" key="age"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="civil_status"/}</label>
+                                            <input type="text" id="civilStatus" name="civilStatus" class="form-control" placeholder="civil_status">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                      </div>
+                                      <!--/row-->
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="genre"/}</label>
+                                            <select id="genre" name="genre" class="form-control">
+                                              <option value="F">{@pre type="content" key="female"/}</option>
+                                              <option value="M">{@pre type="content" key="male"/}</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="origin"/}</label>
+                                            <input type="text" id="origin" class="form-control" placeholder="origin">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                      </div>
+                                      <!--/row-->
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="occupation"/}</label>
+                                            <input type="text" id="occupation" name="occupation" class="form-control" placeholder="{@pre type="content" key="occupation"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="workplace"/}</label>
+                                            <input type="text" id="workplace" name="workplace" class="form-control" placeholder="{@pre type="content" key="workplace"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                      </div>
+                                      <!--/row-->
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="phone"/}</label>
+                                            <input type="text" id="phone" name="phone" class="form-control" placeholder="{@pre type="content" key="phone"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="cell_phone"/}</label>
+                                            <input type="text" id="cellPhone" name="cellPhone" class="form-control" placeholder="{@pre type="content" key="cell_phone"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                      </div>
+                                      <!--/row-->
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="email"/}</label>
+                                            <div class="input-group margin-top-10">
+                        											<span class="input-group-addon">
+                        											<i class="fa fa-envelope"></i>
+                        											</span>
+                        											<input type="email" id="email" name="email" class="form-control" placeholder="{@pre type="content" key="email"/}">
+                        										</div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="neighborhood"/}</label>
+                                            <input type="text" id="neighborhood" name="neighborhood" class="form-control" placeholder="{@pre type="content" key="neighborhood"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                      </div>
+                                      <!--/row-->
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="home_phone"/}</label>
+                                            <input type="text" id="home_phone" name="home_phone" class="form-control" placeholder="{@pre type="content" key="home_phone"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                             <label class="control-label">{@pre type="content" key="department"/}</label>
+                                             <input type="text" id="department" name="department" class="form-control" placeholder="{@pre type="content" key="department"/}">
+                                          </div>
+                                        </div>
+                                        <!--/span-->
+                                      </div>
+                                      <!--/row-->
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label">{@pre type="content" key="patient_portrait"/}</label>
+                                            <input type="file" id="patientPortrait" name="patientPortrait">
+                                            <p class="help-block">{@pre type="content" key="upload_patient_portrait"/}</p>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                      </div>
+                                      <!--/row-->
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="clearfix">
+                                              <button type="submit" class="btn yellow"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                              <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                      </div>
+                                      <!--/row-->
+                                    </div>
+                                  </form>
+                    						</div>
+                    					</div>
+                              <!-- END PERSONAL INFORMATION YELLOW BOX-->
+                              <!-- BEGIN EMERGENCY CONTACT GREEN BOX-->
+                              <div class="portlet box green">
+
+                                  <div class="portlet-title">
+
+                                    <div class="caption">
+                                      <i class="fa fa-phone"></i>{@pre type="content" key="emergency_contact"/}
+                                    </div>
+                                    <div class="tools">
+                                      <a href="javascript:;" class="expand"></a>
+                                    </div>
+                                  </div>
+                                  <div class="portlet-body form" style="display: none;">
+                                   <form action="patient/ec/update" class="horizontal-form">
+                                      <input type="hidden" name="identity" value="{identity}">
+                											<div class="form-body">
+                												<div class="row">
+                													<div class="col-md-6">
+                														<div class="form-group">
+                															<label class="control-label">{@pre type="content" key="names"/}</label>
+                															<input type="text" id="ec_names" name="ec-names"  class="form-control" placeholder="{@pre type="content" key="names"/}">
+                														</div>
+                													</div>
+                													<!--/span-->
+                													<div class="col-md-6">
+                														<div class="form-group">
+                															<label class="control-label">{@pre type="content" key="last_name"/}</label>
+                															<input type="text" id="ec_lastName" name="ec-lastName" class="form-control" placeholder="{@pre type="content" key="last_name"/}">
+                														</div>
+                													</div>
+                													<!--/span-->
+                												</div>
+                												<!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="identity"/}</label>
+                                              <input type="text" id="ec_identity" name="ec-identity" class="form-control" placeholder="{@pre type="content" key="identity"/}">
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="identity_type"/}</label>
+                                              	  <select id="ec_identityType" name="ec-identityType" class="form-control">
+                    																<option value="1">CC</option>
+                    																<option value="2">CE</option>
+                    																<option value="3">TI</option>
+                    																<option value="4">PA</option>
+                    															</select>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="relationship"/}</label>
+                                              <input type="text" id="names" class="form-control" placeholder="{@pre type="content" key="relationship"/}">
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="occupation"/}</label>
+                                              <input type="text" id="names" class="form-control" placeholder="{@pre type="content" key="occupation"/}">
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="phone"/}</label>
+                                              <input type="text" id="names" class="form-control" placeholder="{@pre type="content" key="phone"/}">
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="cell_phone"/}</label>
+                                              <input type="text" id="lastName" class="form-control" placeholder="cell_phone">
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                													<div class="col-md-6">
+                                              <div class="clearfix">
+                                                <button type="submit" class="btn green"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
+                                              </div>
+                                          </div>
+                												</div>
+                                        <!--/row-->
+                											</div>
+                										</form>
+                                  </div>
+                                </div>
+                                <!-- END EMERGENCY CONTACT GREEN BOX-->
+            								</div>
+                            <!-- END  GENERAL INFORMATION-->
+            								<div class="tab-pane fade" id="tab_2_2">
+                              <!-- BEGIN  MEDICAL HISTORY-->
+                                <!-- BEGIN FAMILY HISTORY YELLOW BOX-->
+                                  <div class="portlet box yellow">
+                                    <div class="portlet-title">
+                                      <div class="caption">
+                                        <i class="fa fa-users"></i>{@pre type="content" key="family_history"/}
+                                      </div>
+                                      <div class="tools">
+                                        <a href="javascript:;" class="expand">
+                                        </a>
+                                      </div>
+                                    </div>
+                                    <div class="portlet-body form" style="display: none;">
+                                     <form action="patient/pi/update" method="get" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{identity}">
+                                        <div class="form-body">
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="family"/}</label>
+                                                <textarea class="form-control"name="family" id="family" rows="6"></textarea>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="clearfix">
+                                                <button type="submit" class="btn yellow"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
+                                              </div>
+                                          </div>
+                                        </div>
+                                        <!--/row-->
+                                        </div>
+                                      </form>
+                                    </div>
+                                   </div>
+                                  <!-- END FAMILY HISTORY YELLOW BOX-->
+                                <!-- BEGIN PERSONAL HISTORY GREEN BOX-->
+                              <div class="portlet box green">
+                                  <div class="portlet-title">
+                                    <div class="caption">
+                                      <i class="fa fa-user-md"></i>{@pre type="content" key="personal_history"/}
+                                    </div>
+                                    <div class="tools">
+                                      <a href="javascript:;" class="expand">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="portlet-body form" style="display: none;">
+                                   <form action="patient/ec/update" class="horizontal-form">
+                                      <input type="hidden" name="identity" value="{identity}">
+                                      <div class="form-body">
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="prenatal"/}</label>
+                                              <textarea class="form-control"name="prenatal" id="prenatal" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="organ_of_sense"/}</label>
+                                              <textarea class="form-control"name="organOfSense" id="organOfSense" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="childhood_diseases"/}</label>
+                                              <textarea class="form-control"name="childhoodDiseases" id="childhoodDiseases" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="psychiatric"/}</label>
+                                                  <textarea class="form-control"name="psychiatric" id="psychiatric" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="immunizations"/}</label>
+                                              <textarea class="form-control"name="immunizations" id="immunizations" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="cardio_vascular_system"/}</label>
+                                              <textarea class="form-control"name="cardioVascularSystem" id="cardioVascularSystem" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="surgical"/}</label>
+                                              <textarea class="form-control"name="surgical" id="surgical" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="endocrine_system"/}</label>
+                                              <textarea class="form-control"name="endocrineSystem" id="endocrineSystem" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="traumatic"/}</label>
+                                              <textarea class="form-control"name="traumatic" id="traumatic" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="hematopoietic_system"/}</label>
+                                              <textarea class="form-control"name="hematopoieticSystem" id="hematopoieticSystem" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="hospital_records"/}</label>
+                                              <textarea class="form-control"name="hospitalRecords" id="hospitalRecords" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="immune_system"/}</label>
+                                              <textarea class="form-control"name="immuneSystem" id="immuneSystem" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="allergies_toxic"/}</label>
+                                              <textarea class="form-control"name="allergiesToxic" id="allergiesToxic" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="nervous_system"/}</label>
+                                              <textarea class="form-control"name="nervousSystem" id="nervousSystem" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="hemorrhagic"/}</label>
+                                              <textarea class="form-control"name="hemorrhagic" id="hemorrhagic" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="respiratory_system"/}</label>
+                                              <textarea class="form-control"name="respiratorySystem" id="respiratorySystem" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="infectious_diseases"/}</label>
+                                              <textarea class="form-control"name="infectiousDiseases" id="infectiousDiseases" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="habits"/}</label>
+                                              <textarea class="form-control"name="habits" id="habits" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="gynecology_obstetric"/}</label>
+                                              <textarea class="form-control"name="gynecologyObstetric" id="gynecologyObstetric" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label class="control-label">{@pre type="content" key="others"/}</label>
+                                              <textarea class="form-control"name="others" id="others" rows="3"></textarea>
+                                            </div>
+                                          </div>
+                                          <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="clearfix">
+                                                <button type="submit" class="btn green"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
+                                              </div>
+                                          </div>
+                                        </div>
+                                        <!--/row-->
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                                <!-- END PERSONAL HISTORY GREEN BOX-->
+                                <!-- BEGIN DENTAL HISTORY PURPLE BOX-->
+                                  <div class="portlet box purple">
+                                    <div class="portlet-title">
+                                      <div class="caption">
+                                        <i class="fa fa-users"></i>{@pre type="content" key="dental_history"/}
+                                      </div>
+                                      <div class="tools">
+                                        <a href="javascript:;" class="expand">
+                                        </a>
+                                      </div>
+                                    </div>
+                                    <div class="portlet-body form" style="display: none;">
+                                     <form action="patient/pi/update" method="get" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{identity}">
+                                        <div class="form-body">
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="dental_information"/}</label>
+                                                <textarea class="form-control"name="dentalInformation" id="dentalInformation" rows="6"></textarea>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="clearfix">
+                                                <button type="submit" class="btn purple"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
+                                              </div>
+                                          </div>
+                                        </div>
+                                        <!--/row-->
+                                        </div>
+                                      </form>
+                                    </div>
+                                   </div>
+                                  <!-- END DENTAL HISTORY PURPLE BOX-->
+                                  <!-- BEGIN RISK FACTORS RED FLAMINGO BOX-->
+                                  <div class="portlet box red-flamingo">
+                                    <div class="portlet-title">
+                                      <div class="caption">
+                                        <i class="fa fa-th-list"></i>{@pre type="content" key="risk_factors"/}
+                                      </div>
+                                      <div class="tools">
+                                        <a href="javascript:;" class="expand">
+                                        </a>
+                                      </div>
+                                    </div>
+                                    <div class="portlet-body form" style="display: none;">
+                                     <form action="patient/pi/update" method="get" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{identity}">
+                                        <div class="form-body">
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="oral_hygiene"/}</label>
+                                                <select id="oralHygiene" name="oralHygiene" class="form-control">
+                                                  <option value="good">{@pre type="content" key="good"/}</option>
+                                                  <option value="regular">{@pre type="content" key="regular"/}</option>
+                                                  <option value="poor">{@pre type="content" key="poor"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+
+                                                <label class="control-label">{@pre type="content" key="use_of"/}</label>
+                                                <!-- BEGIN MULTI SELECT USE OF -->
+                                                <select class="bs-select form-control" multiple="" name="useOf" id="useOf" style="display: none;">
+                                                  <option value="1">{@pre type="content" key="toothpaste"/}</option>
+                                                  <option value="2">{@pre type="content" key="floss"/}</option>
+                                                  <option value="3">{@pre type="content" key="fluoride_rinse"/}</option>
+                                                  <option value="4">{@pre type="content" key="interdental_brush"/}</option>
+                                                </select>
+                                                <!-- END MULTI SELECT USE OF -->
+
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="bleeding_gums"/}</label>
+                                                <select id="bleedingGums" name="bleedingGums" class="form-control">
+                                                  <option value="N">{@pre type="content" key="no"/}</option>
+                                                  <option value="Y">{@pre type="content" key="yes"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="dental_habits"/}</label>
+                                                <textarea class="form-control"name="dentalHabits" id="dentalHabits" rows="2"></textarea>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                            </div>
+                                          <!--/row-->
+                                          <div class="row">
+                                            <!--/span-->
+                                            <div class="col-md-12">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="others"/}</label>
+                                                <textarea class="form-control"name="others" id="others" rows="3"></textarea>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                            </div>
+                                          <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="clearfix">
+                                                <button type="submit" class="btn red-flamingo"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
+                                              </div>
+                                          </div>
+                                        </div>
+                                        <!--/row-->
+                                        </div>
+                                      </form>
+                                    </div>
+                                   </div>
+                                  <!-- END RISK FACTORS RED FLAMINGO BOX-->
+                                  <!-- BEGIN CURRENT MEDICATION GREY-CASCADE BOX-->
+                                  <div class="portlet box grey-cascade">
+                                    <div class="portlet-title">
+                                      <div class="caption">
+                                        <i class="fa fa-medkit"></i>{@pre type="content" key="current_medication"/}
+                                      </div>
+                                      <div class="tools">
+                                        <a href="javascript:;" class="expand">
+                                        </a>
+                                      </div>
+                                    </div>
+                                    <div class="portlet-body form" style="display: none;">
+                                     <form action="patient/pi/update" method="get" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{identity}">
+                                        <div class="form-body">
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="medication"/}</label>
+                                                <textarea class="form-control"name="medication" id="medication" rows="6"></textarea>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="clearfix">
+                                                <button type="submit" class="btn grey-cascade"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
+                                              </div>
+                                          </div>
+                                        </div>
+                                        <!--/row-->
+                                        </div>
+                                      </form>
+                                    </div>
+                                   </div>
+                                  <!-- END CURRENT MEDICATION GREY-CASCADE BOX-->
+                              <!-- END  MEDICAL HISTORY-->
+            								</div>
+            							</div>
+            						</div>
+                      <!-- END PORTLET BODY-->
+                    </div>
+                  </div>
+            <!-- END TABLETS-->
+            {/patient}
+          </div>
+    </div>
+{/content}
+{<scripts}
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="{+path /}/assets/admin/pages/scripts/components-dropdowns.js"></script>
+<script type="text/javascript" src="{+path /}/assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="{+path /}/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+jQuery(document).ready(function() {
+   Metronic.init();
+   Layout.init();
+   ComponentsDropdowns.init();
+   app.init();
+   app.initMedicalRecord();
+   });
+</script>
+{/scripts}

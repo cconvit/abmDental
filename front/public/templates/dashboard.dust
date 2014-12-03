@@ -1,0 +1,213 @@
+{>"layouts/role_admin" /}
+{<path}
+http://d11or7sbz4vm1i.cloudfront.net
+{/path}
+{<first_lg_image /}us{/first_lg_image}
+
+{! ---BEGIN PARAMETERS MENU--- !}
+
+{<dashboard_select}class="start active open"{/dashboard_select}
+{<dashboard}
+<span class="title">{@pre type="content" key="dashboard"/}</span>
+<span class="selected"></span>
+<span class="arrow open"></span>
+{/dashboard}
+{<dashboard_stats}class="start active open"{/dashboard_stats}
+
+{<patients_select}{/patients_select}
+{<patients}
+<span class="title">{@pre type="content" key="patients"/}</span>
+<span class="arrow"></span>
+{/patients}
+{<patient_medical_record}{/patient_medical_record}
+{<patient_treatment}{/patient_treatment}
+{<patient_list}{/patient_list}
+
+{<medical_record_path}patients/medicalRecord{/medical_record_path}
+{<treatment_path}patients/treatment{/treatment_path}
+{<patient_list_path}list{/patient_list_path}
+
+{<stats}{@pre type="content" key="stats"/}{/stats}
+{<medical_record}{@pre type="content" key="medical_record"/}{/medical_record}
+{<treatment}{@pre type="content" key="treatment"/}{/treatment}
+{<list}{@pre type="content" key="list"/}{/list}
+
+{! ---END PARAMETERS MENU--- !}
+
+{! ---BEGIN HEAD PARAMETERS MENU--- !}
+{<notifications}
+
+{/notifications}
+{<messages}
+
+{/messages}
+{<tasks}
+
+{/tasks}
+{! ---END HEAD PARAMETERS MENU--- !}
+
+
+{<content}
+    <div class="page-content-wrapper">
+      <div class="page-content">
+
+      <!-- /.modal -->
+              <div id="responsive" class="modal fade" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">{@pre type="content" key="new_account"/}</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="scroller" style="height:210px" data-always-visible="1" data-rail-visible1="1">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <p>
+                                <div class="col-md-12 form-group">
+                                  <label class="col-md-3 control-label">{@pre type="content" key="name"/}</label>
+                                  <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="{@pre type="content" key="name"/}">
+                                  </div>
+                                </div>
+                            </p>
+                            <p>
+                                <div class="col-md-12 form-group">
+                                  <label class="col-md-3 control-label">{@pre type="content" key="email"/}</label>
+                                  <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="{@pre type="content" key="email"/}">
+                                  </div>
+                                </div>
+                            </p>
+                            <p>
+                                <div class="col-md-12 form-group">
+                                  <label class="col-md-3 control-label">{@pre type="content" key="credits"/}</label>
+                                  <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="{@pre type="content" key="credits"/}">
+                                  </div>
+                                </div>
+                            </p>
+                            <p>
+                                <div class="col-md-12 form-group">
+                                  <label class="col-md-3 control-label">{@pre type="content" key="desc"/}</label>
+                                  <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="{@pre type="content" key="desc"/}">
+                                  </div>
+                                </div>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" data-dismiss="modal" class="btn default">{@pre type="content" key="close"/}</button>
+                      <button type="button" class="btn green">{@pre type="content" key="save"/}</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+      <!-- BEGIN PAGE HEADER-->
+      <h3 class="page-title">
+      {@pre type="content" key="accounts"/}
+      </h3>
+      <div class="page-bar">
+        <ul class="page-breadcrumb">
+          <li>
+            <i class="fa fa-users"></i>
+            <a href="#">{@pre type="content" key="accounts"/}</a>
+            <i class="fa fa-angle-right"></i>
+          </li>
+          <li>
+            <i class="fa fa-list"></i>
+            <a href="#">{@pre type="content" key="list"/}</a>
+          </li>
+
+        </ul>
+      </div>
+      <!-- END PAGE HEADER-->
+            <!-- BEGIN TABLETS-->
+            <div class="row">
+                    <div class="col-md-12">
+                      <!-- BEGIN SAMPLE TABLE PORTLET-->
+                      <div class="portlet box green">
+                        <div class="portlet-title">
+                          <div class="caption">
+                            <i class="fa fa-list"></i>{@pre type="content" key="table_list"/}
+                          </div>
+
+                          <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                            <a href="javascript:;" class="reload">
+                            </a>
+                          </div>
+                        </div>
+                        <div class="portlet-body">
+                          <div class="table-toolbar">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="btn-group">
+                                  <a class="btn green" data-toggle="modal" href="#responsive">
+                                        {@pre type="content" key="add_new"/} <i class="fa fa-plus"></i>
+                                  </a>
+                                  </div>
+                                </div>
+                             </div>
+                          </div>
+                          <div class="table-responsive">
+                            <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>{@pre type="content" key="id"/}</th>
+                              <th>{@pre type="content" key="name"/}</th>
+                              <th>{@pre type="content" key="email"/}</th>
+                              <th>{@pre type="content" key="credits"/}</th>
+                              <th>{@pre type="content" key="desc"/}</th>
+                              <th>{@pre type="content" key="status"/}</th>
+                              <th>{@pre type="content" key="action"/}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {#accounts}
+                            <tr>
+                              <td>
+                                 {@math key=$idx method="add" operand="1"/}
+                              </td>
+                              <td>{_id}</td>
+                              <td>{name}</td>
+                              <td>{email}</td>
+                              <td>{credits}</td>
+                              <td>{desc}</td>
+                              <td>OK</td>
+                              <td>
+                                  <a href="#" class="btn default btn-xs gray"><i class="fa fa-edit"></i> {@pre type="content" key="edit"/} </a>
+                                  <a href="#" class="btn default btn-xs gray"><i class="fa fa-trash-o"></i> {@pre type="content" key="delete"/} </a>
+                              </td>
+                            </tr>
+                            {/accounts}
+                            </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- END SAMPLE TABLE PORTLET-->
+                    </div>
+                  </div>
+            <!-- END TABLETS-->
+          </div>
+    </div>
+{/content}
+{<scripts}
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+jQuery(document).ready(function() {
+   Metronic.init();
+   Layout.init();
+   });
+</script>
+{/scripts}

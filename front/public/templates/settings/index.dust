@@ -1,0 +1,239 @@
+{>"layouts/role_admin" /}
+
+{<path}http://d11or7sbz4vm1i.cloudfront.net{/path}
+{! ---BEGIN CSS--- !}
+{<page_styles}
+<link rel="stylesheet" type="text/css" href="{+path /}/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css">
+{/page_styles}
+{! ---END CSS--- !}
+
+{! ---BEGIN PARAMETERS MENU--- !}
+
+{! ---BEGIN DASHBOARD SUBMENU--- !}
+{<dashboard_select}{/dashboard_select}
+{<dashboard}
+<span class="title">{@pre type="content" key="dashboard"/}</span>
+<span class="arrow"></span>
+{/dashboard}
+{<dashboard_stats}{/dashboard_stats}
+{<stats}{@pre type="content" key="stats"/}{/stats}
+{! ---END DASHBOARD SUBMENU--- !}
+
+{! ---BEGIN PATIENTS SUBMENU--- !}
+{<patients_select}{/patients_select}
+{<patients}
+<span class="title">{@pre type="content" key="patients"/}</span>
+<span class="arrow"></span>
+{/patients}
+
+{<patient_medical_record}{/patient_medical_record}
+{<medical_record}{@pre type="content" key="medical_record"/}{/medical_record}
+
+{<patient_treatment}{/patient_treatment}
+{<treatment}{@pre type="content" key="treatment"/}{/treatment}
+
+{<patient_list}{/patient_list}
+{<list}{@pre type="content" key="list"/}{/list}
+{! ---END PATIENTS SUBMENU--- !}
+
+{! ---END PARAMETERS MENU--- !}
+
+{! ---BEGIN HEAD PARAMETERS MENU--- !}
+{<notifications}
+
+{/notifications}
+{<messages}
+
+{/messages}
+{<tasks}
+
+{/tasks}
+{<firsr_lg_image}us{/firsr_lg_image}
+{<first_lg_name}US{/first_lg_name}
+{<second_lg_image}es{/second_lg_image}
+{<second_lg_name}Spanish{/second_lg_name}
+
+{! ---END HEAD PARAMETERS MENU--- !}
+{<content}
+    <div class="page-content-wrapper">
+      <div class="page-content">
+
+      <!-- BEGIN PAGE HEADER-->
+      <h3 class="page-title">
+      {@pre type="content" key="settings"/}
+      </h3>
+      <div class="page-bar">
+        <ul class="page-breadcrumb">
+          <li>
+            <i class="fa fa-gear"></i>
+            <a href="#">{@pre type="content" key="settings"/}</a>
+          </li>
+        </ul>
+      </div>
+      <!-- END PAGE HEADER-->
+      <div class="row">
+                <div class="tabbable-line tabs-below" style="margin-bottom: 30px;">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                      <a href="#tab_6_1" data-toggle="tab">
+                      {@pre type="content" key="profile"/} </a>
+                    </li>
+                    <li class="">
+                      <a href="#tab_6_2" data-toggle="tab">
+                      {@pre type="content" key="account"/} </a>
+                    </li>
+                    <li class="">
+                      <a href="#tab_6_3" data-toggle="tab">
+                      {@pre type="content" key="billing"/} </a>
+                    </li>
+                    <li class="">
+                      <a href="#tab_6_4" data-toggle="tab">
+                      {@pre type="content" key="password"/} </a>
+                    </li>
+                      </ul>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="tab_6_1">
+                         <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="control-label"><b>{@pre type="content" key="image_profile"/}<b></label>
+                                  </div>
+                                </div>
+                             </div>
+                             <div class="row">
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                      <div class="col-md-7">
+                                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 150px; height: 150px; line-height: 150px;">
+                                         <img src="{+path /}/img/default-portrait.png" class="img-responsive" style="width: 150px;height: 150px;" >
+                                         </div>
+                                      </div>
+                                      <div class="col-md-5">
+                                          <div>
+                                            <span class="btn default btn-file">
+                                            <span class="fileinput-new">
+                                            {@pre type="content" key="select_image"/}</span>
+                                            <span class="fileinput-exists">
+                                            {@pre type="content" key="change"/} </span>
+                                            <input type="hidden"><input type="file" name="...">
+                                            </span>
+                                            <a href="#" class="btn red fileinput-exists" data-dismiss="fileinput">
+                                            {@pre type="content" key="remove"/} </a>
+                                          </div>
+                                       </div>
+                                    </div>
+                                  </div>
+                                </div>
+                             </div>
+                             <!--/END ROW-->
+                             <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label"><b>{@pre type="content" key="name"/}<b></label>
+                                            <input type="text" id="name" name="name" class="form-control" placeholder="{@pre type="content" key="name"/}" value={names}>
+                                          </div>
+                                        </div>
+                                </div>
+                             <!--/END ROW-->
+                             <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label"><b>{@pre type="content" key="email"/}<b></label>
+                                            <input type="text" id="email" name="email" class="form-control" placeholder="{@pre type="content" key="email"/}" value={names}>
+                                          </div>
+                                        </div>
+                                </div>
+                             <!--/END ROW-->
+                             <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <button type="submit" class="btn blue"><i class="fa fa-edit"></i>{@pre type="content" key="update_profile"/}</button>
+                                          </div>
+                                        </div>
+                                </div>
+                             <!--/END ROW-->
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_6_2">
+                      <p>
+                         Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+                      </p>
+                    </div>
+                    <div class="tab-pane fade" id="tab_6_3">
+                      <p>
+                         Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
+                      </p>
+                    </div>
+                    <div class="tab-pane fade" id="tab_6_4">
+                        <div class="form-body">
+                           <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="control-label">{@pre type="content" key="current_password"/}</label>
+                                    <div class="input-group">
+                                      <input type="password" class="form-control" id="currentPassword" name="currentPassword" placeholder="{@pre type="content" key="current_password"/}">
+                                      <span class="input-group-addon">
+                                      <i class="fa fa-user"></i>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="control-label">{@pre type="content" key="new_password"/}</label>
+                                    <div class="input-group">
+                                      <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="{@pre type="content" key="new_password"/}">
+                                      <span class="input-group-addon">
+                                      <i class="fa fa-user"></i>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                             </div>
+                             <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="control-label">{@pre type="content" key="confirm_password"/}</label>
+                                    <div class="input-group">
+                                      <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="{@pre type="content" key="confirm_password"/}">
+                                      <span class="input-group-addon">
+                                      <i class="fa fa-user"></i>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                             </div>
+                             <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <button type="submit" class="btn blue"><i class="fa fa-edit"></i>{@pre type="content" key="change_password"/}</button>
+                                          </div>
+                                        </div>
+                                </div>
+                             <!--/END ROW-->
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </div>
+{/content}
+{<scripts}
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script type="text/javascript" src="{+path /}/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+jQuery(document).ready(function() {
+   Metronic.init();
+   Layout.init();
+   });
+</script>
+{/scripts}
