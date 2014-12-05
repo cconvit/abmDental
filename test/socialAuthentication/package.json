@@ -18,7 +18,12 @@
     "requirejs": "^2.1.15",
     "adaro": "^0.1.7",
     "localizr": "^0.1.0",
-    "less": "^1.7.5"
+    "less": "^1.7.5",
+    "connect-redis": "^2.1.0",
+    "express-session": "^1.9.3",
+    "passport-twitter": "^1.0.2",
+    "passport-google": "^0.3.0",
+    "passport-google-oauth": "^0.1.5"
   },
   "devDependencies": {
     "mocha": "^1.18.0",
