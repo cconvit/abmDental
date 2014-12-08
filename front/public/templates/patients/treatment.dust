@@ -228,11 +228,11 @@ http://d11or7sbz4vm1i.cloudfront.net
                             <div class="caption font-blue-steel" style="margin-bottom:10px;">
                                   <strong><span class="caption-subject"><h3>{@pre type="content" key="orthodontics"/}<h3></span></strong>
                             </div>
-                                <!-- BEGIN DIAGNOSIS YELLOW BOX-->
+                               <!-- BEGIN FACIAL DIAGNOSIS YELLOW BOX-->
                                   <div class="portlet box yellow">
                                     <div class="portlet-title">
                                       <div class="caption">
-                                        <i class="fa fa-pencil"></i>{@pre type="content" key="diagnosis"/}
+                                        <i class="fa fa-meh-o"></i>{@pre type="content" key="facial_diagnosis"/}
                                       </div>
                                       <div class="tools">
                                         <a href="javascript:;" class="expand">
@@ -244,30 +244,62 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <input type="hidden" name="identity" value="{identity}">
                                         <div class="form-body">
                                           <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                               <div class="form-group">
-                                                <label class="control-label">{@pre type="content" key="facial"/}</label>
-                                                <textarea class="form-control"name="facial" id="facial" rows="2"></textarea>
+                                                <label class="control-label">{@pre type="content" key="face_type"/}</label>
+                                                <select id="faceType" name="faceType" class="form-control">
+                                                  <option value="brachyfacial">{@pre type="content" key="brachyfacial"/}</option>
+                                                  <option value="dolicofacial">{@pre type="content" key="dolicofacial"/}</option>
+                                                  <option value="mesofacial">{@pre type="content" key="mesofacial"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="asymmetry"/}</label>
+                                                <select id="asymmetry" name="asymmetry" class="form-control">
+                                                  <option value="yes">{@pre type="content" key="yes"/}</option>
+                                                  <option value="no">{@pre type="content" key="no"/}</option>
+                                                </select>
                                               </div>
                                             </div>
                                             <!--/span-->
                                           </div>
                                           <!--/row-->
                                           <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                               <div class="form-group">
-                                                <label class="control-label">{@pre type="content" key="skeletal"/}</label>
-                                                <textarea class="form-control"name="skeletal" id="skeletal" rows="2"></textarea>
+                                                <label class="control-label">{@pre type="content" key="smile_line"/}</label>
+                                                <select id="smileLine" name="smileLine" class="form-control">
+                                                  <option value="high">{@pre type="content" key="high"/}</option>
+                                                  <option value="medium">{@pre type="content" key="medium"/}</option>
+                                                  <option value="low">{@pre type="content" key="low"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="lip_incompetence"/}</label>
+                                                <select id="lipIncompetence" name="lipIncompetence" class="form-control">
+                                                  <option value="yes">{@pre type="content" key="yes"/}</option>
+                                                  <option value="no">{@pre type="content" key="no"/}</option>
+                                                </select>
                                               </div>
                                             </div>
                                             <!--/span-->
                                           </div>
                                           <!--/row-->
                                           <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                               <div class="form-group">
-                                                <label class="control-label">{@pre type="content" key="dental"/}</label>
-                                                <textarea class="form-control"name="dental" id="dental" rows="2"></textarea>
+                                                <label class="control-label">{@pre type="content" key="facial_profile"/}</label>
+                                                <select id="facialProfile" name="facialProfile" class="form-control">
+                                                  <option value="convex">{@pre type="content" key="convex"/}</option>
+                                                  <option value="straight">{@pre type="content" key="straight"/}</option>
+                                                  <option value="concave">{@pre type="content" key="concave"/}</option>
+                                                </select>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -277,7 +309,6 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                               <div class="clearfix">
                                                 <button type="submit" class="btn yellow"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
-                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -286,100 +317,10 @@ http://d11or7sbz4vm1i.cloudfront.net
                                       </form>
                                     </div>
                                    </div>
-                                  <!-- END DIAGNOSIS YELLOW BOX-->
-                                  <!-- BEGIN TREATMENT TIMELINE GREEN BOX-->
+                                  <!-- END FACIAL DIAGNOSIS YELLOW BOX-->
+
+                                  <!-- BEGIN OCCLUSION DIAGNOSIS GREEN BOX-->
                                   <div class="portlet box green">
-                                    <div class="portlet-title">
-                                      <div class="caption">
-                                        <i class="fa fa-clock-o"></i>{@pre type="content" key="treatment_timeline"/}
-                                      </div>
-                                      <div class="tools">
-                                        <a href="javascript:;" class="expand">
-                                        </a>
-                                      </div>
-                                    </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
-                                        <div class="form-body">
-                                            <div class="row" style="margin-bottom: 20px;">
-                                              <div class="col-md-12">
-                                                 <a data-toggle="modal" href="#add_query" class="btn btn-lg grey">
-                                                    {@pre type="content" key="add"/} <i class="fa fa-plus"></i>
-                                                 </a>
-                                              </div>
-                                            </div>
-                                            <div class="row">
-                                              <div class="col-md-12">
-                                                <ul class="timeline">
-                                                {#orthodontics_time_line}
-                                                   <li class="timeline-{type}">
-                                                      <div class="timeline-time">
-                                                        <span class="date">
-                                                        {date} </span>
-                                                        <span class="time">
-                                                        {hour} </span>
-                                                      </div>
-                                                      <div class="timeline-icon">
-                                                        <i class="fa fa-{icon}"></i>
-                                                      </div>
-                                                      <div class="timeline-body">
-                                                        <h2>{title}</h2>
-                                                        <div class="timeline-content">
-                                                          {desc}
-                                                        </div>
-                                                      </div>
-                                                  </li>
-                                                  {/orthodontics_time_line}
-                                                </ul>
-                                              </div>
-                                            </div>
-                                        </div>
-                                      </form>
-                                    </div>
-                                   </div>
-                                  <!-- END TREATMENT TIMELINE GREEN BOX-->
-                                  <!-- BEGIN FILES PURPLE BOX-->
-                                  <div class="portlet box purple">
-                                    <div class="portlet-title">
-                                      <div class="caption">
-                                        <i class="fa fa-list-ol"></i>{@pre type="content" key="treatment_plan"/}
-                                      </div>
-                                      <div class="tools">
-                                        <a href="javascript:;" class="expand">
-                                        </a>
-                                      </div>
-                                    </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
-                                        <div class="form-body">
-                                          <div class="row">
-                                            <div class="col-md-12">
-                                              <div class="form-group">
-                                                <label class="control-label">{@pre type="content" key="plan"/}</label>
-                                                <textarea class="form-control"name="plan" id="plan" rows="2"></textarea>
-                                              </div>
-                                            </div>
-                                            <!--/span-->
-                                          </div>
-                                          <!--/row-->
-                                        <div class="row">
-                                          <div class="col-md-6">
-                                              <div class="clearfix">
-                                                <button type="submit" class="btn purple"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
-                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
-                                              </div>
-                                          </div>
-                                        </div>
-                                        <!--/row-->
-                                        </div>
-                                      </form>
-                                    </div>
-                                   </div>
-                                  <!-- END FILES PURPLE BOX-->
-                                  <!-- BEGIN FILES RED FLAMINGO BOX-->
-                                  <div class="portlet box red-flamingo">
                                     <div class="portlet-title">
                                       <div class="caption">
                                         <i class="fa fa-compress"></i>{@pre type="content" key="occlusion_diagnosis"/}
@@ -393,7 +334,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                      <form action="patient/pi/update" method="get" class="horizontal-form">
                                         <input type="hidden" name="identity" value="{identity}">
                                         <div class="form-body">
-                                                                                <div class="row">
+                                      <div class="row">
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="dentition_type"/}</label>
@@ -711,8 +652,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn red-flamingo"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
-                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
+                                                <button type="submit" class="btn green"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -721,9 +661,327 @@ http://d11or7sbz4vm1i.cloudfront.net
                                       </form>
                                     </div>
                                    </div>
-                                  <!-- END FILES RED FLAMINGO BOX-->
-                                  <!-- BEGIN FILES GREY CASCADE BOX-->
+                                  <!-- END OCCLUSION DIAGNOSIS GREEN BOX-->
+
+                                  <!-- BEGIN TEMPOROMANDIBULAR PURPLE BOX-->
+                                  <div class="portlet box purple">
+                                    <div class="portlet-title">
+                                      <div class="caption">
+                                        <i class="fa fa-chain"></i>{@pre type="content" key="temporomandibular_joint_disorders"/}
+                                      </div>
+                                      <div class="tools">
+                                        <a href="javascript:;" class="expand">
+                                        </a>
+                                      </div>
+                                    </div>
+                                    <div class="portlet-body form" style="display: none;">
+                                     <form action="patient/pi/update" method="get" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{identity}">
+                                        <div class="form-body">
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label bold">{@pre type="content" key="clicking"/}</label>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="left"/}</label>
+                                                <select id="clickingLeft" name="clickingLeft" class="form-control">
+                                                  <option value="none">{@pre type="content" key="none"/}</option>
+                                                  <option value="opening">{@pre type="content" key="opening"/}</option>
+                                                  <option value="closing">{@pre type="content" key="closing"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="right"/}</label>
+                                                <select id="clickingRight" name="clickingRight" class="form-control">
+                                                  <option value="none">{@pre type="content" key="none"/}</option>
+                                                  <option value="opening">{@pre type="content" key="opening"/}</option>
+                                                  <option value="closing">{@pre type="content" key="closing"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label bold">{@pre type="content" key="pain"/}</label>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="left"/}</label>
+                                                <select id="clickingLeft" name="clickingLeft" class="form-control">
+                                                  <option value="none">{@pre type="content" key="none"/}</option>
+                                                  <option value="opening">{@pre type="content" key="opening"/}</option>
+                                                  <option value="closing">{@pre type="content" key="closing"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="right"/}</label>
+                                                <select id="clickingRight" name="clickingRight" class="form-control">
+                                                  <option value="none">{@pre type="content" key="none"/}</option>
+                                                  <option value="opening">{@pre type="content" key="opening"/}</option>
+                                                  <option value="closing">{@pre type="content" key="closing"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label bold">{@pre type="content" key="deviation"/}</label>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="left"/}</label>
+                                                <select id="clickingLeft" name="clickingLeft" class="form-control">
+                                                  <option value="none">{@pre type="content" key="none"/}</option>
+                                                  <option value="opening">{@pre type="content" key="opening"/}</option>
+                                                  <option value="closing">{@pre type="content" key="closing"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="right"/}</label>
+                                                <select id="clickingRight" name="clickingRight" class="form-control">
+                                                  <option value="none">{@pre type="content" key="none"/}</option>
+                                                  <option value="opening">{@pre type="content" key="opening"/}</option>
+                                                  <option value="closing">{@pre type="content" key="closing"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label bold">{@pre type="content" key="deflection"/}</label>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="left"/}</label>
+                                                <select id="clickingLeft" name="clickingLeft" class="form-control">
+                                                  <option value="none">{@pre type="content" key="none"/}</option>
+                                                  <option value="opening">{@pre type="content" key="opening"/}</option>
+                                                  <option value="closing">{@pre type="content" key="closing"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="right"/}</label>
+                                                <select id="clickingRight" name="clickingRight" class="form-control">
+                                                  <option value="none">{@pre type="content" key="none"/}</option>
+                                                  <option value="opening">{@pre type="content" key="opening"/}</option>
+                                                  <option value="closing">{@pre type="content" key="closing"/}</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+
+
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="clearfix">
+                                                <button type="submit" class="btn purple"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                              </div>
+                                          </div>
+                                        </div>
+                                        <!--/row-->
+                                        </div>
+                                      </form>
+                                    </div>
+                                   </div>
+                                  <!-- END TEMPOROMANDIBULAR PURPLE BOX-->
+
+                                  <!-- BEGIN DIAGNOSIS RED FLAMINGO BOX-->
+                                  <div class="portlet box red-flamingo">
+                                    <div class="portlet-title">
+                                      <div class="caption">
+                                        <i class="fa fa-pencil"></i>{@pre type="content" key="diagnosis"/}
+                                      </div>
+                                      <div class="tools">
+                                        <a href="javascript:;" class="expand">
+                                        </a>
+                                      </div>
+                                    </div>
+                                    <div class="portlet-body form" style="display: none;">
+                                     <form action="patient/pi/update" method="get" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{identity}">
+                                        <div class="form-body">
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="facial"/}</label>
+                                                <textarea class="form-control"name="facial" id="facial" rows="2"></textarea>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="skeletal"/}</label>
+                                                <textarea class="form-control"name="skeletal" id="skeletal" rows="2"></textarea>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="dental"/}</label>
+                                                <textarea class="form-control"name="dental" id="dental" rows="2"></textarea>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="clearfix">
+                                                <button type="submit" class="btn red-flamingo"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                              </div>
+                                          </div>
+                                        </div>
+                                        <!--/row-->
+                                        </div>
+                                      </form>
+                                    </div>
+                                   </div>
+                                  <!-- END DIAGNOSIS RED FLAMINGO BOX-->
+
+                                  <!-- BEGIN TREATMENT PLAN GREY CASCADE BOX-->
                                   <div class="portlet box grey-cascade">
+                                    <div class="portlet-title">
+                                      <div class="caption">
+                                        <i class="fa fa-list-ol"></i>{@pre type="content" key="treatment_plan"/}
+                                      </div>
+                                      <div class="tools">
+                                        <a href="javascript:;" class="expand">
+                                        </a>
+                                      </div>
+                                    </div>
+                                    <div class="portlet-body form" style="display: none;">
+                                     <form action="patient/pi/update" method="get" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{identity}">
+                                        <div class="form-body">
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              <div class="form-group">
+                                                <label class="control-label">{@pre type="content" key="plan"/}</label>
+                                                <textarea class="form-control"name="plan" id="plan" rows="2"></textarea>
+                                              </div>
+                                            </div>
+                                            <!--/span-->
+                                          </div>
+                                          <!--/row-->
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="clearfix">
+                                                <button type="submit" class="btn grey-cascade"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                              </div>
+                                          </div>
+                                        </div>
+                                        <!--/row-->
+                                        </div>
+                                      </form>
+                                    </div>
+                                   </div>
+                                  <!-- END TREATMENT PLAN GREY CASCADE BOX-->
+
+                                  <!-- BEGIN TREATMENT TIMELINE YELLOW-CASABLANCA BOX-->
+                                  <div class="portlet box yellow-casablanca">
+                                    <div class="portlet-title">
+                                      <div class="caption">
+                                        <i class="fa fa-clock-o"></i>{@pre type="content" key="treatment_timeline"/}
+                                      </div>
+                                      <div class="tools">
+                                        <a href="javascript:;" class="expand">
+                                        </a>
+                                      </div>
+                                    </div>
+                                    <div class="portlet-body form" style="display: none;">
+                                     <form action="patient/pi/update" method="get" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{identity}">
+                                        <div class="form-body">
+                                            <div class="row" style="margin-bottom: 20px;">
+                                              <div class="col-md-12">
+                                                 <a data-toggle="modal" href="#add_query" class="btn btn-lg grey">
+                                                    {@pre type="content" key="add"/} <i class="fa fa-plus"></i>
+                                                 </a>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-md-12">
+                                                <ul class="timeline">
+                                                {#orthodontics_time_line}
+                                                   <li class="timeline-{type}">
+                                                      <div class="timeline-time">
+                                                        <span class="date">
+                                                        {date} </span>
+                                                        <span class="time">
+                                                        {hour} </span>
+                                                      </div>
+                                                      <div class="timeline-icon">
+                                                        <i class="fa fa-{icon}"></i>
+                                                      </div>
+                                                      <div class="timeline-body">
+                                                        <h2>{title}</h2>
+                                                        <div class="timeline-content">
+                                                          {desc}
+                                                        </div>
+                                                      </div>
+                                                  </li>
+                                                  {/orthodontics_time_line}
+                                                </ul>
+                                              </div>
+                                            </div>
+                                        </div>
+                                      </form>
+                                    </div>
+                                   </div>
+                                  <!-- END TREATMENT TIMELINE YELLOW-CASABLANCA BOX-->
+
+                                  <!-- BEGIN FILES GREEN MEADOW BOX-->
+                                  <div class="portlet box green-meadow">
                                     <div class="portlet-title">
                                       <div class="caption">
                                         <i class="fa fa-folder-o"></i>{@pre type="content" key="files"/}
@@ -750,8 +1008,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn grey-cascade"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
-                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
+                                                <button type="submit" class="btn green-meadow"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -760,7 +1017,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                       </form>
                                     </div>
                                    </div>
-                                  <!-- END FILES GREY CASCADE BOX-->
+                                  <!-- END FILES GREEN MEADOW BOX-->
                             </div>
                           <!-- END  ORTHODONTICS-->
                           <!-- BEGIN  PROSTHODONTICS-->
