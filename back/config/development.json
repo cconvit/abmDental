@@ -1,5 +1,5 @@
 {
-    
+
     "express": {
         "view cache": false,
         "view engine": "dust",
@@ -26,6 +26,10 @@
 
     "middleware": {
 
+        "appsec": {
+          "csrf": false
+        },
+
         "devtools": {
             "enabled": true,
             "priority": 35,
@@ -34,7 +38,7 @@
                 "arguments": [
                     "path:./public",
                     "path:./.build",
-                    {   
+                    {
                         "template": {
                             "module": "kraken-devtools/plugins/dustjs",
                             "files": "/templates/**/*.js",
