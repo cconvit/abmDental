@@ -3,6 +3,7 @@
 var http = require('http');
 var express = require('express');
 var kraken = require('kraken-js');
+var db = require('./lib/database/mongo');
 
 
 var options, app, server;
@@ -17,6 +18,8 @@ options = {
          * Add any additional config setup or overrides here. `config` is an initialized
          * `confit` (https://github.com/krakenjs/confit/) configuration object.
          */
+        global.config=config._store;
+        db.config(config._store.database);
         next(null, config);
     }
 };

@@ -26,9 +26,33 @@
 
     "middleware": {
 
-        "appsec": {
-          "csrf": false
-        },
+      "appsec": {
+        "priority": 110,
+        "module": {
+          "name": "lusca",
+          "arguments": [
+            {
+              "csrf": false,
+              "xframe": "SAMEORIGIN",
+              "p3p": false,
+              "csp": false
+            }
+          ]
+        }
+      },
+      "appsecprotect": {
+        "route": "/protect",
+        "enabled": true,
+        "priority": 111,
+        "module": {
+          "name": "lusca",
+          "arguments": [
+            {
+              "csrf": true
+            }
+          ]
+        }
+      },
 
         "devtools": {
             "enabled": true,
@@ -57,5 +81,18 @@
                 ]
             }
         }
+    },
+    "database": {
+      "host": "ds053320.mongolab.com",
+      "database": "abmdentalcol",
+      "port":"53320",
+      "user":"dev_user",
+      "password":"Aa123456*"
+    },
+    "aws":{
+      "sqs":{
+             "mail":"https://sqs.us-east-1.amazonaws.com/543269719799/abmDental-mail"
+      }
+
     }
 }
