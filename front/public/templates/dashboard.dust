@@ -2,7 +2,7 @@
 {<path}
 http://d11or7sbz4vm1i.cloudfront.net
 {/path}
-{<first_lg_image /}us{/first_lg_image}
+{<first_lg_image}us{/first_lg_image}
 
 {! ---BEGIN PARAMETERS MENU--- !}
 

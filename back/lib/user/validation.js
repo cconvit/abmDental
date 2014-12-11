@@ -18,7 +18,7 @@ var signup=function(data){
   var city=data.city.trim();
   var gender=data.gender.trim();
 
-  if(name != "" && email != "" && username != "" && password != "" && gender != ""){
+  if(name != "" && email != "" && username != "" && password != ""){
 
      model.status=true;
      model.data={"name":name,"email":email,"username":username,"password":password,"city":city,"gender":gender};
@@ -108,11 +108,12 @@ var changePassword=function(data){
   var model={};
   var user_id=data.user_id.trim();
   var new_password=data.new_password.trim();
+  var old_password=data.old_password.trim();
 
   if(user_id != "" && new_password != "" ){
-    
+
     model.status=true;
-    model.data={"user_id":user_id,"new_password":new_password};
+    model.data={"user_id":user_id,"old_password":old_password,"new_password":new_password};
 
   }else{
 
@@ -124,6 +125,27 @@ var changePassword=function(data){
 }
 exports.changePassword = changePassword;
 
+//Method to start the forget password reset master process//
+var forgetPasswordReset=function(data){
+
+  var model={};
+  var reset_id=data.reset_id.trim();
+  var new_password=data.new_password.trim();
+
+  if(reset_id != "" && new_password != "" ){
+
+    model.status=true;
+    model.data={"reset_id":reset_id,"new_password":new_password};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+exports.forgetPasswordReset = forgetPasswordReset;
 
 //###############################################//
 //***************END PUBLIC METHOD***************//

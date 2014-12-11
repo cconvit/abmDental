@@ -3,6 +3,9 @@
 var http = require('http');
 var express = require('express');
 var kraken = require('kraken-js');
+var bodyParser = require('body-parser');
+var social = require('./lib/util/social');
+var redis = require('./lib/util/redis');
 
 
 var options, app, server;
@@ -17,7 +20,14 @@ options = {
          * Add any additional config setup or overrides here. `config` is an initialized
          * `confit` (https://github.com/krakenjs/confit/) configuration object.
          */
-        next(null, config);
+         app.use( bodyParser.json() );       // to support JSON-encoded bodies
+         // to support URL-encoded bodies
+         app.use(bodyParser.urlencoded({extended: true}));
+         global.config=config._store;
+         redis.config(app);
+         social.config(app);
+
+         next(null, config);
     }
 };
 

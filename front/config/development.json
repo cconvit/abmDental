@@ -1,5 +1,5 @@
 {
-    
+
     "express": {
         "view cache": false,
         "view engine": "dust",
@@ -34,7 +34,7 @@
                 "arguments": [
                     "path:./public",
                     "path:./.build",
-                    {   
+                    {
                         "template": {
                             "module": "kraken-devtools/plugins/dustjs",
                             "files": "/templates/**/*.js",
@@ -53,5 +53,42 @@
                 ]
             }
         }
+    },
+    "backend":{
+      "host": "localhost",
+      "port":"8000",
+      "protocol":"http",
+      "user":"dev_user",
+      "password":"Aa123456*"
+    },
+    "redis":{
+      "store":{
+                "host" : "pub-redis-14583.us-east-1-4.4.ec2.garantiadata.com",
+                "port" : "14583",
+                "user" : "abmdentalDev",
+                "pass" : "Aa123456*"
+              },
+      "cookie":{
+                "maxAge":6000
+               }
+
+    },
+    "social_api":{
+      "facebook":{
+        "clientID": "1024949640864497",
+        "clientSecret": "34bfd397111e7503867453d57a7ba986",
+        "callbackURL": "http://test.app.abmdental.com.co:3000/user/facebook/auth/callback"
+      },
+      "twitter":{
+        "consumerKey": "MCEqLTjLNBYtPgmaZrfRL0VQA",
+        "consumerSecret": "MLtirCctLfuivg3gftX3ueNek2zDW214UpFdkV6HreqfVwjz8x",
+        "callbackURL": "http://test.app.abmdental.com.co:3000/user/twitter/auth/callback"
+      },
+      "google":{
+        "clientID": "310583780016-iagpd3ae5g3p51ht09l7felu8iug05us.apps.googleusercontent.com",
+        "clientSecret": "7EVY4JNw9F7KgCbL1Vt8dIrc",
+        "callbackURL": "http://test.app.abmdental.com.co:3000/user/google/auth/callback",
+        "scope":"https://www.googleapis.com/auth/plus.profile.emails.read"
+      }
     }
 }

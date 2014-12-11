@@ -28,6 +28,14 @@ module.exports = function (router) {
       userLib.forgetPassword(req,res);
 
     });
+
+    //Router for forget password process//
+    router.post('/password/forget/reset', function (req, res) {
+
+      userLib.forgetPasswordReset(req,res);
+
+    });
+
     //Router for change password process
     router.post('/password/change', function (req, res) {
 

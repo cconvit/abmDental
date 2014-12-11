@@ -18,7 +18,15 @@
     "kraken-js": "^1.0.1",
     "less": "^1.7.5",
     "localizr": "^0.1.0",
-    "requirejs": "^2.1.15"
+    "requirejs": "^2.1.15",
+    "body-parser": "^1.10.0",
+    "node-rest-client": "^1.4.3",
+    "passport": "^0.2.1",
+    "passport-facebook": "^1.0.3",
+    "passport-twitter": "^1.0.2",
+    "passport-google-oauth": "^0.1.5",
+    "connect-redis": "^2.1.0",
+    "express-session": "^1.9.3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

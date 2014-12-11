@@ -86,6 +86,19 @@ var changePassword=function(req, res){
 }
 exports.changePassword = changePassword;
 
+//Method to start the forget password reset master process//
+var forgetPasswordReset=function(req, res){
+
+  //Validate request message//
+  var model=validator.forgetPasswordReset(req.body.data);
+
+  //isValid//
+  if(model.status){
+    forgetPasswordClass.forgetPasswordReset(req,res,model.data);
+  }else
+    render.RenderDefault(req, res, 510);//Error bad request message
+  }
+  exports.forgetPasswordReset = forgetPasswordReset;
 
 //###############################################//
 //***************END PUBLIC METHOD***************//

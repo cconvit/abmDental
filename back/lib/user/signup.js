@@ -46,13 +46,22 @@ var signup=function(req, res,model){
              var user=new userModel(model);
              user.save(function(err,userObj){
 
-                 var response={};
-                 response.data={"user":{"_id":userObj._id,"account_id":model.account_id,"name":model.name,"avatar":model.avatar,"status":model.status}};
+                 if(err){
+                    accountObj.remove(function(err){});
 
-                 log.info("New Account created")
-                 mail.welcome({"name":model.name,"email":model.email});//Send welcome mail
-                 render.RenderModel(req, res, 200,response);//Signup successfully
+                    if(err.name == "ValidationError")
+                      render.RenderDefault(req, res, 425);//La contraseña no cumple con los estándares
+                    else
+                      render.RenderDefault(req, res, 520);//Error creating account
 
+                 }else{
+                     var response={};
+                     response.data={"user":{"_id":userObj._id,"account_id":model.account_id,"name":model.name,"avatar":model.avatar,"status":model.status}};
+
+                     log.info("New Account created")
+                     mail.welcome({"name":model.name,"email":model.email});//Send welcome mail
+                     render.RenderModel(req, res, 200,response);//Signup successfully
+                 }
                });//End user.save()
 
            }else{
