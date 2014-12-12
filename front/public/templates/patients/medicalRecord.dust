@@ -2,7 +2,7 @@
 {<path}
 http://d11or7sbz4vm1i.cloudfront.net
 {/path}
-{<first_lg_image}us{/first_lg_image}
+
 {! ---BEGIN CSS--- !}
 {<page_styles}
 <link rel="stylesheet" type="text/css" href="{+path /}/assets/global/plugins/bootstrap-select/bootstrap-select.min.css">
@@ -51,10 +51,12 @@ http://d11or7sbz4vm1i.cloudfront.net
 {<tasks}
 
 {/tasks}
-{<firsr_lg_image}us{/firsr_lg_image}
-{<first_lg_name}US{/first_lg_name}
+{<first_lg_image}us{/first_lg_image}
+{<first_lg_name}English{/first_lg_name}
+{<first_lg_locale}us_US{/first_lg_locale}
 {<second_lg_image}es{/second_lg_image}
 {<second_lg_name}Spanish{/second_lg_name}
+{<second_lg_locale}es_ES{/second_lg_locale}
 
 {! ---END HEAD PARAMETERS MENU--- !}
 

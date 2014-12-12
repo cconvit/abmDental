@@ -51,7 +51,7 @@ var app=function(){
     });
   }
 
-  var handleLogin= function() {
+  var handleLogin= function(label_language) {
 
       $.backstretch([
         path+"/assets/admin/pages/media/bg/1.jpg",
@@ -64,6 +64,26 @@ var app=function(){
           duration: 5000
         }
       );
+
+      $("#select_language").select2({
+        placeholder: '<i class="fa fa-map-marker"></i>&nbsp;'+label_language,
+        allowClear: true,
+        formatResult: format,
+        formatSelection: format,
+        escapeMarkup: function (m) {
+          return m;
+        }
+      });
+
+
+      $('#select_language').change(function () {
+        $('.register-form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
+      });
+
+      function format(state) {
+        if (!state.id) return state.text; // optgroup
+          return "<img class='flag' src='/assets/global/img/flags/" + state.id + ".png'/>&nbsp;&nbsp;" + state.text;
+        }
 
   }
 
@@ -93,9 +113,9 @@ var app=function(){
 
         handleBootstrapTouchSpin();
       },
-      initLogin: function() {
+      initLogin: function(label_language) {
 
-        handleLogin();
+        handleLogin(label_language);
       },
       initMedicalRecord: function() {
 

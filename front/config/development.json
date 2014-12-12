@@ -69,26 +69,36 @@
                 "pass" : "Aa123456*"
               },
       "cookie":{
-                "maxAge":6000
+                "maxAge":600000
                }
 
     },
     "social_api":{
       "facebook":{
-        "clientID": "1024949640864497",
-        "clientSecret": "34bfd397111e7503867453d57a7ba986",
-        "callbackURL": "http://test.app.abmdental.com.co:3000/user/facebook/auth/callback"
+        "login":{
+                  "clientID": "1024949640864497",
+                  "clientSecret": "34bfd397111e7503867453d57a7ba986",
+                  "callbackURL": "http://test.app.abmdental.com.co:3000/user/facebook/auth/callback",
+                  "profileFields": ["id", "displayName","emails","gender"]
+                },
+        "graph":"https://graph.facebook.com/v2.2/",
+        "scope":["email"]
       },
       "twitter":{
-        "consumerKey": "MCEqLTjLNBYtPgmaZrfRL0VQA",
-        "consumerSecret": "MLtirCctLfuivg3gftX3ueNek2zDW214UpFdkV6HreqfVwjz8x",
-        "callbackURL": "http://test.app.abmdental.com.co:3000/user/twitter/auth/callback"
+        "login":{
+                  "consumerKey": "MCEqLTjLNBYtPgmaZrfRL0VQA",
+                  "consumerSecret": "MLtirCctLfuivg3gftX3ueNek2zDW214UpFdkV6HreqfVwjz8x",
+                  "callbackURL": "http://test.app.abmdental.com.co:3000/user/twitter/auth/callback"
+                },
+        "scope":["email"]
       },
       "google":{
-        "clientID": "310583780016-iagpd3ae5g3p51ht09l7felu8iug05us.apps.googleusercontent.com",
-        "clientSecret": "7EVY4JNw9F7KgCbL1Vt8dIrc",
-        "callbackURL": "http://test.app.abmdental.com.co:3000/user/google/auth/callback",
-        "scope":"https://www.googleapis.com/auth/plus.profile.emails.read"
+        "login":{
+                  "clientID": "310583780016-iagpd3ae5g3p51ht09l7felu8iug05us.apps.googleusercontent.com",
+                  "clientSecret": "7EVY4JNw9F7KgCbL1Vt8dIrc",
+                  "callbackURL": "http://test.app.abmdental.com.co:3000/user/google/auth/callback"
+                },
+        "scope":["email"]
       }
     }
 }

@@ -13,6 +13,7 @@ module.exports = function signupModel(req) {
         "username":req.body.username,
         "password":req.body.password,
         "city":req.body.city,
+        "language":req.body.language,
         "gender":""
       }
 

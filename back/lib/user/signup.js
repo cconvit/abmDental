@@ -56,7 +56,7 @@ var signup=function(req, res,model){
 
                  }else{
                      var response={};
-                     response.data={"user":{"_id":userObj._id,"account_id":model.account_id,"name":model.name,"avatar":model.avatar,"status":model.status}};
+                     response.data={"user":{"_id":userObj._id,"account_id":model.account_id,"name":model.name,"avatar":model.avatar,"status":model.status,"language":model.language}};
 
                      log.info("New Account created")
                      mail.welcome({"name":model.name,"email":model.email});//Send welcome mail

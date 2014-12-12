@@ -6,6 +6,7 @@ http://d11or7sbz4vm1i.cloudfront.net
 <!-- BEGIN PAGE LEVEL STYLES -->
 <link href="{+path /}/assets/global/plugins/select2/select2.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{+path /}/assets/admin/pages/css/login-soft.css"/>
+<link rel="stylesheet" type="text/css" href="/assets/global/plugins/bootstrap-toastr/toastr.min.css">
 <!-- BEGIN THEME STYLES -->
 {/page_styles}
 
@@ -88,15 +89,16 @@ http://d11or7sbz4vm1i.cloudfront.net
   </form>
   <!-- END LOGIN FORM -->
   <!-- BEGIN FORGOT PASSWORD FORM -->
-  <form class="forget-form" action="index.html" method="post">
+  <form class="forget-form" action="/user/password/forget" method="post">
+    <input type="hidden" name="_csrf" value="{_csrf}">
     <h3>{@pre type="content" key="forget_password"/}</h3>
     <p>
-       {@pre type="content" key="enter_email"/}
+       {@pre type="content" key="enter_username"/}
     </p>
     <div class="form-group">
       <div class="input-icon">
-        <i class="fa fa-envelope"></i>
-        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email"/>
+        <i class="fa fa-user"></i>
+        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="{@pre type="content" key="username"/}" name="username"/>
       </div>
     </div>
     <div class="form-actions">
@@ -136,6 +138,14 @@ http://d11or7sbz4vm1i.cloudfront.net
         <i class="fa fa-location-arrow"></i>
         <input class="form-control placeholder-no-fix" type="text" placeholder="{@pre type="content" key="city_town"/}" name="city"/>
       </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label visible-ie8 visible-ie9">{@pre type="content" key="language"/}</label>
+      <select name="language" id="select_language" class="select2 form-control">
+        <option value=""></option>
+        <option value="es_ES">{@pre type="content" key="spanish"/}</option>
+        <option value="us_US">{@pre type="content" key="english"/}</option>
+      </select>
     </div>
     <p>
        {@pre type="content" key="account_details"/}
@@ -196,13 +206,17 @@ http://d11or7sbz4vm1i.cloudfront.net
 <script type="text/javascript" src="{+path /}/assets/global/plugins/backstretch/jquery.backstretch.min.js"></script>
 <script type="text/javascript" src="{+path /}/assets/admin/pages/scripts/login-soft.js"></script>
 <script type="text/javascript" src="{+path /}/assets/global/plugins/select2/select2.min.js"></script>
+<script src="/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {
    Metronic.init();
    Layout.init();
    Login.init();
-   app.initLogin();
+   app.initLogin("{@pre type="content" key="select_language"/}");
+      {?alert}
+        alert_notification("{alert.type}","{alert.msg}","{alert.title}");
+      {/alert}
    });
 </script>
 {/scripts}

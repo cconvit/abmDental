@@ -17,11 +17,12 @@ var signup=function(data){
   var password=data.password.trim();
   var city=data.city.trim();
   var gender=data.gender.trim();
+  var language=data.language.trim();
 
-  if(name != "" && email != "" && username != "" && password != ""){
+  if(name != "" && email != "" && username != "" && password != "" && language != ""){
 
      model.status=true;
-     model.data={"name":name,"email":email,"username":username,"password":password,"city":city,"gender":gender};
+     model.data={"name":name,"email":email,"username":username,"password":password,"city":city,"gender":gender,"language":language};
 
   }else{
 
@@ -65,7 +66,7 @@ var socialLogin=function(data){
   var avatar=data.avatar.trim();
   var gender=data.gender.trim();
 
-  if(name != "" && email != "" && social_id != "" && profile_type != "" && avatar != "" && gender != ""){
+  if(name != "" && email != "" && social_id != "" && profile_type != "" && avatar != "" ){
 
     model.status=true;
     model.data={"name":name,"email":email,"social_id":social_id,"profile_type":profile_type,"avatar":avatar,"gender":gender};

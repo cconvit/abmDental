@@ -1,8 +1,9 @@
 'use strict';
 var backend = require('./backend');
-var signupModel=require('../../models/signup');
-var loginModel=require('../../models/signup');
-
+var signupModel=require('../../models/backend/signup');
+var loginModel=require('../../models/backend/login');
+var socialLoginModel=require('../../models/backend/socialLogin');
+var forgetPasswordModel=require('../../models/backend/forgetPassword');
 //###############################################//
 //*************BEGING PUBLIC METHOD**************//
 //###############################################//
@@ -16,7 +17,7 @@ exports.signup = signup;
 
 //Method to start the login master process//
 var login=function(req, res){
-
+  req.session.passport={};
   var data=new loginModel(req);
   backend.send("/user/login",req,res,data,loginResponse);
 }
@@ -25,6 +26,8 @@ exports.login = login;
 //Method to start the social login master process//
 var socialLogin=function(req, res){
 
+  var data=new socialLoginModel(req);
+  backend.send("/user/login/social",req,res,data,loginResponse);
 
 }
 exports.socialLogin = socialLogin;
@@ -32,6 +35,8 @@ exports.socialLogin = socialLogin;
 //Method to start the forget password master process//
 var forgetPassword=function(req, res){
 
+  var data=new forgetPasswordModel(req);
+  backend.send("/user/password/forget",req,res,data,forgetPasswordResponse);
 
 }
 exports.forgetPassword = forgetPassword;
@@ -56,10 +61,11 @@ exports.forgetPasswordReset = forgetPasswordReset;
 //###############################################//
 //************BEGING PRIVATE METHOD**************//
 //###############################################//
-var signupResponse=function(res,response){
+var signupResponse=function(req,res,response){
 
   if(response.status_code == 200){
 
+    req.session.profile=response.data.user;
     res.redirect("/dashboard");
 
   }else{
@@ -69,11 +75,11 @@ var signupResponse=function(res,response){
 }
 exports.signupResponse = signupResponse;
 
-var loginResponse=function(res,response){
+var loginResponse=function(req,res,response){
 
-  console.log(response);
   if(response.status_code == 200){
 
+    req.session.profile=response.data.user;
     res.redirect("/dashboard");
 
   }else{
@@ -82,6 +88,19 @@ var loginResponse=function(res,response){
   }
 }
 exports.loginResponse = loginResponse;
+
+var forgetPasswordResponse=function(req,res,response){
+
+  if(response.status_code == 200){
+
+    res.redirect("/success");
+
+  }else{
+
+    res.redirect("/error");
+  }
+}
+exports.forgetPasswordResponse = forgetPasswordResponse;
 
 
 

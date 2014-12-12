@@ -20,6 +20,7 @@ var userModel=function(){
     avatar:String,
     login_count:Number,
     status:Number,
+    language:String,
     ut_time:Date,
     cr_time:Date
   });

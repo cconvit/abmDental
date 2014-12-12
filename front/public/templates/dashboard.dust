@@ -32,9 +32,19 @@ http://d11or7sbz4vm1i.cloudfront.net
 {<treatment}{@pre type="content" key="treatment"/}{/treatment}
 {<list}{@pre type="content" key="list"/}{/list}
 
+{<first_lg_name}{language.first.name}{/first_lg_name}
+{<first_lg_locale}{language.first.locale}{/first_lg_locale}
+{<second_lg_name}{language.second.name}{/second_lg_name}
+{<second_lg_locale}{language.second.locale}{/second_lg_locale}
 {! ---END PARAMETERS MENU--- !}
 
 {! ---BEGIN HEAD PARAMETERS MENU--- !}
+{<avatar}
+{profile.avatar}
+{/avatar}
+{<name}
+{profile.name}
+{/name}
 {<notifications}
 
 {/notifications}

@@ -65,7 +65,7 @@ var login=function(req, res,model){
               }//End isMatch
             });//End comparePassword()
           }else{
-            
+
             render.RenderDefault(req, res, 422);//Your user has been blocked
           }//End else status ==1
 
@@ -93,7 +93,9 @@ exports.login = login;
 var responseUserProfile=function(req, res,user){
 
   var response={};
-  response.data={"user":{"_id":user._id,"account_id":user.account_id,"name":user.name,"avatar":user.avatar,"status":user.status}};
+  response.data={"user":{"_id":user._id,"account_id":user.account_id,"name":user.name,
+                         "avatar":user.avatar,"profile_type":user.profile_type,
+                         "status":user.status,"language":user.language}};
   render.RenderModel(req, res, 200,response);//Signup successfully
 
 }

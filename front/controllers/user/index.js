@@ -5,6 +5,12 @@ var passport = require('passport')
 
 module.exports = function (router) {
 
+  router.get('/logout', function (req, res) {
+
+     req.session.destroy();
+     res.redirect('/');
+
+  });
   //Router for signup process//
   router.post('/signup', function (req, res) {
 
@@ -18,10 +24,9 @@ module.exports = function (router) {
   });
 
   //Router for normal login process//
-  router.get('/facebook/login', function (req, res) {
+  router.get('/login/social', function (req, res) {
 
-    console.log(req.session);
-    res.json({});
+    userLib.socialLogin(req,res);
 
   });
 
@@ -46,20 +51,20 @@ module.exports = function (router) {
 
   });
 
-  router.get('/facebook/auth/', passport.authenticate('facebook'));
+  router.get('/facebook/auth/', passport.authenticate('facebook',{"scope":global.config.social_api.facebook.scope}));
 
-  router.get('/facebook/auth/callback',passport.authenticate('facebook', { successRedirect: '/user/facebook/login',failureRedirect: '/error' }));
+  router.get('/facebook/auth/callback',passport.authenticate('facebook', { successRedirect: '/user/login/social',failureRedirect: '/error' }));
 
-  router.get('/twitter/auth/', passport.authenticate('twitter'));
+  router.get('/twitter/auth/', passport.authenticate('twitter',{"scope":global.config.social_api.twitter.scope}));
 
-  router.get('/twitter/auth/callback',passport.authenticate('twitter', { successRedirect: '/pepe',failureRedirect: '/error' }));
+  router.get('/twitter/auth/callback',passport.authenticate('twitter', { successRedirect: '/user/login/social',failureRedirect: '/error' }));
 
-  router.get('/google/auth/', passport.authenticate('google',{scope:global.config.social_api.google.scope}));
+  router.get('/google/auth/', passport.authenticate('google',{"scope":global.config.social_api.google.scope}));
 
   router.get('/google/auth/callback',
   passport.authenticate('google', { failureRedirect: '/error' }),function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/pepe');
+    res.redirect('/user/login/social');
   });
 
 };

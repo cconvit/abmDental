@@ -89,14 +89,14 @@
 				<!-- BEGIN LANGUAGE BAR -->
 				<li class="dropdown dropdown-language">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<img alt="" src="{+path /}/assets/global/img/flags/{+first_lg_image /}.png">
+						<img alt="" src="/assets/global/img/flags/{+first_lg_locale /}.png">
 						<span class="langname">	{+first_lg_name /} </span>
 							<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="#">
-									<img alt="" src="{+path /}/assets/global/img/flags/{+second_lg_image /}.png"> {+second_lg_name /} </a>
+								<a href="/setLanguage/{+second_lg_locale /}">
+									<img alt="" src="/assets/global/img/flags/{+second_lg_locale /}.png"> {+second_lg_name /} </a>
 								</li>
 						</ul>
 				 </li>
@@ -104,9 +104,9 @@
 				<!-- BEGIN USER LOGIN DROPDOWN -->
 				<li class="dropdown dropdown-user">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<img alt="" class="img-circle hide1" src="{+path /}/assets/admin/layout/img/avatar3_small.jpg"/>
+					<img alt="" class="img-circle hide1" src="{+avatar /}"/>
 					<span class="username username-hide-on-mobile">
-					Nick </span>
+						{+name /} </span>
 					<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu">
@@ -137,7 +137,7 @@
 							<i class="icon-lock"></i> Lock Screen </a>
 						</li>
 						<li>
-							<a href="login.html">
+							<a href="/user/logout">
 							<i class="icon-key"></i> Log Out </a>
 						</li>
 					</ul>
