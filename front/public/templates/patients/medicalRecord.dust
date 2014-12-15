@@ -67,7 +67,8 @@ http://d11or7sbz4vm1i.cloudfront.net
 
       <!-- NEW PATIENT MODAL -->
 							<div id="new_patient" class="modal fade" tabindex="-1" aria-hidden="true">
-              <form id="newPatient" name="newPatient" action="patient/new" method="get">
+              <form id="newPatient-form" name="newPatient-form" action="/patients/medicalRecord/add" method="get">
+                <input type="hidden" name="_csrf" value="{_csrf}">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header-blue">
@@ -133,7 +134,7 @@ http://d11or7sbz4vm1i.cloudfront.net
 										</div>
 										<div class="modal-footer">
 											<button type="button" data-dismiss="modal" class="btn default">{@pre type="content" key="close"/}</button>
-											<button type="submit" class="btn blue-steel">{@pre type="content" key="save"/}</button>
+											<button type="button" name="newPatient-button" id="newPatient-button" class="btn blue-steel">{@pre type="content" key="save"/}</button>
 										</div>
 									</div>
 								</div>
@@ -173,7 +174,7 @@ http://d11or7sbz4vm1i.cloudfront.net
       <!-- END PAGE HEADER-->
       <!-- BEGIN FIND -->
       <div class="inbox-header" style="padding-left: 0px;margin-bottom: 10px;">
-          <form action="#" method="POST" class="form" style="padding-left: 0px;" role="search">
+          <form action="#" id="findIdentity-form" name="findIdentity-form" method="POST" class="form" style="padding-left: 0px;" role="search">
             <input type="hidden" name="_csrf" value="{_csrf}">
             <div class="input-group input-medium">
               <input type="text" class="form-control" id="sa_identity" name="sa_identity" placeholder="{@pre type="content" key="identity"/}">

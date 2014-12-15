@@ -22,7 +22,7 @@ module.exports = function (router) {
 
       req.session.language=req.params.locale;
       res.locals.context ={"locality":req.params.locale};
-      res.redirect('/dashboard');
+      res.json({});
 
     });
 

@@ -52,7 +52,7 @@ http://d11or7sbz4vm1i.cloudfront.net
       <label class="checkbox">
       <input type="checkbox" name="remember" value="1"/>{@pre type="content" key="remember_me"/}</label>
       <button type="button" name="login-button" id="login-button" class="btn blue pull-right">
-      Login <i class="m-icon-swapright m-icon-white"></i>
+      {@pre type="content" key="login"/} <i class="m-icon-swapright m-icon-white"></i>
       </button>
     </div>
     <div class="login-options">
@@ -89,7 +89,7 @@ http://d11or7sbz4vm1i.cloudfront.net
   </form>
   <!-- END LOGIN FORM -->
   <!-- BEGIN FORGOT PASSWORD FORM -->
-  <form class="forget-form" action="/user/password/forget" method="post">
+  <form class="forget-form" name="forgetPassword-form" id="forgetPassword-form" action="/user/password/forget" method="post">
     <input type="hidden" name="_csrf" value="{_csrf}">
     <h3>{@pre type="content" key="forget_password"/}</h3>
     <p>
@@ -104,14 +104,14 @@ http://d11or7sbz4vm1i.cloudfront.net
     <div class="form-actions">
       <button type="button" id="back-btn" class="btn">
       <i class="m-icon-swapleft"></i> {@pre type="content" key="back"/} </button>
-      <button type="submit" class="btn blue pull-right">
+      <button type="button" name="forgetPassword-button" id="forgetPassword-button" class="btn blue pull-right">
       {@pre type="content" key="submit"/} <i class="m-icon-swapright m-icon-white"></i>
       </button>
     </div>
   </form>
   <!-- END FORGOT PASSWORD FORM -->
   <!-- BEGIN REGISTRATION FORM -->
-  <form class="register-form" action="/user/signup" method="post">
+  <form class="register-form" name="signup-form" id="signup-form" action="/user/signup" method="post">
     <input type="hidden" name="_csrf" value="{_csrf}">
     <h3>{@pre type="content" key="signUp"/}</h3>
     <p>
@@ -161,7 +161,7 @@ http://d11or7sbz4vm1i.cloudfront.net
       <label class="control-label visible-ie8 visible-ie9">{@pre type="content" key="password"/}</label>
       <div class="input-icon">
         <i class="fa fa-lock"></i>
-        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="{@pre type="content" key="password"/}" name="password"/>
+        <input class="form-control placeholder-no-fix popovers" data-html="true": data-container="body" data-trigger="hover" data-content="{@pre type="content" key="password_details"/}" data-original-title="{@pre type="content" key="password_requirements"/}" type="password" autocomplete="off" id="register_password" placeholder="{@pre type="content" key="password"/}" name="password"/>
       </div>
     </div>
     <div class="form-group">
@@ -169,7 +169,7 @@ http://d11or7sbz4vm1i.cloudfront.net
       <div class="controls">
         <div class="input-icon">
           <i class="fa fa-check"></i>
-          <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="{@pre type="content" key="re_type_password"/}" name="rpassword"/>
+          <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="re_register_password" placeholder="{@pre type="content" key="re_type_password"/}" name="rpassword"/>
         </div>
       </div>
     </div>
@@ -186,7 +186,7 @@ http://d11or7sbz4vm1i.cloudfront.net
     <div class="form-actions">
       <button id="register-back-btn" type="button" class="btn">
       <i class="m-icon-swapleft"></i> {@pre type="content" key="back"/} </button>
-      <button type="submit" id="register-submit-btn" class="btn blue pull-right">
+      <button type="button" id="signup-button" name="signup-button" class="btn blue pull-right">
       {@pre type="content" key="signUp"/} <i class="m-icon-swapright m-icon-white"></i>
       </button>
     </div>
@@ -206,7 +206,6 @@ http://d11or7sbz4vm1i.cloudfront.net
 <script type="text/javascript" src="{+path /}/assets/global/plugins/backstretch/jquery.backstretch.min.js"></script>
 <script type="text/javascript" src="{+path /}/assets/admin/pages/scripts/login-soft.js"></script>
 <script type="text/javascript" src="{+path /}/assets/global/plugins/select2/select2.min.js"></script>
-<script src="/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {

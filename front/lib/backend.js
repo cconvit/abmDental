@@ -14,6 +14,7 @@ var send=function(path,req, res,model,next){
 
   client.post(send_url+path, getArgs(model), function(data,response) {
     //parsed response body as js object
+
     var obj=JSON.parse(data);
     next(req,res,obj);
   });//End client.post

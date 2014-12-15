@@ -3,11 +3,11 @@
 var util=require('../util/others');
 
 //##############BEGIN BACKEND MODELS#####################//
-var backend = require('./backend');
-var signupModel=require('../../models/backend/signup');
-var loginModel=require('../../models/backend/login');
-var socialLoginModel=require('../../models/backend/socialLogin');
-var forgetPasswordModel=require('../../models/backend/forgetPassword');
+var backend = require('../backend');
+var signupModel=require('../../models/backend/user/signup');
+var loginModel=require('../../models/backend/user/login');
+var socialLoginModel=require('../../models/backend/user/socialLogin');
+var forgetPasswordModel=require('../../models/backend/user/forgetPassword');
 //##############END BACKEND MODELS#####################//
 
 //##############BEGIN PAGE MODELS#####################//
@@ -75,33 +75,61 @@ exports.forgetPasswordReset = forgetPasswordReset;
 //###############################################//
 var signupResponse=function(req,res,response){
 
+  var model=new indexModel();
+  model.status_code=response.status_code;
+
+
   if(response.status_code == 200){
 
     req.session.profile=response.data.user;
-    res.redirect("/dashboard");
+    res.json(model);
 
   }else{
 
-    res.redirect("/error");
+    util.getMessageLocale("/alerts/index",res,function(res,data){
+
+      model.alert.type="signupError";
+
+      switch(model.status_code){
+
+        case 420:
+                    model.alert.msg = data.signupError_420_msg;
+                    model.alert.title = data.signupError_420_title;
+            break;
+        case 425:
+                    model.alert.msg = data.signupError_425_msg;
+                    model.alert.title = data.signupError_425_title;
+          break;
+        case 520:
+                    model.alert.msg = data.signupError_520_msg;
+                    model.alert.title = data.signupError_520_title;
+          break;
+      }
+
+      res.json(model);
+    });
   }
 }
 exports.signupResponse = signupResponse;
 
 var loginResponse=function(req,res,response){
 
+  var model=new indexModel();
+  model.status_code=response.status_code;
+
   if(response.status_code == 200){
 
     req.session.profile=response.data.user;
-    res.redirect("/dashboard");
+    res.json(model);
 
   }else{
 
        util.getMessageLocale("/alerts/index",res,function(res,data){
 
-       var model=new indexModel("loginError");
-       model.alert.msg = data.loginError_msg;
-       model.alert.title = data.loginError_title;
-       res.json(model);
+         model.alert.type="loginError";
+         model.alert.msg = data.loginError_msg;
+         model.alert.title = data.loginError_title;
+         res.json(model);
      });
   }
 }
@@ -109,13 +137,22 @@ exports.loginResponse = loginResponse;
 
 var forgetPasswordResponse=function(req,res,response){
 
+  var model=new indexModel("");
+  model.status_code=response.status_code;
+
   if(response.status_code == 200){
 
-    res.redirect("/success");
+    res.json(model);
 
   }else{
 
-    res.redirect("/error");
+    util.getMessageLocale("/alerts/index",res,function(res,data){
+
+      model.alert.type="forgetPasswordError";
+      model.alert.msg = data.forgetPasswordError_msg;
+      model.alert.title = data.forgetPasswordError_title;
+      res.json(model);
+    });
   }
 }
 exports.forgetPasswordResponse = forgetPasswordResponse;

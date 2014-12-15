@@ -1,8 +1,9 @@
 'use strict';
 
 
-module.exports = function IndexModel(alert_type) {
+module.exports = function IndexModel() {
     return {
-             "alert":{"type":alert_type,"msg":"","title":""}
+             "alert":{"type":"","msg":"","title":""},
+             "status_code":""
     };
 };

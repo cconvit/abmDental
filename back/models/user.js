@@ -16,7 +16,7 @@ var userModel=function(){
     gender:String,
     email:String,
     username:String,
-    password:{ type: String, required: false, validate: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/ },
+    password:{ type: String, required: false, validate: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{7,}$/ },
     avatar:String,
     login_count:Number,
     status:Number,
