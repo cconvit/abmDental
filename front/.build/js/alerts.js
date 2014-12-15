@@ -6,11 +6,11 @@ var alert_notification=function(type,msg,title){
                 toastr.options = {
                   "closeButton": false,
                   "debug": false,
-                  "positionClass": "toast-top-full-width",
+                  "positionClass": "toast-top-right",
                   "onclick": null,
                   "showDuration": 1000,
                   "hideDuration": 1000,
-                  "timeOut": 2000,
+                  "timeOut": 4000,
                   "extendedTimeOut": 1000,
                   "showEasing": "swing",
                   "hideEasing": "linear",

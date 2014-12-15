@@ -1,7 +1,7 @@
 'use strict';
 
 var userLib = require('../../lib/user/main');
-var passport = require('passport')
+var passport = require('passport');
 
 module.exports = function (router) {
 

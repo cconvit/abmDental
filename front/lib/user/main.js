@@ -1,9 +1,21 @@
 'use strict';
+
+var util=require('../util/others');
+
+//##############BEGIN BACKEND MODELS#####################//
 var backend = require('./backend');
 var signupModel=require('../../models/backend/signup');
 var loginModel=require('../../models/backend/login');
 var socialLoginModel=require('../../models/backend/socialLogin');
 var forgetPasswordModel=require('../../models/backend/forgetPassword');
+//##############END BACKEND MODELS#####################//
+
+//##############BEGIN PAGE MODELS#####################//
+var indexModel=require('../../models/index');
+//##############END PAGE MODELS#####################//
+
+
+
 //###############################################//
 //*************BEGING PUBLIC METHOD**************//
 //###############################################//
@@ -84,7 +96,13 @@ var loginResponse=function(req,res,response){
 
   }else{
 
-    res.redirect("/error");
+       util.getMessageLocale("/alerts/index",res,function(res,data){
+
+       var model=new indexModel("loginError");
+       model.alert.msg = data.loginError_msg;
+       model.alert.title = data.loginError_title;
+       res.json(model);
+     });
   }
 }
 exports.loginResponse = loginResponse;
@@ -101,9 +119,6 @@ var forgetPasswordResponse=function(req,res,response){
   }
 }
 exports.forgetPasswordResponse = forgetPasswordResponse;
-
-
-
 
 //###############################################//
 //*************END PRIVATE METHOD****************//

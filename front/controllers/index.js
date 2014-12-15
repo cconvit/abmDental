@@ -11,7 +11,7 @@ module.exports = function (router) {
     router.use(function(req, res, next) {
 
       // log each request to the console
-      res.locals.context ={"locality":(req.session.profile == null)?"es_ES":req.session.profile.language};
+      res.locals.context ={"locality":(req.session.language == null)?"en_US":req.session.language};
 
       // continue doing what we were doing and go to the route
       next();
@@ -20,15 +20,16 @@ module.exports = function (router) {
 
     router.get('/setLanguage/:locale', function (req, res) {
 
-      req.session.profile.language=req.params.locale;
+      req.session.language=req.params.locale;
+      res.locals.context ={"locality":req.params.locale};
       res.redirect('/dashboard');
 
     });
 
     router.get('/', function (req, res) {
 
-        model.alert={"type":"loginError","msg":"Mensaje","title":"Titulo"};
-        res.render('index', model);
+
+        res.render('index', {});
 
     });
 
