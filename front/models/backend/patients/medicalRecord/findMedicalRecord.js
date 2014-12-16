@@ -11,7 +11,7 @@ module.exports = function newPatientModel(req) {
     "data":{
       "account_id":req.session.profile.account_id,
       "user_id":req.session.profile._id,
-      "id_number":req.body.modalIdentity
+      "id_number":req.body.sa_identity
     }
 
   };

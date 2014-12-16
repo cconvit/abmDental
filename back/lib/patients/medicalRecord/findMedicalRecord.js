@@ -12,7 +12,7 @@ var medicalRecordModel = require('../../../models/medicalRecord');
 /*
 
 */
-var newPatient=function(req, res,model){
+var findMedicalRecord=function(req, res,model){
 
   //1-Check if the medicalRecordExist()
   var ObjectId = require('mongoose').Types.ObjectId;
@@ -24,12 +24,12 @@ var newPatient=function(req, res,model){
       }
       else{
 
-        render.RenderDefault(req, res, 421);//Invalid credentials
+        render.RenderDefault(req, res, 427);//Medical record not found
       }
   });
 }
 
-exports.newPatient = newPatient;
+exports.findMedicalRecord = findMedicalRecord;
 
 //###############################################//
 //***************END PUBLIC METHOD***************//
@@ -43,9 +43,10 @@ exports.newPatient = newPatient;
 var responseMedicalRecord=function(req, res,mr){
 
   var response={};
-  response.data={"personal_info":mr.personal_info};
+  response.data={"id_number":mr._id.id_number,"personal_info":mr.personal_info};
+
   render.RenderModel(req, res, 200,response);//Signup successfully
-  
+
 }
 
 //###############################################//

@@ -185,7 +185,7 @@ http://d11or7sbz4vm1i.cloudfront.net
           </form>
       </div>
       <!-- END FIND-->
-      {#patient}
+      {?personal_info}
             <div class="row" style="margin-bottom: 10px;">
                 <div class="col-md-1" style="width: 110px;">
                 <img src="{+path /}/img/default-portrait.png" class="img-responsive" alt="" style="width: 80px;height: 80px;">
@@ -223,22 +223,23 @@ http://d11or7sbz4vm1i.cloudfront.net
                     								</a>
                     							</div>
                     						</div>
-                    						<div class="portlet-body form" style="display: none;">
-                                 <form action="patient/pi/update" method="get" class="horizontal-form">
-                                    <input type="hidden" name="identity" value="{identity}">
+                    						<div id="generalInfo-personalInfo-portlet" class="portlet-body form" style="display: none;">
+                                 <form id="generalInfo-personalInfo-form" name="generalInfo-personalInfo-form" action="/patients/medicalRecord/generalInfo/personalInfo" method="post" class="horizontal-form">
+                                    <input type="hidden" name="_csrf" value="{_csrf}">
+                                    <input type="hidden" name="identity" value="{id_number}">
                                     <div class="form-body">
                                       <div class="row">
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="names"/}</label>
-                                            <input type="text" id="names" name="names" class="form-control" placeholder="{@pre type="content" key="names"/}" value={names}>
+                                            <input type="text" id="names" name="names" class="form-control" placeholder="{@pre type="content" key="names"/}" value="{personal_info.names}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="last_name"/}</label>
-                                            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="{@pre type="content" key="last_name"/}">
+                                            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="{@pre type="content" key="last_name"/}" value="{personal_info.last_name}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -248,7 +249,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="identity"/}</label>
-                                            <input type="text" id="identity" disabled class="form-control" placeholder="{@pre type="content" key="identity"/}">
+                                            <input type="text" id="identity" disabled class="form-control" placeholder="{@pre type="content" key="identity"/}" value="{id_number}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -270,8 +271,8 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="date_of_birth"/}</label>
-                                            <div class="input-group input-large date date-picker" data-date-format="{@pre type="content" key="date_format"/}" data-date="12-12-2014">
-                                              <input type="text" class="form-control" readonly="" id="dateOfBirth" name="dateOfBirth">
+                                            <div class="input-group input-large date date-picker" data-date-format="{@pre type="content" key="date_format"/}" data-date={personal_info.date_of_birth}>
+                                              <input type="text" class="form-control" readonly="" id="dateOfBirth" name="dateOfBirth" value="{personal_info.date_of_birth}">
                                               <span class="input-group-btn">
                                               <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
                                               </span>
@@ -282,7 +283,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="place_of_birth"/}</label>
-                                            <input type="text" id="placeOfBirth" name="placeOfBirth" class="form-control" placeholder="{@pre type="content" key="place_of_birth"/}">
+                                            <input type="text" id="placeOfBirth" name="placeOfBirth" class="form-control" placeholder="{@pre type="content" key="place_of_birth"/}" value="{personal_info.place_of_birth}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -292,14 +293,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="age"/}</label>
-                                            <input type="text" id="age" name="age" class="form-control" placeholder="{@pre type="content" key="age"/}">
+                                            <input type="text" id="age" name="age" class="form-control" placeholder="{@pre type="content" key="age"/}" value="{personal_info.age}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="civil_status"/}</label>
-                                            <input type="text" id="civilStatus" name="civilStatus" class="form-control" placeholder="civil_status">
+                                            <input type="text" id="civilStatus" name="civilStatus" class="form-control" placeholder="{@pre type="content" key="civil_status"/}" value="{personal_info.civil_status}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -319,7 +320,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="origin"/}</label>
-                                            <input type="text" id="origin" class="form-control" placeholder="origin">
+                                            <input type="text" id="origin" name="origin" class="form-control" placeholder="origin" value="{personal_info.origin}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -329,14 +330,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="occupation"/}</label>
-                                            <input type="text" id="occupation" name="occupation" class="form-control" placeholder="{@pre type="content" key="occupation"/}">
+                                            <input type="text" id="occupation" name="occupation" class="form-control" placeholder="{@pre type="content" key="occupation"/}" value="{personal_info.occupation}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="workplace"/}</label>
-                                            <input type="text" id="workplace" name="workplace" class="form-control" placeholder="{@pre type="content" key="workplace"/}">
+                                            <input type="text" id="workplace" name="workplace" class="form-control" placeholder="{@pre type="content" key="workplace"/}" value="{personal_info.workplace}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -346,14 +347,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="phone"/}</label>
-                                            <input type="text" id="phone" name="phone" class="form-control" placeholder="{@pre type="content" key="phone"/}">
+                                            <input type="text" id="phone" name="phone" class="form-control" placeholder="{@pre type="content" key="phone"/}" value="{personal_info.phone}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="cell_phone"/}</label>
-                                            <input type="text" id="cellPhone" name="cellPhone" class="form-control" placeholder="{@pre type="content" key="cell_phone"/}">
+                                            <input type="text" id="cellPhone" name="cellPhone" class="form-control" placeholder="{@pre type="content" key="cell_phone"/}" value="{personal_info.cell_phone}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -367,7 +368,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                         											<span class="input-group-addon">
                         											<i class="fa fa-envelope"></i>
                         											</span>
-                        											<input type="email" id="email" name="email" class="form-control" placeholder="{@pre type="content" key="email"/}">
+                        											<input type="email" id="email" name="email" class="form-control" placeholder="{@pre type="content" key="email"/}" value="{personal_info.email}">
                         										</div>
                                             </div>
                                         </div>
@@ -375,7 +376,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="neighborhood"/}</label>
-                                            <input type="text" id="neighborhood" name="neighborhood" class="form-control" placeholder="{@pre type="content" key="neighborhood"/}">
+                                            <input type="text" id="neighborhood" name="neighborhood" class="form-control" placeholder="{@pre type="content" key="neighborhood"/}" value="{personal_info.neighborhood}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -385,14 +386,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="home_phone"/}</label>
-                                            <input type="text" id="home_phone" name="home_phone" class="form-control" placeholder="{@pre type="content" key="home_phone"/}">
+                                            <input type="text" id="homePhone" name="homePhone" class="form-control" placeholder="{@pre type="content" key="home_phone"/}" value="{personal_info.home_phone}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                              <label class="control-label">{@pre type="content" key="department"/}</label>
-                                             <input type="text" id="department" name="department" class="form-control" placeholder="{@pre type="content" key="department"/}">
+                                             <input type="text" id="department" name="department" class="form-control" placeholder="{@pre type="content" key="department"/}" value="{personal_info.department}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -412,8 +413,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                       <div class="row">
                                         <div class="col-md-6">
                                             <div class="clearfix">
-                                              <button type="submit" class="btn yellow"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
-                                              <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
+                                              <button type="button" id="generalInfo-personalInfo-button" name="generalInfo-personalInfo-button" class="btn yellow" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -978,7 +978,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                     </div>
                   </div>
             <!-- END TABLETS-->
-            {/patient}
+            {/personal_info}
           </div>
     </div>
 {/content}
@@ -995,6 +995,10 @@ jQuery(document).ready(function() {
    ComponentsDropdowns.init();
    app.init();
    app.initMedicalRecord();
+   {?personal_info}
+                    $("#identityType option[value='{personal_info.id_type}']").attr('selected', 'selected');
+                    $("#genre option[value='{personal_info.genre}']").attr('selected', 'selected');
+   {/personal_info}
    });
 </script>
 {/scripts}

@@ -35,6 +35,50 @@ var newPatient=function(data){
 }
 exports.newPatient = newPatient;
 
+var findMedicalRecord=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+exports.findMedicalRecord = findMedicalRecord;
+
+var updatePersonalInfo=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number,"personal_info":data.personal_info};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+exports.updatePersonalInfo = updatePersonalInfo;
+
 //###############################################//
 //***************END PUBLIC METHOD***************//
 //###############################################//

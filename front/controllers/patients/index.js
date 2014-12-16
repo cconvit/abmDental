@@ -2,6 +2,7 @@
 
 
 var PatientsModel = require('../../models/patients');
+var medicalRecordLib = require('../../lib/patients/medicalRecord/main');
 
 
 module.exports = function (router) {
@@ -23,17 +24,14 @@ module.exports = function (router) {
 
     router.get('/medicalRecord', function (req, res) {
 
-
         res.render('patients/medicalRecord', {});
 
     });
 
+    //Find Medical Record
     router.post('/medicalRecord', function (req, res) {
 
-        console.log(req.body.sa_identity);
-        var response={};
-        response.patient={"names":"Carlos Eduardo","identity":req.body.sa_identity};
-        res.render('patients/medicalRecord', response);
+      medicalRecordLib.findMedicalRecord(req,res);
 
     });
 

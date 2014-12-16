@@ -1,17 +1,21 @@
 'use strict';
 
 
-
+var moment = require('moment');
 var util=require('../../util/others');
 
 //##############BEGIN BACKEND MODELS#####################//
 var backend = require('../../backend');
 var newPatientModel=require('../../../models/backend/patients/medicalRecord/newPatient');
+var findMedicalRecordModelBack=require('../../../models/backend/patients/medicalRecord/findMedicalRecord');
+var updatePersonalInfoModelBack=require('../../../models/backend/patients/medicalRecord/updatePersonalInfo');
 //##############END BACKEND MODELS#####################//
 
 
 //##############BEGIN PAGE MODELS#####################//
 var indexModel=require('../../../models/index');
+var findMedicalRecordModel=require('../../../models/medicalRecord/findMedicalRecord');
+var updatePersonalInfoModel=require('../../../models/medicalRecord/updatePersonalInfo');
 //##############END PAGE MODELS#####################//
 
 
@@ -27,12 +31,19 @@ var newPatient=function(req, res){
 exports.newPatient = newPatient;
 
 
-var findPatient=function(req, res){
+var findMedicalRecord=function(req, res){
 
-  var data=new findPatientModel(req);
-  backend.send("/patients/medicalRecord/find",req,res,data,findPatientResponse);
+  var data=new findMedicalRecordModelBack(req);
+  backend.send("/patients/medicalRecord/find",req,res,data,findMedicalRecordResponse);
 }
-exports.findPatient = findPatient;
+exports.findMedicalRecord = findMedicalRecord;
+
+var updatePersonalInfo=function(req, res){
+
+  var data=new updatePersonalInfoModelBack(req);
+  backend.send("/patients/medicalRecord/generalInfo/personalInfo/update",req,res,data,updatePersonalInfoResponse);
+}
+exports.updatePersonalInfo = updatePersonalInfo;
 
 
 //###############################################//
@@ -88,9 +99,43 @@ var newPatientResponse=function(req,res,response){
 }
 exports.newPatientResponse = newPatientResponse;
 
-var findPatientResponse=function(req,res,response){
+var findMedicalRecordResponse=function(req,res,response){
 
-  var model=new indexModel();
+  var model=new findMedicalRecordModel();
+  model.status_code=response.status_code;
+
+  if(response.status_code == 200){
+
+    model.personal_info=response.data.personal_info;
+    var date_of_birth=moment(model.personal_info.date_of_birth).format('DD-MM-YYYY');
+    model.personal_info.date_of_birth=date_of_birth;
+    model.id_number=response.data.id_number;
+
+    res.render('patients/medicalRecord', model);
+  }else{
+
+    util.getMessageLocale("/alerts/index",res,function(res,data){
+
+      model.alert={};
+      switch(model.status_code){
+
+            case 427:
+              model.alert.type="info";
+              model.alert.msg = data.findMedicalRecord_427_msg;
+              model.alert.title = data.findMedicalRecord_427_title;
+              break;
+            }
+
+            res.render('patients/medicalRecord', response);
+          });
+        }
+      }
+exports.findMedicalRecordResponse = findMedicalRecordResponse;
+
+
+var updatePersonalInfoResponse=function(req,res,response){
+
+  var model=new updatePersonalInfoModel();
   model.status_code=response.status_code;
 
   if(response.status_code == 200){
@@ -130,9 +175,7 @@ var findPatientResponse=function(req,res,response){
           });
         }
       }
-      exports.findPatientResponse = findPatientResponse;
-
-
+exports.updatePersonalInfoResponse = updatePersonalInfoResponse;
 
 //###############################################//
 //*************END PRIVATE METHOD****************//

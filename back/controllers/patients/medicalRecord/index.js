@@ -11,5 +11,17 @@ module.exports = function (router) {
 
   });
 
+  router.post('/find', function (req, res) {
+
+    medicalRecordLib.findMedicalRecord(req,res);
+
+  });
+
+  router.post('/generalInfo/personalInfo/update', function (req, res) {
+
+    medicalRecordLib.updatePersonalInfo(req,res);
+
+  });
+
 
 };

@@ -28,7 +28,8 @@
     "passport-google-oauth": "^0.1.5",
     "passport-twitter": "^1.0.2",
     "requirejs": "^2.1.15",
-    "bundalo": "^0.2.6"
+    "bundalo": "^0.2.6",
+    "moment": "^2.8.4"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

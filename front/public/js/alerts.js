@@ -17,6 +17,11 @@ var alert_notification=function(type,msg,title){
        toastr.warning(msg, title);
        break;
 
+     case "info":
+       toast_top_right();
+       toastr.info(msg, title);
+       break;
+
      case "loginError":
           toast_top_right();
           toastr.error(msg, title);

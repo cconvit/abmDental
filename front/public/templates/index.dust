@@ -213,6 +213,7 @@ jQuery(document).ready(function() {
    Layout.init();
    Login.init();
    app.initLogin("{@pre type="content" key="select_language"/}");
+   {?alert}alert_notification({alert.type},{alert.msg},{alert.title});{/alert}
    });
 </script>
 {/scripts}

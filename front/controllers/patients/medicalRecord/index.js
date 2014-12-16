@@ -11,11 +11,10 @@ module.exports = function (router) {
 
   });
 
-  router.post('/find', function (req, res) {
+  router.post('/generalInfo/personalInfo', function (req, res) {
 
-    medicalRecordLib.findPatient(req,res);
-    
+    medicalRecordLib.updatePersonalInfo(req,res);
+
   });
-
 
 };
