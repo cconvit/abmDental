@@ -25,7 +25,7 @@ http://d11or7sbz4vm1i.cloudfront.net
 <!-- BEGIN LOGIN -->
 <div class="content">
   <!-- BEGIN LOGIN FORM -->
-  <form class="login-form" name="login-form" id="login-form" action="/user/login" method="post">
+  <form class="login-form" name="login-form" id="login-form" action="/user/login" onsubmit="return false;" method="post">
     <input type="hidden" name="_csrf" value="{_csrf}">
     <h3 class="form-title">{@pre type="content" key="login_account"/}</h3>
     <div class="alert alert-danger display-hide">
@@ -51,7 +51,7 @@ http://d11or7sbz4vm1i.cloudfront.net
     <div class="form-actions">
       <label class="checkbox">
       <input type="checkbox" name="remember" value="1"/>{@pre type="content" key="remember_me"/}</label>
-      <button type="button" name="login-button" id="login-button" class="btn blue pull-right">
+      <button type="submit" name="login-button" id="login-button" class="btn blue pull-right">
       {@pre type="content" key="login"/} <i class="m-icon-swapright m-icon-white"></i>
       </button>
     </div>
@@ -204,14 +204,15 @@ http://d11or7sbz4vm1i.cloudfront.net
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script type="text/javascript" src="{+path /}/assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="{+path /}/assets/global/plugins/backstretch/jquery.backstretch.min.js"></script>
-<script type="text/javascript" src="{+path /}/assets/admin/pages/scripts/login-soft.js"></script>
+<script type="text/javascript" src="/assets/admin/pages/scripts/login-soft.js"></script>
 <script type="text/javascript" src="{+path /}/assets/global/plugins/select2/select2.min.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {
+   var login_lng={"username":"{@pre type="content" key="rq_username"/}","password":"{@pre type="content" key="rq_password"/}","email":"{@pre type="content" key="rq_email"/}"};
    Metronic.init();
    Layout.init();
-   Login.init();
+   Login.init(login_lng);
    app.initLogin("{@pre type="content" key="select_language"/}");
    {?alert}alert_notification({alert.type},{alert.msg},{alert.title});{/alert}
    });

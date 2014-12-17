@@ -437,22 +437,23 @@ http://d11or7sbz4vm1i.cloudfront.net
                                       <a href="javascript:;" class="expand"></a>
                                     </div>
                                   </div>
-                                  <div class="portlet-body form" style="display: none;">
-                                   <form action="patient/ec/update" class="horizontal-form">
-                                      <input type="hidden" name="identity" value="{identity}">
+                                  <div id="generalInfo-emergencyConatct-portlet" class="portlet-body form" style="display: none;">
+                                   <form id="generalInfo-emergencyConatct-form" name="generalInfo-emergencyConatct-form" action="/patients/medicalRecord/generalInfo/emergencyContact" class="horizontal-form">
+                                      <input type="hidden" name="_csrf" value="{_csrf}">
+                                      <input type="hidden" name="identity" value="{id_number}">
                 											<div class="form-body">
                 												<div class="row">
                 													<div class="col-md-6">
                 														<div class="form-group">
                 															<label class="control-label">{@pre type="content" key="names"/}</label>
-                															<input type="text" id="ec_names" name="ec-names"  class="form-control" placeholder="{@pre type="content" key="names"/}">
+                															<input type="text" id="ec_names" name="ec_names"  class="form-control" placeholder="{@pre type="content" key="names"/}" value="{emergency_contact.names}">
                 														</div>
                 													</div>
                 													<!--/span-->
                 													<div class="col-md-6">
                 														<div class="form-group">
                 															<label class="control-label">{@pre type="content" key="last_name"/}</label>
-                															<input type="text" id="ec_lastName" name="ec-lastName" class="form-control" placeholder="{@pre type="content" key="last_name"/}">
+                															<input type="text" id="ec_lastName" name="ec_lastName" class="form-control" placeholder="{@pre type="content" key="last_name"/}" value="{emergency_contact.last_name}">
                 														</div>
                 													</div>
                 													<!--/span-->
@@ -462,14 +463,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="identity"/}</label>
-                                              <input type="text" id="ec_identity" name="ec-identity" class="form-control" placeholder="{@pre type="content" key="identity"/}">
+                                              <input type="text" id="ec_identity" name="ec_identity" class="form-control" placeholder="{@pre type="content" key="identity"/}" value="{emergency_contact.id_number}">
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="identity_type"/}</label>
-                                              	  <select id="ec_identityType" name="ec-identityType" class="form-control">
+                                              	  <select id="ec_identityType" name="ec_identityType" class="form-control">
                     																<option value="1">CC</option>
                     																<option value="2">CE</option>
                     																<option value="3">TI</option>
@@ -484,14 +485,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="relationship"/}</label>
-                                              <input type="text" id="names" class="form-control" placeholder="{@pre type="content" key="relationship"/}">
+                                              <input type="text" id="ec_relationship" name="ec_relationship" class="form-control" placeholder="{@pre type="content" key="relationship"/}" value="{emergency_contact.relationship}">
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="occupation"/}</label>
-                                              <input type="text" id="names" class="form-control" placeholder="{@pre type="content" key="occupation"/}">
+                                              <input type="text" id="ec_occupation" name="ec_occupation" class="form-control" placeholder="{@pre type="content" key="occupation"/}" value="{emergency_contact.occupation}">
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -501,14 +502,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="phone"/}</label>
-                                              <input type="text" id="names" class="form-control" placeholder="{@pre type="content" key="phone"/}">
+                                              <input type="text" id="ec_phone" name="ec_phone" class="form-control" placeholder="{@pre type="content" key="phone"/}" value="{emergency_contact.phone}">
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="cell_phone"/}</label>
-                                              <input type="text" id="lastName" class="form-control" placeholder="cell_phone">
+                                              <input type="text" id="ec_cell_phone" name="ec_cell_phone" class="form-control" placeholder="{@pre type="content" key="cell_phone"/}" value="{emergency_contact.cell_phone}">
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -517,9 +518,8 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                 													<div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn green"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
-                                                <button type="button" class="btn default" style="margin-left: 10px;">{@pre type="content" key="cancel"/}</button>
-                                              </div>
+                                                <button type="button" name="generalInfo-emergencyConatct-button" id="generalInfo-emergencyConatct-button" class="btn green" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                           </div>
                                           </div>
                 												</div>
                                         <!--/row-->
@@ -543,15 +543,16 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         </a>
                                       </div>
                                     </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
+                                    <div id="anamnesis-chiefComplaint-portlet" class="portlet-body form" style="display: none;">
+                                     <form id="anamnesis-chiefComplaint-form" name="anamnesis-chiefComplaint-form" action="/patients/medicalRecord/anamnesis/chiefComplaint" method="POST" class="horizontal-form">
+                                        <input type="hidden" name="_csrf" value="{_csrf}">
+                                        <input type="hidden" name="identity" value="{id_number}">
                                         <div class="form-body">
                                           <div class="row">
                                             <div class="col-md-12">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="chief_complaint"/}</label>
-                                                <textarea class="form-control"name="chiefComplaint" id="chiefComplaint" rows="6"></textarea>
+                                                <textarea class="form-control"name="chiefComplaint" id="chiefComplaint" rows="6">{chief_complaint.chief_complaint}</textarea>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -560,7 +561,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn yellow"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="anamnesis-chiefComplaint-button" id="anamnesis-chiefComplaint-button" data-msg="{@pre type="content" key="processing"/}" class="btn yellow"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -571,7 +572,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                    </div>
                                   <!-- END CHIEF COMPLAINT YELLOW BOX-->
                                 <!-- BEGIN FAMILY HISTORY GREEN BOX-->
-                                  <div class="portlet box green">
+                                  <div id="anamnesis-familyHistory-portlet" class="portlet box green">
                                     <div class="portlet-title">
                                       <div class="caption">
                                         <i class="fa fa-users"></i>{@pre type="content" key="family_history"/}
@@ -582,14 +583,15 @@ http://d11or7sbz4vm1i.cloudfront.net
                                       </div>
                                     </div>
                                     <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
+                                     <form id="anamnesis-familyHistory-form" name="anamnesis-familyHistory-form" action="/patients/medicalRecord/anamnesis/familyHistory" method="POST" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{id_number}">
+                                        <input type="hidden" name="_csrf" value="{_csrf}">
                                         <div class="form-body">
                                           <div class="row">
                                             <div class="col-md-12">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="family"/}</label>
-                                                <textarea class="form-control"name="family" id="family" rows="6"></textarea>
+                                                <textarea class="form-control"name="family" id="family" rows="6">{family_history.family}</textarea>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -598,7 +600,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn green"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="anamnesis-familyHistory-button" id="anamnesis-familyHistory-button" data-msg="{@pre type="content" key="processing"/}" class="btn green"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -608,7 +610,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                     </div>
                                    </div>
                                   <!-- END FAMILY HISTORY GREEN BOX-->
-                                <!-- BEGIN PERSONAL HISTORY PURBLE BOX-->
+                                <!-- BEGIN MEDICAL HISTORY PURBLE BOX-->
                               <div class="portlet box purple">
                                   <div class="portlet-title">
                                     <div class="caption">
@@ -619,9 +621,10 @@ http://d11or7sbz4vm1i.cloudfront.net
                                       </a>
                                     </div>
                                   </div>
-                                  <div class="portlet-body form" style="display: none;">
-                                   <form action="patient/ec/update" class="horizontal-form">
-                                      <input type="hidden" name="identity" value="{identity}">
+                                  <div id="anamnesis-medicalHistory-portlet" class="portlet-body form" style="display: none;">
+                                   <form id="anamnesis-medicalHistory-form" name="anamnesis-medicalHistory-form" action="/patients/medicalRecord/anamnesis/medicalHistory" class="horizontal-form">
+                                      <input type="hidden" name="identity" value="{id_number}">
+                                      <input type="hidden" name="_csrf" value="{_csrf}">
                                       <div class="form-body">
                                         <div class="row">
                                           <div class="col-md-6">
@@ -796,7 +799,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn purple"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="anamnesis-medicalHistory-button" id="anamnesis-medicalHistory-button" data-msg="{@pre type="content" key="processing"/}" class="btn purple"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -817,15 +820,16 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         </a>
                                       </div>
                                     </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
+                                    <div id="anamnesis-dentalHistory-portlet" class="portlet-body form" style="display: none;">
+                                     <form id="anamnesis-dentalHistory-form" name="anamnesis-dentalHistory-form" action="/patients/medicalRecord/anamnesis/dentalHistory" method="POST" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{id_number}">
+                                        <input type="hidden" name="_csrf" value="{_csrf}">
                                         <div class="form-body">
                                           <div class="row">
                                             <div class="col-md-12">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="dental_information"/}</label>
-                                                <textarea class="form-control"name="dentalInformation" id="dentalInformation" rows="6"></textarea>
+                                                <textarea class="form-control"name="dentalInformation" id="dentalInformation" rows="6">{dental_history.dental_info}</textarea>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -834,7 +838,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn red-flamingo"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="anamnesis-dentalHistory-button" id="anamnesis-dentalHistory-button" data-msg="{@pre type="content" key="processing"/}" class="btn red-flamingo"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -855,9 +859,10 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         </a>
                                       </div>
                                     </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
+                                    <div id="anamnesis-riskFactors-portlet" class="portlet-body form" style="display: none;">
+                                     <form id="anamnesis-riskFactors-form" name="anamnesis-riskFactors-form" action="/patients/medicalRecord/anamnesis/riskFactors" method="POST" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{id_number}">
+                                        <input type="hidden" name="_csrf" value="{_csrf}">
                                         <div class="form-body">
                                           <div class="row">
                                             <div class="col-md-6">
@@ -922,7 +927,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn grey-cascade"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="anamnesis-riskFactors-button" id="anamnesis-riskFactors-button" data-msg="{@pre type="content" key="processing"/}" class="btn grey-cascade"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -943,15 +948,16 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         </a>
                                       </div>
                                     </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
+                                    <div id="anamnesis-currentMedication-portlet" class="portlet-body form" style="display: none;">
+                                     <form id="anamnesis-currentMedication-form" name="anamnesis-currentMedication-form" action="/patients/medicalRecord/anamnesis/currentMedication" method="POST" class="horizontal-form">
+                                        <input type="hidden" name="identity" value="{id_number}">
+                                        <input type="hidden" name="_csrf" value="{_csrf}">
                                         <div class="form-body">
                                           <div class="row">
                                             <div class="col-md-12">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="medication"/}</label>
-                                                <textarea class="form-control"name="medication" id="medication" rows="6"></textarea>
+                                                <textarea class="form-control"name="medication" id="medication" rows="6">{current_medication.medication}</textarea>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -960,7 +966,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn yellow-casablanca"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="anamnesis-currentMedication-button" id="anamnesis-currentMedication-button" data-msg="{@pre type="content" key="processing"/}" class="btn yellow-casablanca"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -999,6 +1005,13 @@ jQuery(document).ready(function() {
                     $("#identityType option[value='{personal_info.id_type}']").attr('selected', 'selected');
                     $("#genre option[value='{personal_info.genre}']").attr('selected', 'selected');
    {/personal_info}
+   {?emergency_contact}
+                    $("#ec_identityType option[value='{emergency_contact.id_type}']").attr('selected', 'selected');
+   {/emergency_contact}
+   {?risk_factors}
+                    $("#oralHygiene option[value='{risk_factors.oral_hygiene}']").attr('selected', 'selected');
+                    $("#bleedingGums option[value='{risk_factors.bleeding_gums}']").attr('selected', 'selected');
+   {/risk_factors}
    });
 </script>
 {/scripts}

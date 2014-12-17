@@ -23,5 +23,47 @@ module.exports = function (router) {
 
   });
 
+  router.post('/generalInfo/emergencyContact/update', function (req, res) {
+
+    medicalRecordLib.updateEmergencyContact(req,res);
+
+  });
+
+  router.post('/anamnesis/chiefComplaint/update', function (req, res) {
+
+    medicalRecordLib.updateChiefComplaint(req,res);
+
+  });
+
+  router.post('/anamnesis/familyHistory/update', function (req, res) {
+
+    medicalRecordLib.updateFamilyHistory(req,res);
+
+  });
+
+  router.post('/anamnesis/medicalHistory/update', function (req, res) {
+
+    medicalRecordLib.updateMedicalHistory(req,res);
+
+  });
+
+  router.post('/anamnesis/dentalHistory/update', function (req, res) {
+
+    medicalRecordLib.updateDentalHistory(req,res);
+
+  });
+
+  router.post('/anamnesis/riskFactors/update', function (req, res) {
+
+    medicalRecordLib.updateRiskFactors(req,res);
+
+  });
+
+  router.post('/anamnesis/currentMedication/update', function (req, res) {
+
+    medicalRecordLib.updateCurrentMedication(req,res);
+
+  });
+
 
 };

@@ -39,7 +39,7 @@ exports.login = login;
 var socialLogin=function(req, res){
 
   var data=new socialLoginModel(req);
-  backend.send("/user/login/social",req,res,data,loginResponse);
+  backend.send("/user/login/social",req,res,data,socialLoginResponse);
 
 }
 exports.socialLogin = socialLogin;
@@ -134,6 +134,29 @@ var loginResponse=function(req,res,response){
   }
 }
 exports.loginResponse = loginResponse;
+
+var socialLoginResponse=function(req,res,response){
+
+  var model=new indexModel();
+  model.status_code=response.status_code;
+
+  if(response.status_code == 200){
+
+    req.session.profile=response.data.user;
+    res.redirect("/dashboard");
+
+  }else{
+
+    util.getMessageLocale("/alerts/index",res,function(res,data){
+
+      model.alert.type="loginError";
+      model.alert.msg = data.loginError_msg;
+      model.alert.title = data.loginError_title;
+      res.redirect("/socialError");
+    });
+  }
+}
+exports.socialLoginResponse = socialLoginResponse;
 
 var forgetPasswordResponse=function(req,res,response){
 

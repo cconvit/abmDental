@@ -43,7 +43,10 @@ exports.findMedicalRecord = findMedicalRecord;
 var responseMedicalRecord=function(req, res,mr){
 
   var response={};
-  response.data={"id_number":mr._id.id_number,"personal_info":mr.personal_info};
+  response.data={"id_number":mr._id.id_number,"personal_info":mr.personal_info,"emergency_contact":mr.emergency_contact,
+                 "chief_complaint":mr.chief_complaint,"family_history":mr.family_history,
+                 "medical_history":mr.medical_history,"dental_history":mr.dental_history,
+                 "risk_factors":mr.risk_factors,"current_medication":mr.current_medication};
 
   render.RenderModel(req, res, 200,response);//Signup successfully
 

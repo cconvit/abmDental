@@ -1,41 +1,36 @@
 //###############################################//
 //**************BEGING INDEX PAGE****************//
 //###############################################//
+var sendLogin=function(){
 
+  // Get some values from elements on the page:
+  var $form = $("#login-form"),
+  url = $form.attr( "action" );
 
-$( "#login-form" ).submit(function( event ) {
-  alert( "Handler for .submit() called." );
-  event.stopPropagation();
-});
-
-$("#login-button").click(login);
-
-var login=function(){
-
-    // Get some values from elements on the page:
-    var $form = $("#login-form"),
-    url = $form.attr( "action" );
-
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: $form.serialize(),
-      dataType: 'json',
-      success: function(data)
-      {
-        if(data.status_code == 200)
-          $(location).attr('href','/dashboard');
-          else{
-            alert_notification(data.alert.type,data.alert.msg,data.alert.title);
-            $('#login-form').trigger("reset");
-          }
-
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $form.serialize(),
+    dataType: 'json',
+    success: function(data)
+    {
+      if(data.status_code == 200)
+        $(location).attr('href','/dashboard');
+        else{
+          alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+          $('#login-form').trigger("reset");
         }
-      });
 
-      return false; // avoid to execute the actual submit of the form.
+      }
+    });
 
 }
+
+$("#login-button").click(function() {
+
+    sendLogin();
+    return false; // avoid to execute the actual submit of the form.
+});
 
 $("#forgetPassword-button").click(function() {
 
@@ -158,7 +153,166 @@ $("#newPatient-button").click(function() {
       return false; // avoid to execute the actual submit of the form.
     });
 
+$("#generalInfo-emergencyConatct-button").click(function() {
 
+  // Get some values from elements on the page:
+  var $form = $("#generalInfo-emergencyConatct-form"),
+  url = $form.attr( "action" );
+  var msg=$("#generalInfo-emergencyConatct-button").attr( "data-msg" );
+  blockPortlet('#generalInfo-emergencyConatct-portlet',msg);
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $form.serialize(),
+    dataType: 'json',
+    success: function(data)
+    {
+      alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+      Metronic.unblockUI('#generalInfo-emergencyConatct-portlet');
+    }
+  });
+
+  return false; // avoid to execute the actual submit of the form.
+});
+
+$("#anamnesis-chiefComplaint-button").click(function() {
+
+  // Get some values from elements on the page:
+  var $form = $("#anamnesis-chiefComplaint-form"),
+  url = $form.attr( "action" );
+  var msg=$("#anamnesis-chiefComplaint-button").attr( "data-msg" );
+  blockPortlet('#anamnesis-chiefComplaint-portlet',msg);
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $form.serialize(),
+    dataType: 'json',
+    success: function(data)
+    {
+      alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+      Metronic.unblockUI('#anamnesis-chiefComplaint-portlet');
+    }
+  });
+
+  return false; // avoid to execute the actual submit of the form.
+});
+
+$("#anamnesis-familyHistory-button").click(function() {
+
+  // Get some values from elements on the page:
+  var $form = $("#anamnesis-familyHistory-form"),
+  url = $form.attr( "action" );
+  var msg=$("#anamnesis-familyHistory-button").attr( "data-msg" );
+  blockPortlet('#anamnesis-familyHistory-portlet',msg);
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $form.serialize(),
+    dataType: 'json',
+    success: function(data)
+    {
+      alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+      Metronic.unblockUI('#anamnesis-familyHistory-portlet');
+    }
+  });
+
+  return false; // avoid to execute the actual submit of the form.
+});
+
+$("#anamnesis-medicalHistory-button").click(function() {
+
+  // Get some values from elements on the page:
+  var $form = $("#anamnesis-medicalHistory-form"),
+  url = $form.attr( "action" );
+  var msg=$("#anamnesis-medicalHistory-button").attr( "data-msg" );
+  blockPortlet('#anamnesis-medicalHistory-portlet',msg);
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $form.serialize(),
+    dataType: 'json',
+    success: function(data)
+    {
+      alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+      Metronic.unblockUI('#anamnesis-medicalHistory-portlet');
+    }
+  });
+
+  return false; // avoid to execute the actual submit of the form.
+});
+
+$("#anamnesis-dentalHistory-button").click(function() {
+
+  // Get some values from elements on the page:
+  var $form = $("#anamnesis-dentalHistory-form"),
+  url = $form.attr( "action" );
+  var msg=$("#anamnesis-dentalHistory-button").attr( "data-msg" );
+  blockPortlet('#anamnesis-dentalHistory-portlet',msg);
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $form.serialize(),
+    dataType: 'json',
+    success: function(data)
+    {
+      alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+      Metronic.unblockUI('#anamnesis-dentalHistory-portlet');
+    }
+  });
+
+  return false; // avoid to execute the actual submit of the form.
+});
+
+$("#anamnesis-riskFactors-button").click(function() {
+
+  // Get some values from elements on the page:
+  var $form = $("#anamnesis-riskFactors-form"),
+  url = $form.attr( "action" );
+  var msg=$("#anamnesis-riskFactors-button").attr( "data-msg" );
+  blockPortlet('#anamnesis-riskFactors-portlet',msg);
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $form.serialize(),
+    dataType: 'json',
+    success: function(data)
+    {
+      alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+      Metronic.unblockUI('#anamnesis-riskFactors-portlet');
+    }
+  });
+
+  return false; // avoid to execute the actual submit of the form.
+});
+
+$("#anamnesis-currentMedication-button").click(function() {
+
+  // Get some values from elements on the page:
+  var $form = $("#anamnesis-currentMedication-form"),
+  url = $form.attr( "action" );
+  var msg=$("#anamnesis-currentMedication-button").attr( "data-msg" );
+  blockPortlet('#anamnesis-currentMedication-portlet',msg);
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $form.serialize(),
+    dataType: 'json',
+    success: function(data)
+    {
+      alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+      Metronic.unblockUI('#anamnesis-currentMedication-portlet');
+    }
+  });
+
+  return false; // avoid to execute the actual submit of the form.
+});
 
 //###############################################//
 //************END MEDICAL RECORD PAGE************//

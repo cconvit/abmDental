@@ -79,6 +79,166 @@ var updatePersonalInfo=function(data){
 }
 exports.updatePersonalInfo = updatePersonalInfo;
 
+var updateEmergencyContact=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number,"emergency_contact":data.emergency_contact};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+exports.updateEmergencyContact = updateEmergencyContact;
+
+var updateChiefComplaint=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number,"chief_complaint":data.chief_complaint};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+
+exports.updateChiefComplaint = updateChiefComplaint;
+
+var updateFamilyHistory=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number,"family_history":data.family_history};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+
+exports.updateFamilyHistory = updateFamilyHistory;
+
+var updateMedicalHistory=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number,"medical_history":data.medical_history};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+
+exports.updateMedicalHistory = updateMedicalHistory;
+
+var updateDentalHistory=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number,"dental_history":data.dental_history};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+
+exports.updateDentalHistory = updateDentalHistory;
+
+var updateRiskFactors=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number,"risk_factors":data.risk_factors};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+
+exports.updateRiskFactors = updateRiskFactors;
+
+var updateCurrentMedication=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number,"current_medication":data.current_medication};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+
+exports.updateCurrentMedication = updateCurrentMedication;
+
 //###############################################//
 //***************END PUBLIC METHOD***************//
 //###############################################//
