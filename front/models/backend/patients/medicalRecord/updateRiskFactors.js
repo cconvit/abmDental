@@ -13,7 +13,7 @@ module.exports = function newPatientModel(req) {
       "id_number":req.body.identity,
       "risk_factors":{
                         "oral_hygiene":req.body.oralHygiene,
-                        "use_of":"",
+                        "use_of":req.body.useOf,
                         "bleeding_gums":req.body.bleedingGums,
                         "habits":req.body.dentalHabits,
                         "others":req.body.others

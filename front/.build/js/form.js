@@ -138,6 +138,7 @@ $("#newPatient-button").click(function() {
     var msg=$("#generalInfo-personalInfo-button").attr( "data-msg" );
     blockPortlet('#generalInfo-personalInfo-portlet',msg);
 
+
     $.ajax({
       type: "POST",
       url: url,
@@ -147,6 +148,7 @@ $("#newPatient-button").click(function() {
       {
         alert_notification(data.alert.type,data.alert.msg,data.alert.title);
         Metronic.unblockUI('#generalInfo-personalInfo-portlet');
+        $("#patient_name h1").text($("#names").val()+" "+$("#lastName").val());
     }
       });
 

@@ -190,8 +190,8 @@ http://d11or7sbz4vm1i.cloudfront.net
                 <div class="col-md-1" style="width: 110px;">
                 <img src="{+path /}/img/default-portrait.png" class="img-responsive" alt="" style="width: 80px;height: 80px;">
                 </div>
-                <div class="col-md-6">
-                <h1>Carlos Convit<h1>
+                <div id="patient_name" class="col-md-6">
+                <h1>{personal_info.names} {personal_info.last_name}</h1>
                 </div>
             </div>
             <!-- BEGIN TABLETS-->
@@ -907,7 +907,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="col-md-6">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="dental_habits"/}</label>
-                                                <textarea class="form-control"name="dentalHabits" id="dentalHabits" rows="2"></textarea>
+                                                <textarea class="form-control"name="dentalHabits" id="dentalHabits" rows="2">{risk_factors.habits}</textarea>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -918,7 +918,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="col-md-12">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="others"/}</label>
-                                                <textarea class="form-control"name="others" id="others" rows="3"></textarea>
+                                                <textarea class="form-control"name="others" id="others" rows="3">{risk_factors.others}</textarea>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -1011,6 +1011,13 @@ jQuery(document).ready(function() {
    {?risk_factors}
                     $("#oralHygiene option[value='{risk_factors.oral_hygiene}']").attr('selected', 'selected');
                     $("#bleedingGums option[value='{risk_factors.bleeding_gums}']").attr('selected', 'selected');
+                    var arr = '{risk_factors.use_of}'.split(",");
+                    var text="";
+                    for (var i in arr) {
+                    $("#useOf option[value='"+arr[i]+"']").attr('selected', 'selected');
+                    if(i==0)text=$("#useOf option[value='"+arr[i]+"']").text(); else text=text+","+$("#useOf option[value='"+arr[i]+"']").text();
+                    }
+                    if(text != "")$("span.filter-option").text(text);
    {/risk_factors}
    });
 </script>
