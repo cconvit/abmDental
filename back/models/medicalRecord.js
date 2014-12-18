@@ -65,7 +65,7 @@ var medicalRecordModel=function(){
                       immune_system:String,
                       allergies_toxic:String,
                       nervous_system:String,
-                      hemorragic:String,
+                      hemorrhagic:String,
                       respiratory_system:String,
                       infectious_diseases:String,
                       habits:String,

@@ -401,7 +401,7 @@ if(response.status_code == 200){
       });
     }
   }
-exports.updateMedicalHistory = updateMedicalHistoryResponse;
+exports.updateMedicalHistoryResponse = updateMedicalHistoryResponse;
 
 var updateDentalHistoryResponse=function(req,res,response){
 

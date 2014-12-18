@@ -26,7 +26,7 @@ module.exports = function newPatientModel(req) {
                               "immune_system":req.body.immuneSystem,
                               "allergies_toxic":req.body.allergiesToxic,
                               "nervous_system":req.body.nervousSystem,
-                              "hemorragic":req.body.hemorrhagic,
+                              "hemorrhagic":req.body.hemorrhagic,
                               "respiratory_system":req.body.respiratorySystem,
                               "infectious_diseases":req.body.infectiousDiseases,
                               "habits":req.body.habits,

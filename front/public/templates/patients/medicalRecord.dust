@@ -630,14 +630,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="prenatal"/}</label>
-                                              <textarea class="form-control"name="prenatal" id="prenatal" rows="3"></textarea>
+                                              <textarea class="form-control"name="prenatal" id="prenatal" rows="3">{medical_history.prenatal_natal}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="organ_of_sense"/}</label>
-                                              <textarea class="form-control"name="organOfSense" id="organOfSense" rows="3"></textarea>
+                                              <textarea class="form-control"name="organOfSense" id="organOfSense" rows="3">{medical_history.organ_of_sense}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -647,14 +647,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="childhood_diseases"/}</label>
-                                              <textarea class="form-control"name="childhoodDiseases" id="childhoodDiseases" rows="3"></textarea>
+                                              <textarea class="form-control"name="childhoodDiseases" id="childhoodDiseases" rows="3">{medical_history.childhood_diseases}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="psychiatric"/}</label>
-                                                  <textarea class="form-control"name="psychiatric" id="psychiatric" rows="3"></textarea>
+                                                  <textarea class="form-control"name="psychiatric" id="psychiatric" rows="3">{medical_history.psychiatric}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -664,14 +664,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="immunizations"/}</label>
-                                              <textarea class="form-control"name="immunizations" id="immunizations" rows="3"></textarea>
+                                              <textarea class="form-control"name="immunizations" id="immunizations" rows="3">{medical_history.immunizations}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="cardio_vascular_system"/}</label>
-                                              <textarea class="form-control"name="cardioVascularSystem" id="cardioVascularSystem" rows="3"></textarea>
+                                              <textarea class="form-control"name="cardioVascularSystem" id="cardioVascularSystem" rows="3">{medical_history.cardio_vascular_system}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -681,14 +681,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="surgical"/}</label>
-                                              <textarea class="form-control"name="surgical" id="surgical" rows="3"></textarea>
+                                              <textarea class="form-control"name="surgical" id="surgical" rows="3">{medical_history.surgical}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="endocrine_system"/}</label>
-                                              <textarea class="form-control"name="endocrineSystem" id="endocrineSystem" rows="3"></textarea>
+                                              <textarea class="form-control"name="endocrineSystem" id="endocrineSystem" rows="3">{medical_history.endocrine_system}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -698,14 +698,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="traumatic"/}</label>
-                                              <textarea class="form-control"name="traumatic" id="traumatic" rows="3"></textarea>
+                                              <textarea class="form-control"name="traumatic" id="traumatic" rows="3">{medical_history.traumatic}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="hematopoietic_system"/}</label>
-                                              <textarea class="form-control"name="hematopoieticSystem" id="hematopoieticSystem" rows="3"></textarea>
+                                              <textarea class="form-control"name="hematopoieticSystem" id="hematopoieticSystem" rows="3">{medical_history.hematopoietic_system}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -715,14 +715,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="hospital_records"/}</label>
-                                              <textarea class="form-control"name="hospitalRecords" id="hospitalRecords" rows="3"></textarea>
+                                              <textarea class="form-control"name="hospitalRecords" id="hospitalRecords" rows="3">{medical_history.hospital_record}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="immune_system"/}</label>
-                                              <textarea class="form-control"name="immuneSystem" id="immuneSystem" rows="3"></textarea>
+                                              <textarea class="form-control"name="immuneSystem" id="immuneSystem" rows="3">{medical_history.immune_system}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -732,14 +732,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="allergies_toxic"/}</label>
-                                              <textarea class="form-control"name="allergiesToxic" id="allergiesToxic" rows="3"></textarea>
+                                              <textarea class="form-control"name="allergiesToxic" id="allergiesToxic" rows="3">{medical_history.allergies_toxic}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="nervous_system"/}</label>
-                                              <textarea class="form-control"name="nervousSystem" id="nervousSystem" rows="3"></textarea>
+                                              <textarea class="form-control"name="nervousSystem" id="nervousSystem" rows="3">{medical_history.nervous_system}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -749,14 +749,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="hemorrhagic"/}</label>
-                                              <textarea class="form-control"name="hemorrhagic" id="hemorrhagic" rows="3"></textarea>
+                                              <textarea class="form-control"name="hemorrhagic" id="hemorrhagic" rows="3">{medical_history.hemorrhagic}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="respiratory_system"/}</label>
-                                              <textarea class="form-control"name="respiratorySystem" id="respiratorySystem" rows="3"></textarea>
+                                              <textarea class="form-control"name="respiratorySystem" id="respiratorySystem" rows="3">{medical_history.respiratory_system}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -766,14 +766,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="infectious_diseases"/}</label>
-                                              <textarea class="form-control"name="infectiousDiseases" id="infectiousDiseases" rows="3"></textarea>
+                                              <textarea class="form-control"name="infectiousDiseases" id="infectiousDiseases" rows="3">{medical_history.infectious_diseases}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="habits"/}</label>
-                                              <textarea class="form-control"name="habits" id="habits" rows="3"></textarea>
+                                              <textarea class="form-control"name="habits" id="habits" rows="3">{medical_history.habits}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
@@ -783,14 +783,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="gynecology_obstetric"/}</label>
-                                              <textarea class="form-control"name="gynecologyObstetric" id="gynecologyObstetric" rows="3"></textarea>
+                                              <textarea class="form-control"name="gynecologyObstetric" id="gynecologyObstetric" rows="3">{medical_history.genito_gynecology}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label class="control-label">{@pre type="content" key="others"/}</label>
-                                              <textarea class="form-control"name="others" id="others" rows="3"></textarea>
+                                              <textarea class="form-control"name="others" id="others" rows="3">{medical_history.others}</textarea>
                                             </div>
                                           </div>
                                           <!--/span-->
