@@ -4,6 +4,7 @@
 module.exports = function PatientsModel() {
     return {
               "alert":{"type":"","msg":"","title":""},
-              "status_code":""
+              "status_code":"",
+              "personal_info":{}
     };
 };

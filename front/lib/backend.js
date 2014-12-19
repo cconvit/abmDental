@@ -8,7 +8,7 @@ var send_url=parameters.protocol+"://"+parameters.host+":"+parameters.port
 //*************BEGING PUBLIC METHOD**************//
 //###############################################//
 //Method to start the signup master process//
-var send=function(path,req, res,model,next){
+var send=function(path,req, res,model,next,data1){
 
   var client = new Client();
 
@@ -16,7 +16,7 @@ var send=function(path,req, res,model,next){
     //parsed response body as js object
 console.log(data);
     var obj=JSON.parse(data);
-    next(req,res,obj);
+    next(req,res,obj,data1);
   });//End client.post
 
 }

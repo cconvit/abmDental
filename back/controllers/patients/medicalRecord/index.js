@@ -23,6 +23,12 @@ module.exports = function (router) {
 
   });
 
+  router.post('/generalInfo/personalInfo/portrait/upload', function (req, res) {
+
+    medicalRecordLib.updatePersonalInfoPortrait(req,res);
+    
+  });
+
   router.post('/generalInfo/emergencyContact/update', function (req, res) {
 
     medicalRecordLib.updateEmergencyContact(req,res);

@@ -79,6 +79,28 @@ var updatePersonalInfo=function(data){
 }
 exports.updatePersonalInfo = updatePersonalInfo;
 
+var updatePersonalInfoPortrait=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number,"personal_info":data.personal_info};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+exports.updatePersonalInfoPortrait = updatePersonalInfoPortrait;
+
 var updateEmergencyContact=function(data){
 
   var model={};

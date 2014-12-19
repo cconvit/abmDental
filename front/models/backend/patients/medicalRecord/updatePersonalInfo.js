@@ -18,7 +18,7 @@ module.exports = function newPatientModel(req) {
                         "names":req.body.names,
                         "last_name":req.body.lastName,
                         "id_type":req.body.identityType,
-                        "date_of_birth":date_of_birth,
+                        "date_of_birth":new Date(date_of_birth),
                         "place_of_birth":req.body.placeOfBirth,
                         "age":req.body.age,
                         "civil_status":req.body.civilStatus,

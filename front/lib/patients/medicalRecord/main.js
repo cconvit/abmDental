@@ -4,11 +4,14 @@
 var moment = require('moment');
 var util=require('../../util/others');
 
+var files=require('../../aws/files');
+
 //##############BEGIN BACKEND MODELS#####################//
 var backend = require('../../backend');
 var newPatientModel=require('../../../models/backend/patients/medicalRecord/newPatient');
 var findMedicalRecordModelBack=require('../../../models/backend/patients/medicalRecord/findMedicalRecord');
 var updatePersonalInfoModelBack=require('../../../models/backend/patients/medicalRecord/updatePersonalInfo');
+var updatePersonalInfoPortraitModelBack=require('../../../models/backend/patients/medicalRecord/updatePersonalInfoPortrait');
 var updateEmergencyContactModelBack=require('../../../models/backend/patients/medicalRecord/updateEmergencyContact');
 var updateChiefComplaintModelBack=require('../../../models/backend/patients/medicalRecord/updateChiefComplaint');
 var updateFamilyHistoryModelBack=require('../../../models/backend/patients/medicalRecord/updateFamilyHistory');
@@ -58,6 +61,19 @@ var updatePersonalInfo=function(req, res){
   backend.send("/patients/medicalRecord/generalInfo/personalInfo/update",req,res,data,updatePersonalInfoResponse);
 }
 exports.updatePersonalInfo = updatePersonalInfo;
+
+var updatePersonalInfoPortrait=function(req, res){
+
+  var next=function(req,res,key,url){
+
+    var data=new updatePersonalInfoPortraitModelBack(req,key);
+    backend.send("/patients/medicalRecord/generalInfo/personalInfo/portrait/upload",req,res,data,updatePersonalInfoPortraitResponse,url);
+
+  }
+  files.portrait(req,res,next);
+}
+exports.updatePersonalInfoPortrait = updatePersonalInfoPortrait;
+
 
 var updateEmergencyContact=function(req, res){
 
@@ -241,6 +257,47 @@ var updatePersonalInfoResponse=function(req,res,response){
         }
       }
 exports.updatePersonalInfoResponse = updatePersonalInfoResponse;
+
+var updatePersonalInfoPortraitResponse=function(req,res,response,url){
+
+  var model=new updatePersonalInfoModel();
+  model.status_code=response.status_code;
+
+  if(response.status_code == 200){
+
+    util.getMessageLocale("/alerts/index",res,function(res,data){
+
+      model.alert.type="success";
+      model.alert.msg = data.updatePersonalInfo_200_msg;
+      model.alert.title = data.updatePersonalInfo_200_title;
+      model.personal_info.image=url;
+      res.json(model);
+    });
+
+  }else{
+
+    util.getMessageLocale("/alerts/index",res,function(res,data){
+
+      model.alert.type="warning";
+
+      switch(model.status_code){
+
+        case 427:
+          model.alert.msg = data.updatePersonalInfo_427_msg;
+          model.alert.title = data.updatePersonalInfo_427_title;
+          break;
+          case 522:
+            model.alert.type="error";
+            model.alert.msg = data.updatePersonalInfo_522_msg;
+            model.alert.title = data.updatePersonalInfo_522_title;
+            break;
+          }
+
+          res.json(model);
+        });
+      }
+    }
+exports.updatePersonalInfoPortraitResponse = updatePersonalInfoPortraitResponse;
 
 var updateEmergencyConatctResponse=function(req,res,response){
 

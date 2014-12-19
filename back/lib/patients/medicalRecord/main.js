@@ -54,6 +54,21 @@ var updatePersonalInfo=function(req, res){
 
 exports.updatePersonalInfo = updatePersonalInfo;
 
+var updatePersonalInfoPortrait=function(req, res){
+
+  //Validate request message//
+  var model=validator.updatePersonalInfoPortrait(req.body.data);
+
+  //isValid//
+  if(model.status){
+    updateGeneralInfoClass.updatePersonalInfoPortrait(req,res,model.data);
+  }else
+    render.RenderDefault(req, res, 427);//Error bad request message
+
+  }
+
+exports.updatePersonalInfoPortrait = updatePersonalInfoPortrait;
+
 var updateEmergencyContact=function(req, res){
 
 //Validate request message//

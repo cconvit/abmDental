@@ -1,6 +1,8 @@
 //###############################################//
 //**************BEGING INDEX PAGE****************//
 //###############################################//
+
+alert($( "#patient_portrait" ).closest('img').attr('src'));
 var sendLogin=function(){
 
   // Get some values from elements on the page:
@@ -137,8 +139,7 @@ $("#newPatient-button").click(function() {
     url = $form.attr( "action" );
     var msg=$("#generalInfo-personalInfo-button").attr( "data-msg" );
     blockPortlet('#generalInfo-personalInfo-portlet',msg);
-
-
+    //uploadFiles();
     $.ajax({
       type: "POST",
       url: url,
@@ -146,14 +147,84 @@ $("#newPatient-button").click(function() {
       dataType: 'json',
       success: function(data)
       {
-        alert_notification(data.alert.type,data.alert.msg,data.alert.title);
-        Metronic.unblockUI('#generalInfo-personalInfo-portlet');
-        $("#patient_name h1").text($("#names").val()+" "+$("#lastName").val());
+        var notification=function(){
+
+          alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+          Metronic.unblockUI('#generalInfo-personalInfo-portlet');
+          $("#patient_name h1").text($("#names").val()+" "+$("#lastName").val());
+
+        }
+
+        if(files.length == 0){
+          notification();
+        }else{
+
+          uploadFiles(notification);
+        }
     }
       });
 
       return false; // avoid to execute the actual submit of the form.
     });
+    var files=[];
+
+    // Add events
+    $('input[type=file]').on('change', prepareUpload);
+
+    // Grab the files and set them to our variable
+    function prepareUpload(event)
+    {
+      files = event.target.files;
+    }
+
+var uploadFiles=function(notification){
+
+  // Create a formdata object and add the files
+  var data = new FormData();
+
+  data.append("_csrf",$("input:hidden[name=_csrf]").val());
+  data.append("identity",$('#generalInfo-personalInfo-form').find('input[name="identity"]').val());
+
+  $.each(files, function(key, value)
+  {
+    data.append(key, value);
+  });
+
+  $.ajax({
+    url: '/patients/medicalRecord/generalInfo/personalInfo/portrait/upload',
+    type: 'POST',
+    data: data,
+    cache: false,
+    dataType: 'json',
+    processData: false, // Don't process the files
+    contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+    success: function(data, textStatus, jqXHR)
+    {
+      if(typeof data.error === 'undefined')
+        {
+          // Success so call function to process the form
+          //submitForm(event, data);
+          console.log(data);
+          $( "#patient_portrait" ).closest('img.img-responsive').attr('src',data.personal_info.image);
+          notification();
+          console.log("success");
+        }
+        else
+          {
+            // Handle errors here
+            console.log('ERRORS: ' + data.error);
+          }
+        },
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+          // Handle errors here
+          console.log('ERRORS: ' + textStatus);
+          // STOP LOADING SPINNER
+        }
+      });
+
+
+}
 
 $("#generalInfo-emergencyConatct-button").click(function() {
 

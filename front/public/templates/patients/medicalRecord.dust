@@ -187,7 +187,7 @@ http://d11or7sbz4vm1i.cloudfront.net
       <!-- END FIND-->
       {?personal_info}
             <div class="row" style="margin-bottom: 10px;">
-                <div class="col-md-1" style="width: 110px;">
+                <div id="patient_portrait" name="patient_portrait" class="col-md-1" style="width: 110px;">
                 <img src="{+path /}/img/default-portrait.png" class="img-responsive" alt="" style="width: 80px;height: 80px;">
                 </div>
                 <div id="patient_name" class="col-md-6">
