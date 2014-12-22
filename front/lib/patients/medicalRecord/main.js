@@ -184,6 +184,7 @@ var findMedicalRecordResponse=function(req,res,response){
 
   if(response.status_code == 200){
 
+
     model.chief_complaint=response.data.chief_complaint;
     model.family_history=response.data.family_history;
     model.medical_history=response.data.medical_history;
@@ -195,8 +196,17 @@ var findMedicalRecordResponse=function(req,res,response){
     var date_of_birth=moment(model.personal_info.date_of_birth).format('DD-MM-YYYY');
     model.personal_info.date_of_birth=date_of_birth;
     model.id_number=response.data.id_number;
+    model.personal_info.avatar=model.personal_info.image;
 
-    res.render('patients/medicalRecord', model);
+    var next=function(req,res,key,url){
+       model.personal_info.image=url;
+       res.render('patients/medicalRecord', model);
+    }
+    if(model.personal_info.image != '' && model.personal_info.image != null)
+        files.getFile("dev-abmdental-files",model.personal_info.image,req,res,next);
+    else
+        next(req,res,'',global.config.aws.s3.default_portrait);
+
   }else{
 
     util.getMessageLocale("/alerts/index",res,function(res,data){

@@ -3,6 +3,7 @@
 
 var PatientsModel = require('../../models/patients');
 var medicalRecordLib = require('../../lib/patients/medicalRecord/main');
+var treatmentLib = require('../../lib/patients/treatment/main');
 
 
 module.exports = function (router) {
@@ -38,6 +39,7 @@ module.exports = function (router) {
     router.get('/treatment', function (req, res) {
 
 
+      //treatmentLib.findTreatment(req,res);
       res.render('patients/treatment', {});
 
     });

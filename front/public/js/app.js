@@ -124,3 +124,37 @@ var app=function(){
   };
 
 }();
+
+
+
+$("#setLanguage").click(function() {
+
+  var url = $(this).attr( "data-content" );
+
+  // Get some values from elements on the page:
+  $.ajax({
+    type: "GET",
+    url: url,
+    success: function(data)
+    {
+      location.reload();
+
+      }
+    });
+
+    return false; // avoid to execute the actual submit of the form.
+  });
+
+var blockPortlet=function(id,msg){
+
+  Metronic.blockUI({
+    target: id,
+    boxed: true,
+    message: msg,
+    cenrerY: true,
+    cenrerX: true,
+    animate: true
+  });
+
+
+}

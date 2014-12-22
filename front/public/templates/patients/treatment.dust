@@ -148,7 +148,7 @@ http://d11or7sbz4vm1i.cloudfront.net
       <!-- END PAGE HEADER-->
       <!-- BEGIN FIND -->
       <div class="inbox-header" style="padding-left: 0px;margin-bottom: 10px;">
-          <form action="#" method="POST" class="form" style="padding-left: 0px;" role="search">
+          <form action="#" id="findIdentity-form" name="findIdentity-form" method="POST" class="form" style="padding-left: 0px;" role="search">
             <input type="hidden" name="_csrf" value="{_csrf}">
             <div class="input-group input-medium">
               <input type="text" class="form-control" id="sa_identity" name="sa_identity" placeholder="{@pre type="content" key="identity"/}">

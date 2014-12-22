@@ -2,6 +2,7 @@
 
 var render = require('../../util/render');
 var log = require('../../util/log');
+var files = require('../../aws/files');
 
 var medicalRecordModel = require('../../../models/medicalRecord');
 
@@ -34,13 +35,26 @@ exports.updatePersonalInfo = updatePersonalInfo;
 var updatePersonalInfoPortrait=function(req, res,model){
 
   var ObjectId = require('mongoose').Types.ObjectId;
-console.log(model);
-  medicalRecordModel.findOneAndUpdate({"_id":{"account_id":new ObjectId(model.account_id),"id_number":model.id_number}},
-  {$set: {"personal_info.image":model.personal_info.image}},
-  function(err, numAffected) {
-console.log(err);
+
+  medicalRecordModel.findOne({"_id":{"account_id":new ObjectId(model.account_id),"id_number":model.id_number}},
+  function(err, record) {
+
     if(!err)
-        render.RenderDefault(req, res, 200);//Medical record not found
+      {
+
+        files.deleteFile("",record.personal_info.image);
+        medicalRecordModel.findOneAndUpdate({"_id":{"account_id":new ObjectId(model.account_id),"id_number":model.id_number}},
+        {$set: {"personal_info.image":model.personal_info.image}},
+        function(err, numAffected) {
+
+          if(!err)
+              render.RenderDefault(req, res, 200);//Medical record not found
+            else
+              render.RenderDefault(req, res, 522);//Medical record not found
+
+            });
+
+      }
       else
         render.RenderDefault(req, res, 522);//Medical record not found
 
@@ -48,7 +62,9 @@ console.log(err);
 
     }
 
-    exports.updatePersonalInfoPortrait = updatePersonalInfoPortrait;
+
+
+exports.updatePersonalInfoPortrait = updatePersonalInfoPortrait;
 
 var updateEmergencyContact=function(req, res,model){
 

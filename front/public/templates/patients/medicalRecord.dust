@@ -188,7 +188,7 @@ http://d11or7sbz4vm1i.cloudfront.net
       {?personal_info}
             <div class="row" style="margin-bottom: 10px;">
                 <div id="patient_portrait" name="patient_portrait" class="col-md-1" style="width: 110px;">
-                <img src="{+path /}/img/default-portrait.png" class="img-responsive" alt="" style="width: 80px;height: 80px;">
+                <img src="{personal_info.image}" class="img-responsive" alt="" style="width: 80px;height: 80px;">
                 </div>
                 <div id="patient_name" class="col-md-6">
                 <h1>{personal_info.names} {personal_info.last_name}</h1>
@@ -227,6 +227,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                  <form id="generalInfo-personalInfo-form" name="generalInfo-personalInfo-form" action="/patients/medicalRecord/generalInfo/personalInfo" method="post" class="horizontal-form">
                                     <input type="hidden" name="_csrf" value="{_csrf}">
                                     <input type="hidden" name="identity" value="{id_number}">
+                                    <input type="hidden" name="avatar" value="{personal_info.avatar}">
                                     <div class="form-body">
                                       <div class="row">
                                         <div class="col-md-6">
@@ -993,6 +994,7 @@ http://d11or7sbz4vm1i.cloudfront.net
 <script src="{+path /}/assets/admin/pages/scripts/components-dropdowns.js"></script>
 <script type="text/javascript" src="{+path /}/assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="{+path /}/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="/js/patients/medicalRecord.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {

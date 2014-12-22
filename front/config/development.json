@@ -107,7 +107,8 @@
     },
     "aws":{
       "s3":{
-        "portrait":"https://sqs.us-east-1.amazonaws.com/543269719799/abmDental-mail"
+        "portrait":"https://sqs.us-east-1.amazonaws.com/543269719799/abmDental-mail",
+        "default_portrait":"http://d11or7sbz4vm1i.cloudfront.net/img/default-portrait.png"
       }
     }
 }

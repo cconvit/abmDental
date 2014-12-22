@@ -31,7 +31,8 @@ module.exports = function newPatientModel(req) {
                         "email":req.body.email,
                         "neighborhood":req.body.neighborhood,
                         "home_phone":req.body.homePhone,
-                        "department":req.body.department
+                        "department":req.body.department,
+                        "image":req.body.avatar
                       }
     }
 
