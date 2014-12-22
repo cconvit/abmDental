@@ -293,6 +293,7 @@ $("#anamnesis-currentMedication-button").click(function() {
   return false; // avoid to execute the actual submit of the form.
 });
 
+
 //###############################################//
 //************END MEDICAL RECORD PAGE************//
 //###############################################//

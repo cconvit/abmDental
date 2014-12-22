@@ -11,7 +11,7 @@ var send_url=parameters.protocol+"://"+parameters.host+":"+parameters.port
 var send=function(path,req, res,model,next,data1){
 
   var client = new Client();
-
+console.log(model);
   client.post(send_url+path, getArgs(model), function(data,response) {
     //parsed response body as js object
 console.log(data);

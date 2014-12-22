@@ -60,8 +60,10 @@ http://d11or7sbz4vm1i.cloudfront.net
 {! ---END HEAD PARAMETERS MENU--- !}
 {<content}
 <!-- NEW TREATMENT TIMELINE MODAL -->
-              <div id="add_query" class="modal fade" tabindex="-1" aria-hidden="true">
-              <form id="addQuery" name="addQuery" action="patient/new" method="get">
+              <div id="orthodontic-treatmentTimeline" class="modal fade" tabindex="-1" aria-hidden="true">
+              <form id="orthodontic-treatmentTimeline-form" name="orthodontic-treatmentTimeline-form" action="/patients/treatment/orthodontic/treatmentTimeline/add" method="get">
+                <input type="hidden" name="_csrf" value="{_csrf}">
+                <input type="hidden" name="identity" value="{id_number}">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header-green">
@@ -118,7 +120,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                     </div>
                     <div class="modal-footer">
                       <button type="button" data-dismiss="modal" class="btn default">{@pre type="content" key="close"/}</button>
-                      <button type="submit" class="btn green">{@pre type="content" key="save"/}</button>
+                      <button type="button" name="orthodontic-treatmentTimeline-button" id="orthodontic-treatmentTimeline-button" class="btn green">{@pre type="content" key="save"/}</button>
                     </div>
                   </div>
                 </div>
@@ -159,13 +161,13 @@ http://d11or7sbz4vm1i.cloudfront.net
           </form>
       </div>
       <!-- END FIND-->
-                {#patient}
+      {?id_number}
             <div class="row" style="margin-bottom: 10px;">
                 <div class="col-md-1" style="width: 110px;">
-                <img src="{+path /}/img/default-portrait.png" class="img-responsive" alt="" style="width: 80px;height: 80px;">
+                <img src="{personal_info.image}" class="img-responsive" alt="" style="width: 80px;height: 80px;">
                 </div>
                 <div class="col-md-6">
-                <h1>Carlos Convit<h1>
+                <h1>{personal_info.names} {personal_info.last_name}</h1>
                 </div>
             </div>
             <!-- BEGIN TABLETS-->
@@ -238,9 +240,10 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         </a>
                                       </div>
                                     </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
+                                    <div id="orthodontic-facialDiagnosis-portlet" class="portlet-body form" style="display: none;">
+                                     <form id="orthodontic-facialDiagnosis-form" name="orthodontic-facialDiagnosis-form" action="/patients/treatment/orthodontic/facialDiagnosis/update" method="post" class="horizontal-form">
+                                        <input type="hidden" name="_csrf" value="{_csrf}">
+                                        <input type="hidden" name="identity" value="{id_number}">
                                         <div class="form-body">
                                           <div class="row">
                                             <div class="col-md-6">
@@ -307,7 +310,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn yellow"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="orthodontic-facialDiagnosis-button" id="orthodontic-facialDiagnosis-button" class="btn yellow" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -329,9 +332,10 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         </a>
                                       </div>
                                     </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
+                                    <div id="orthodontic-occlusionDiagnosis-portlet" class="portlet-body form" style="display: none;">
+                                     <form id="orthodontic-occlusionDiagnosis-form" name="orthodontic-occlusionDiagnosis-form" action="/patients/treatment/orthodontic/occlusionDiagnosis/update" method="post" class="horizontal-form">
+                                        <input type="hidden" name="_csrf" value="{_csrf}">
+                                        <input type="hidden" name="identity" value="{id_number}">
                                         <div class="form-body">
                                       <div class="row">
                                         <div class="col-md-6">
@@ -385,14 +389,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="rotation"/}</label>
-                                            <input type="text" class="form-control" id="rotation" name="rotation" placeholder="{@pre type="content" key="rotation"/}">
+                                            <input type="text" class="form-control" id="rotation" name="rotation" placeholder="{@pre type="content" key="rotation"/}" value="{treatment.orthodontic.occlusion_diagnosis.dm_rotation}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="version"/}</label>
-                                            <input type="text" class="form-control" id="version" name="version" placeholder="{@pre type="content" key="version"/}">
+                                            <input type="text" class="form-control" id="version" name="version" placeholder="{@pre type="content" key="version"/}" value="{treatment.orthodontic.occlusion_diagnosis.dm_version}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -402,14 +406,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="gresion"/}</label>
-                                            <input type="text" class="form-control" id="gresion" name="gresion" placeholder="{@pre type="content" key="gresion"/}">
+                                            <input type="text" class="form-control" id="gresion" name="gresion" placeholder="{@pre type="content" key="gresion"/}" value="{treatment.orthodontic.occlusion_diagnosis.dm_gresion}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="extrusion"/}</label>
-                                            <input type="text" class="form-control" id="extrusion" name="extrusion" placeholder="{@pre type="content" key="extrusion"/}">
+                                            <input type="text" class="form-control" id="extrusion" name="extrusion" placeholder="{@pre type="content" key="extrusion"/}" value="{treatment.orthodontic.occlusion_diagnosis.dm_extrusion}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -419,7 +423,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="intrusion"/}</label>
-                                            <input type="text" class="form-control" id="intrusion" name="intrusion" placeholder="{@pre type="content" key="intrusion"/}">
+                                            <input type="text" class="form-control" id="intrusion" name="intrusion" placeholder="{@pre type="content" key="intrusion"/}" value="{treatment.orthodontic.occlusion_diagnosis.dm_intrusion}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -429,7 +433,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label bold">{@pre type="content" key="spaced_teeth"/}</label>
-                                            <input type="text" class="form-control" id="spacedTeeth" name="spacedTeeth" placeholder="{@pre type="content" key="spaced_teeth"/}">
+                                            <input type="text" class="form-control" id="spacedTeeth" name="spacedTeeth" placeholder="{@pre type="content" key="spaced_teeth"/}" value="{treatment.orthodontic.occlusion_diagnosis.spaced_teeth}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -439,14 +443,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label bold">{@pre type="content" key="overbite"/}</label>
-                                            <input type="text" class="form-control" id="overbite" name="overbite" placeholder="{@pre type="content" key="overbite"/}">
+                                            <input type="text" class="form-control" id="overbite" name="overbite" placeholder="{@pre type="content" key="overbite"/}" value="{treatment.orthodontic.occlusion_diagnosis.overbite}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label bold">{@pre type="content" key="overjet"/}</label>
-                                            <input type="text" class="form-control" id="overjet" name="overjet" placeholder="{@pre type="content" key="overjet"/}">
+                                            <input type="text" class="form-control" id="overjet" name="overjet" placeholder="{@pre type="content" key="overjet"/}" value="{treatment.orthodontic.occlusion_diagnosis.overjet}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -465,14 +469,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="left"/}</label>
-                                            <input type="text" class="form-control" id="leftMolarRatio" name="leftMolarRatio" placeholder="{@pre type="content" key="left"/}">
+                                            <input type="text" class="form-control" id="leftMolarRatio" name="leftMolarRatio" placeholder="{@pre type="content" key="left"/}" value="{treatment.orthodontic.occlusion_diagnosis.left_molar_relationship}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="right"/}</label>
-                                            <input type="text" class="form-control" id="rightMolarRatio" name="rightMolarRatio" placeholder="{@pre type="content" key="right"/}">
+                                            <input type="text" class="form-control" id="rightMolarRatio" name="rightMolarRatio" placeholder="{@pre type="content" key="right"/}" value="{treatment.orthodontic.occlusion_diagnosis.right_molar_relationship}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -491,14 +495,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="left"/}</label>
-                                            <input type="text" class="form-control" id="leftCanineRatio" name="leftCanineRatio" placeholder="{@pre type="content" key="left"/}">
+                                            <input type="text" class="form-control" id="leftCanineRatio" name="leftCanineRatio" placeholder="{@pre type="content" key="left"/}" value="{treatment.orthodontic.occlusion_diagnosis.left_canine_relationship}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="right"/}</label>
-                                            <input type="text" class="form-control" id="rightCanineRatio" name="rightCanineRatio" placeholder="{@pre type="content" key="right"/}">
+                                            <input type="text" class="form-control" id="rightCanineRatio" name="rightCanineRatio" placeholder="{@pre type="content" key="right"/}" value="{treatment.orthodontic.occlusion_diagnosis.right_canine_relationship}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -529,7 +533,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="distance"/}</label>
                                             <div class="input-group input-small">
-                                               <input id="maxillaryMidlineDistance" type="text" value="0" name="maxillaryMidlineDistance" class="input-group input-small">
+                                               <input id="maxillaryMidlineDistance" type="text" name="maxillaryMidlineDistance" class="input-group input-small" value="{treatment.orthodontic.occlusion_diagnosis.maxillary_dental_distance}">
                                             </div>
                                           </div>
                                         </div>
@@ -552,7 +556,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="distance"/}</label>
                                             <div class="input-group input-small">
-                                               <input id="mandibularMidlineDistance" type="text" value="0" name="mandibularMidlineDistance" class="input-group input-small">
+                                               <input id="mandibularMidlineDistance" type="text" name="mandibularMidlineDistance" class="input-group input-small" value="{treatment.orthodontic.occlusion_diagnosis.mandibular_dental_distance}">
                                             </div>
                                           </div>
                                         </div>
@@ -572,14 +576,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="working_side_right"/}</label>
-                                            <input type="text" class="form-control" id="workingSideRight" name="workingSideRight" placeholder="{@pre type="content" key="working_side_right"/}">
+                                            <input type="text" class="form-control" id="workingSideRight" name="workingSideRight" placeholder="{@pre type="content" key="working_side_right"/}" value="{treatment.orthodontic.occlusion_diagnosis.right_working_side}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="working_side_left"/}</label>
-                                            <input type="text" class="form-control" id="workingSideLeft" name="workingSideLeft" placeholder="{@pre type="content" key="working_side_right"/}">
+                                            <input type="text" class="form-control" id="workingSideLeft" name="workingSideLeft" placeholder="{@pre type="content" key="working_side_left"/}" value="{treatment.orthodontic.occlusion_diagnosis.left_working_side}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -589,14 +593,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="balancing_side_right"/}</label>
-                                            <input type="text" class="form-control" id="balancingSideRight" name="balancingSideRight" placeholder="{@pre type="content" key="working_side_right"/}">
+                                            <input type="text" class="form-control" id="balancingSideRight" name="balancingSideRight" placeholder="{@pre type="content" key="balancing_side_left"/}" value="{treatment.orthodontic.occlusion_diagnosis.left_balancing_side}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="balancing_side_left"/}</label>
-                                            <input type="text" class="form-control" id="balancingSideLeft" name="balancingSideLeft" placeholder="{@pre type="content" key="working_side_right"/}">
+                                            <input type="text" class="form-control" id="balancingSideLeft" name="balancingSideLeft" placeholder="{@pre type="content" key="balancing_side_right"/}" value="{treatment.orthodontic.occlusion_diagnosis.right_balancin_side}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -615,14 +619,14 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="protrusive_incisal_guide"/}</label>
-                                            <input type="text" class="form-control" id="protrusiveIncisalGuide" name="protrusiveIncisalGuide" placeholder="{@pre type="content" key="protrusive_incisal_guide"/}">
+                                            <input type="text" class="form-control" id="protrusiveIncisalGuide" name="protrusiveIncisalGuide" placeholder="{@pre type="content" key="protrusive_incisal_guide"/}" value="{treatment.orthodontic.occlusion_diagnosis.protrusive_incisal_guide}">
                                           </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="protrusive_interference"/}</label>
-                                            <input type="text" class="form-control" id="protrusiveInterference" name="protrusiveInterference" placeholder="{@pre type="content" key="protrusive_interference"/}">
+                                            <input type="text" class="form-control" id="protrusiveInterference" name="protrusiveInterference" placeholder="{@pre type="content" key="protrusive_interference"/}" value="{treatment.orthodontic.occlusion_diagnosis.protrusive_interference}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -642,7 +646,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="col-md-6">
                                           <div class="form-group">
                                             <label class="control-label">{@pre type="content" key="dental_relationship"/}</label>
-                                            <input type="text" class="form-control" id="dentalDelationship" name="dentalDelationship" placeholder="{@pre type="content" key="dental_relationship"/}">
+                                            <input type="text" class="form-control" id="dentalRelationship" name="dentalRelationship" placeholder="{@pre type="content" key="dental_relationship"/}" value="{treatment.orthodontic.occlusion_diagnosis.dental_relationship}">
                                           </div>
                                         </div>
                                         <!--/span-->
@@ -651,7 +655,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn green"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="orthodontic-occlusionDiagnosis-button" id="orthodontic-occlusionDiagnosis-button" class="btn green" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -673,9 +677,10 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         </a>
                                       </div>
                                     </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
+                                    <div id="orthodontic-temporomandibular-portlet" class="portlet-body form" style="display: none;">
+                                     <form id="orthodontic-temporomandibular-form" name="orthodontic-temporomandibular-form" action="/patients/treatment/orthodontic/temporomandibular/update" method="post" class="horizontal-form">
+                                        <input type="hidden" name="_csrf" value="{_csrf}">
+                                        <input type="hidden" name="identity" value="{id_number}">
                                         <div class="form-body">
                                           <div class="row">
                                             <div class="col-md-6">
@@ -723,7 +728,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="col-md-6">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="left"/}</label>
-                                                <select id="clickingLeft" name="clickingLeft" class="form-control">
+                                                <select id="painLeft" name="painLeft" class="form-control">
                                                   <option value="none">{@pre type="content" key="none"/}</option>
                                                   <option value="opening">{@pre type="content" key="opening"/}</option>
                                                   <option value="closing">{@pre type="content" key="closing"/}</option>
@@ -734,7 +739,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="col-md-6">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="right"/}</label>
-                                                <select id="clickingRight" name="clickingRight" class="form-control">
+                                                <select id="painRight" name="painRight" class="form-control">
                                                   <option value="none">{@pre type="content" key="none"/}</option>
                                                   <option value="opening">{@pre type="content" key="opening"/}</option>
                                                   <option value="closing">{@pre type="content" key="closing"/}</option>
@@ -757,7 +762,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="col-md-6">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="left"/}</label>
-                                                <select id="clickingLeft" name="clickingLeft" class="form-control">
+                                                <select id="deviationLeft" name="deviationLeft" class="form-control">
                                                   <option value="none">{@pre type="content" key="none"/}</option>
                                                   <option value="opening">{@pre type="content" key="opening"/}</option>
                                                   <option value="closing">{@pre type="content" key="closing"/}</option>
@@ -768,7 +773,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="col-md-6">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="right"/}</label>
-                                                <select id="clickingRight" name="clickingRight" class="form-control">
+                                                <select id="deviationRight" name="deviationRight" class="form-control">
                                                   <option value="none">{@pre type="content" key="none"/}</option>
                                                   <option value="opening">{@pre type="content" key="opening"/}</option>
                                                   <option value="closing">{@pre type="content" key="closing"/}</option>
@@ -791,7 +796,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="col-md-6">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="left"/}</label>
-                                                <select id="clickingLeft" name="clickingLeft" class="form-control">
+                                                <select id="deflectionLeft" name="deflectionLeft" class="form-control">
                                                   <option value="none">{@pre type="content" key="none"/}</option>
                                                   <option value="opening">{@pre type="content" key="opening"/}</option>
                                                   <option value="closing">{@pre type="content" key="closing"/}</option>
@@ -802,7 +807,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="col-md-6">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="right"/}</label>
-                                                <select id="clickingRight" name="clickingRight" class="form-control">
+                                                <select id="deflectionRight" name="deflectionRight" class="form-control">
                                                   <option value="none">{@pre type="content" key="none"/}</option>
                                                   <option value="opening">{@pre type="content" key="opening"/}</option>
                                                   <option value="closing">{@pre type="content" key="closing"/}</option>
@@ -817,7 +822,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn purple"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="orthodontic-temporomandibular-button" id="orthodontic-temporomandibular-button" class="btn purple" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -839,15 +844,16 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         </a>
                                       </div>
                                     </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
+                                    <div id="orthodontic-diagnosis-portlet" class="portlet-body form" style="display: none;">
+                                     <form id="orthodontic-diagnosis-form" name="orthodontic-diagnosis-form" action="/patients/treatment/orthodontic/diagnosis/update" method="post" class="horizontal-form">
+                                        <input type="hidden" name="_csrf" value="{_csrf}">
+                                        <input type="hidden" name="identity" value="{id_number}">
                                         <div class="form-body">
                                           <div class="row">
                                             <div class="col-md-12">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="facial"/}</label>
-                                                <textarea class="form-control"name="facial" id="facial" rows="2"></textarea>
+                                                <textarea class="form-control"name="facial" id="facial" rows="2">{treatment.orthodontic.diagnosis.facial}</textarea>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -857,7 +863,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="col-md-12">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="skeletal"/}</label>
-                                                <textarea class="form-control"name="skeletal" id="skeletal" rows="2"></textarea>
+                                                <textarea class="form-control"name="skeletal" id="skeletal" rows="2">{treatment.orthodontic.diagnosis.skeletal}</textarea>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -867,7 +873,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="col-md-12">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="dental"/}</label>
-                                                <textarea class="form-control"name="dental" id="dental" rows="2"></textarea>
+                                                <textarea class="form-control"name="dental" id="dental" rows="2">{treatment.orthodontic.diagnosis.dental}</textarea>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -876,7 +882,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn red-flamingo"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="orthodontic-diagnosis-button" id="orthodontic-diagnosis-button" class="btn red-flamingo" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -898,15 +904,16 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         </a>
                                       </div>
                                     </div>
-                                    <div class="portlet-body form" style="display: none;">
-                                     <form action="patient/pi/update" method="get" class="horizontal-form">
-                                        <input type="hidden" name="identity" value="{identity}">
+                                    <div id="orthodontic-treatmentPlan-portlet" class="portlet-body form" style="display: none;">
+                                     <form id="orthodontic-treatmentPlan-form" name="orthodontic-treatmentPlan-form" action="/patients/treatment/orthodontic/treatmentPlan/update" method="post" class="horizontal-form">
+                                        <input type="hidden" name="_csrf" value="{_csrf}">
+                                        <input type="hidden" name="identity" value="{id_number}">
                                         <div class="form-body">
                                           <div class="row">
                                             <div class="col-md-12">
                                               <div class="form-group">
                                                 <label class="control-label">{@pre type="content" key="plan"/}</label>
-                                                <textarea class="form-control"name="plan" id="plan" rows="2"></textarea>
+                                                <textarea class="form-control"name="plan" id="plan" rows="2">{treatment.orthodontic.treatment_plan.plan}</textarea>
                                               </div>
                                             </div>
                                             <!--/span-->
@@ -915,7 +922,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="row">
                                           <div class="col-md-6">
                                               <div class="clearfix">
-                                                <button type="submit" class="btn grey-cascade"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+                                                <button type="button" name="orthodontic-treatmentPlan-button" id="orthodontic-treatmentPlan-button" class="btn grey-cascade" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
                                               </div>
                                           </div>
                                         </div>
@@ -943,7 +950,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                                         <div class="form-body">
                                             <div class="row" style="margin-bottom: 20px;">
                                               <div class="col-md-12">
-                                                 <a data-toggle="modal" href="#add_query" class="btn btn-lg grey">
+                                                 <a data-toggle="modal" href="#orthodontic-treatmentTimeline" class="btn btn-lg grey">
                                                     {@pre type="content" key="add"/} <i class="fa fa-plus"></i>
                                                  </a>
                                               </div>
@@ -951,11 +958,11 @@ http://d11or7sbz4vm1i.cloudfront.net
                                             <div class="row">
                                               <div class="col-md-12">
                                                 <ul class="timeline">
-                                                {#orthodontics_time_line}
+                                                {#treatment.orthodontic.treatment_timeline.event}
                                                    <li class="timeline-{type}">
                                                       <div class="timeline-time">
                                                         <span class="date">
-                                                        {date} </span>
+                                                        {datetime} </span>
                                                         <span class="time">
                                                         {hour} </span>
                                                       </div>
@@ -965,11 +972,11 @@ http://d11or7sbz4vm1i.cloudfront.net
                                                       <div class="timeline-body">
                                                         <h2>{title}</h2>
                                                         <div class="timeline-content">
-                                                          {desc}
+                                                          {description}
                                                         </div>
                                                       </div>
                                                   </li>
-                                                  {/orthodontics_time_line}
+                                                  {/treatment.orthodontic.treatment_timeline.event}
                                                 </ul>
                                               </div>
                                             </div>
@@ -1067,7 +1074,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                     </div>
                   </div>
             <!-- END TABLETS-->
-            {/patient}
+            {/id_number}
         </div>
     </div>
 {/content}
@@ -1076,6 +1083,8 @@ http://d11or7sbz4vm1i.cloudfront.net
 {<scripts}
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="{+path /}/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script>
+<script src="/js/patients/treatment/treatment.js" type="text/javascript"></script>
+<script src="/js/patients/treatment/orthodontic.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {
@@ -1083,6 +1092,17 @@ jQuery(document).ready(function() {
    Layout.init();
    app.init();
    app.initTreatment();
+
+   {?treatment.orthodontic.occlusion_diagnosis}
+                    $("#dentitionType option[value='{treatment.orthodontic.occlusion_diagnosis.dentition_type}']").attr('selected', 'selected');
+                    $("#superiorArch option[value='{treatment.orthodontic.occlusion_diagnosis.superior_arch}']").attr('selected', 'selected');
+                    $("#lowerArch option[value='{treatment.orthodontic.occlusion_diagnosis.lower_arch}']").attr('selected', 'selected');
+                    $("#maxillaryMidline option[value='{treatment.orthodontic.occlusion_diagnosis.maxillary_dental_midline}']").attr('selected', 'selected');
+                    $("#mandibularMidline option[value='{treatment.orthodontic.occlusion_diagnosis.mandibular_dental_midline}']").attr('selected', 'selected');
+                    $("#speeCurve option[value='{treatment.orthodontic.occlusion_diagnosis.spee_curve}']").attr('selected', 'selected');
+   {/treatment.orthodontic.occlusion_diagnosis}
+
+
    });
 </script>
 {/scripts}

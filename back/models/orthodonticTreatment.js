@@ -4,6 +4,14 @@ var mongoose = require('mongoose');
 
 var orthodonticTreatmentModel=function(){
 
+  var eventSchema=mongoose.Schema({
+    title:String,
+    user_id:{type:mongoose.Schema.Types.ObjectId,ref: 'user'},
+    description:String,
+    type:String,
+    datetime:Date,
+    icon:String
+  },{ _id: false });
   var orthodonticTreatmentModelSchema=mongoose.Schema({
 
     _id:{
@@ -49,15 +57,7 @@ var orthodonticTreatmentModel=function(){
                       dental_relationship:String
     },
     treatment_timeline:{
-                      event:[
-                              {
-                                title:String,
-                                user_id:{type:mongoose.Schema.Types.ObjectId,ref: 'user'},
-                                description:String,
-                                type:String,
-                                datetime:Date
-                              }
-                            ]
+                      event:[eventSchema]
     },
     facial_diagnosis:{
                       facial_type:String,
@@ -78,7 +78,7 @@ var orthodonticTreatmentModel=function(){
     }
   },{ _id: false });
 
-  return mongoose.model('orthodonticTreatmentModel', orthodonticTreatmentModelSchema);
+  return mongoose.model('orthodonticTreatment', orthodonticTreatmentModelSchema);
 }
 
 module.exports = new orthodonticTreatmentModel();

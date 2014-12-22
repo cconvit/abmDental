@@ -1003,6 +1003,7 @@ jQuery(document).ready(function() {
    ComponentsDropdowns.init();
    app.init();
    app.initMedicalRecord();
+
    {?personal_info}
                     $("#identityType option[value='{personal_info.id_type}']").attr('selected', 'selected');
                     $("#genre option[value='{personal_info.genre}']").attr('selected', 'selected');

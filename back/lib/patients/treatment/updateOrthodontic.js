@@ -3,7 +3,7 @@
 var render = require('../../util/render');
 var log = require('../../util/log');
 var files = require('../../aws/files');
-
+var icon = require('../../util/icon');
 var orthodonticTreatmentModel = require('../../../models/orthodonticTreatment');
 
 //###############################################//
@@ -19,12 +19,11 @@ var updateDiagnosis=function(req, res,model){
   orthodonticTreatmentModel.findOneAndUpdate({"_id":{"account_id":new ObjectId(model.account_id),"id_number":model.id_number}},
   {$set: {"diagnosis":model.diagnosis}},{upsert: true},
   function(err, numAffected) {
-console.log(err);
-console.log(numAffected);
+
     if(!err)
       render.RenderDefault(req, res, 200);//Medical record not found
     else
-      render.RenderDefault(req, res, 522);//Medical record not found
+      render.RenderDefault(req, res, 530);//Medical record not found
 
   });
 }
@@ -41,7 +40,7 @@ var updateTreatmentPlan=function(req, res,model){
     if(!err)
       render.RenderDefault(req, res, 200);//Medical record not found
     else
-      render.RenderDefault(req, res, 522);//Medical record not found
+      render.RenderDefault(req, res, 531);//Medical record not found
 
   });
 
@@ -59,7 +58,7 @@ var updateOcclusionDiagnosis=function(req, res,model){
     if(!err)
       render.RenderDefault(req, res, 200);//Medical record not found
     else
-      render.RenderDefault(req, res, 522);//Medical record not found
+      render.RenderDefault(req, res, 532);//Medical record not found
 
   });
 
@@ -70,14 +69,17 @@ var addTreatmentTimeline=function(req, res,model){
 
   var ObjectId = require('mongoose').Types.ObjectId;
 
+  model.event.icon=icon.orthodonticTimeline(model.event.type);
+
+  
   orthodonticTreatmentModel.findOneAndUpdate({"_id":{"account_id":new ObjectId(model.account_id),"id_number":model.id_number}},
-  {$push: {"treatment_timeline":model.event}},{upsert: true},
+  {$push: {"treatment_timeline.event":model.event}},{upsert: true},
   function(err, numAffected) {
 
     if(!err)
       render.RenderDefault(req, res, 200);//Medical record not found
     else
-      render.RenderDefault(req, res, 522);//Medical record not found
+      render.RenderDefault(req, res, 533);//Medical record not found
 
   });
 
@@ -95,7 +97,7 @@ var updateFacialDiagnosis=function(req, res,model){
     if(!err)
       render.RenderDefault(req, res, 200);//Medical record not found
     else
-      render.RenderDefault(req, res, 522);//Medical record not found
+      render.RenderDefault(req, res, 534);//Medical record not found
 
   });
 }
@@ -112,7 +114,7 @@ var updateTemporomandibular=function(req, res,model){
     if(!err)
       render.RenderDefault(req, res, 200);//Medical record not found
     else
-      render.RenderDefault(req, res, 522);//Medical record not found
+      render.RenderDefault(req, res, 535);//Medical record not found
 
   });
 }

@@ -1,5 +1,6 @@
 'use strict';
 
+
 var moment = require('moment');
 var util=require('../../util/others');
 
@@ -7,27 +8,26 @@ var files=require('../../aws/files');
 
 //##############BEGIN BACKEND MODELS#####################//
 var backend = require('../../backend');
-var findMedicalRecordModelBack=require('../../../models/backend/patients/medicalRecord/findMedicalRecord');
+var findTreatmentModelBack=require('../../../models/backend/patients/treatment/findTreatment');
 //##############END BACKEND MODELS#####################//
 
 
 //##############BEGIN PAGE MODELS#####################//
 var indexModel=require('../../../models/index');
-var findMedicalRecordModel=require('../../../models/medicalRecord/findMedicalRecord');
+var findTreatmentModel=require('../../../models/treatment/findTreatment');
 //##############END PAGE MODELS#####################//
 
 
 //###############################################//
 //*************BEGING PUBLIC METHOD**************//
 //###############################################//
-//Method to start the signup master process//
+
 var findTreatment=function(req, res){
 
-  var data=new findMedicalRecordModelBack(req);
-  backend.send("/patients/medicalRecord/find",req,res,data,findMedicalRecordResponse);
+  var data=new findTreatmentModelBack(req);
+  backend.send("/patients/treatment/find",req,res,data,findTreatmentResponse);
 }
 exports.findTreatment = findTreatment;
-
 
 //###############################################//
 //***************END PUBLIC METHOD***************//
@@ -40,49 +40,39 @@ exports.findTreatment = findTreatment;
 
 var findTreatmentResponse=function(req,res,response){
 
-  var model=new findMedicalRecordModel();
+  var model=new findTreatmentModel();
   model.status_code=response.status_code;
 
   if(response.status_code == 200){
-
-
-    model.chief_complaint=response.data.chief_complaint;
-    model.family_history=response.data.family_history;
-    model.medical_history=response.data.medical_history;
-    model.dental_history=response.data.dental_history;
-    model.risk_factors=response.data.risk_factors;
-    model.current_medication=response.data.current_medication;
-    model.emergency_contact=response.data.emergency_contact;
+    model.treatment.orthodontic=response.data.treatment.orthodontic;
     model.personal_info=response.data.personal_info;
-    var date_of_birth=moment(model.personal_info.date_of_birth).format('DD-MM-YYYY');
-    model.personal_info.date_of_birth=date_of_birth;
     model.id_number=response.data.id_number;
     model.personal_info.avatar=model.personal_info.image;
 
     var next=function(req,res,key,url){
-       model.personal_info.image=url;
-       res.render('patients/medicalRecord', model);
+      model.personal_info.image=url;
+      res.render('patients/treatment', model);
     }
     if(model.personal_info.image != '' && model.personal_info.image != null)
-        files.getFile("dev-abmdental-files",model.personal_info.image,req,res,next);
-    else
+      files.getFile("dev-abmdental-files",model.personal_info.image,req,res,next);
+      else
         next(req,res,'',global.config.aws.s3.default_portrait);
 
-  }else{
+      }else{
 
-    util.getMessageLocale("/alerts/index",res,function(res,data){
+        util.getMessageLocale("/alerts/index",res,function(res,data){
 
-      model.alert={};
-      switch(model.status_code){
+          model.alert={};
+          switch(model.status_code){
 
             case 427:
               model.alert.type="info";
-              model.alert.msg = data.findMedicalRecord_427_msg;
-              model.alert.title = data.findMedicalRecord_427_title;
+              model.alert.msg = data.findTreatment_427_msg;
+              model.alert.title = data.findTreatment_427_title;
               break;
             }
 
-            res.render('patients/medicalRecord', response);
+            res.render('patients/treatment', response);
           });
         }
       }

@@ -3,6 +3,30 @@
 //###############################################//
 //*************BEGING PUBLIC METHOD**************//
 //###############################################//
+
+var findTreatment=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+
+  if(account_id != "" && user_id != ""  && id_number != "" ){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number};
+
+  }else{
+
+    model.status=false;
+  }
+  
+  return model;
+
+}
+exports.findTreatment = findTreatment;
+
+
 var updateDiagnosis=function(data){
 
   var model={};
