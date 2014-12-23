@@ -214,6 +214,14 @@ var addEventTimelineResponse=function(req,res,response){
     model.alert.type="success";
     model.alert.msg = data.addEventTimeline_200_msg;
     model.alert.title = data.addEventTimeline_200_title;
+
+    moment.locale((req.session.language == null)?"en_US":req.session.language);
+
+    model.event=response.data.event;
+    var datetime=moment(model.event.datetime);
+    model.event.date=datetime.format('DD/MM/YYYY');
+    model.event.hour=datetime.format('HH:mm');
+
     res.json(model);
   });
 

@@ -71,13 +71,19 @@ var addTreatmentTimeline=function(req, res,model){
 
   model.event.icon=icon.orthodonticTimeline(model.event.type);
 
-  
+
   orthodonticTreatmentModel.findOneAndUpdate({"_id":{"account_id":new ObjectId(model.account_id),"id_number":model.id_number}},
   {$push: {"treatment_timeline.event":model.event}},{upsert: true},
   function(err, numAffected) {
 
-    if(!err)
-      render.RenderDefault(req, res, 200);//Medical record not found
+    if(!err){
+
+      var response={};
+      response.data={"event":model.event};
+
+      render.RenderModel(req, res, 200,response);//Signup successfully
+
+    }
     else
       render.RenderDefault(req, res, 533);//Medical record not found
 

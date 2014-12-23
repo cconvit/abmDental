@@ -1,5 +1,5 @@
 'use strict';
-
+var sortBy = require('sort-by')
 var render = require('../../util/render');
 var log = require('../../util/log');
 
@@ -17,13 +17,15 @@ var findTreatment=function(req, res,model){
 
   //1-Check if the medicalRecordExist()
   var ObjectId = require('mongoose').Types.ObjectId;
-  medicalRecordModel.findById({"account_id":new ObjectId(model.account_id),"id_number":model.id_number},{ sort:{"treatment_timeline.event.datetime": -1 } },function(err,medicalRecord){
+  medicalRecordModel.findById({"account_id":new ObjectId(model.account_id),"id_number":model.id_number},function(err,medicalRecord){
 
     if(medicalRecord != null)
       {
         orthodonticTreatmentModel.findById({"account_id":new ObjectId(model.account_id),"id_number":model.id_number},function(err,orthodonticTreatment){
 
-
+          orthodonticTreatment.treatment_timeline.event=orthodonticTreatment.treatment_timeline.event.sort(sortBy('-datetime'));
+          var last=orthodonticTreatment.treatment_timeline.event.length-1;
+          orthodonticTreatment.treatment_timeline.event[last].type=orthodonticTreatment.treatment_timeline.event[last].type+" timeline-noline";
           responseTreatment(req, res,medicalRecord,orthodonticTreatment);
         });
 

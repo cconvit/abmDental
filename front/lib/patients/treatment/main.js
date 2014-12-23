@@ -49,10 +49,25 @@ var findTreatmentResponse=function(req,res,response){
     model.id_number=response.data.id_number;
     model.personal_info.avatar=model.personal_info.image;
 
+    var event=model.treatment.orthodontic.treatment_timeline.event;
+    for (var i = 0; i < event.length; i++) {
+
+      moment.locale((req.session.language == null)?"en_US":req.session.language);
+      var datetime=moment(event[i].datetime);
+
+      event[i].date=datetime.format('DD/MM/YYYY');
+      event[i].hour=datetime.format('HH:mm');
+
+    }
+
+    model.treatment.orthodontic.treatment_timeline.event=event;
+
+
     var next=function(req,res,key,url){
       model.personal_info.image=url;
       res.render('patients/treatment', model);
     }
+
     if(model.personal_info.image != '' && model.personal_info.image != null)
       files.getFile("dev-abmdental-files",model.personal_info.image,req,res,next);
       else

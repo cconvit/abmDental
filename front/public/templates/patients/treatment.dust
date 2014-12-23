@@ -956,13 +956,13 @@ http://d11or7sbz4vm1i.cloudfront.net
                                               </div>
                                             </div>
                                             <div class="row">
-                                              <div class="col-md-12">
+                                              <div id="orthodontic-treatmentTimeline-ul" class="col-md-12">
                                                 <ul class="timeline">
                                                 {#treatment.orthodontic.treatment_timeline.event}
                                                    <li class="timeline-{type}">
                                                       <div class="timeline-time">
                                                         <span class="date">
-                                                        {datetime} </span>
+                                                        {date} </span>
                                                         <span class="time">
                                                         {hour} </span>
                                                       </div>
@@ -1101,6 +1101,24 @@ jQuery(document).ready(function() {
                     $("#mandibularMidline option[value='{treatment.orthodontic.occlusion_diagnosis.mandibular_dental_midline}']").attr('selected', 'selected');
                     $("#speeCurve option[value='{treatment.orthodontic.occlusion_diagnosis.spee_curve}']").attr('selected', 'selected');
    {/treatment.orthodontic.occlusion_diagnosis}
+   {?treatment.orthodontic.facial_diagnosis}
+                    $("#faceType option[value='{treatment.orthodontic.facial_diagnosis.facial_type}']").attr('selected', 'selected');
+                    $("#asymmetry option[value='{treatment.orthodontic.facial_diagnosis.asymmetry}']").attr('selected', 'selected');
+                    $("#smileLine option[value='{treatment.orthodontic.facial_diagnosis.smile_line}']").attr('selected', 'selected');
+                    $("#lipIncompetence option[value='{treatment.orthodontic.facial_diagnosis.lip_incompetence}']").attr('selected', 'selected');
+                    $("#facialProfile option[value='{treatment.orthodontic.facial_diagnosis.facial_profile}']").attr('selected', 'selected');
+   {/treatment.orthodontic.facial_diagnosis}
+   {?treatment.orthodontic.temporomandibular}
+                    $("#clickingLeft option[value='{treatment.orthodontic.temporomandibular.clicking_left}']").attr('selected', 'selected');
+                    $("#clickingRight option[value='{treatment.orthodontic.temporomandibular.clicking_right}']").attr('selected', 'selected');
+                    $("#painLeft option[value='{treatment.orthodontic.temporomandibular.pain_left}']").attr('selected', 'selected');
+                    $("#painRight option[value='{treatment.orthodontic.temporomandibular.pain_right}']").attr('selected', 'selected');
+                    $("#deviationLeft option[value='{treatment.orthodontic.temporomandibular.deviation_left}']").attr('selected', 'selected');
+                    $("#deviationRight option[value='{treatment.orthodontic.temporomandibular.deviation_right}']").attr('selected', 'selected');
+                    $("#deflectionLeft option[value='{treatment.orthodontic.temporomandibular.deflection_left}']").attr('selected', 'selected');
+                    $("#deflectionRight option[value='{treatment.orthodontic.temporomandibular.deflection_right}']").attr('selected', 'selected');
+   {/treatment.orthodontic.temporomandibular}
+
 
 
    });

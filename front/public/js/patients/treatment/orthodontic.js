@@ -129,9 +129,11 @@ $("#orthodontic-treatmentTimeline-button").click(function() {
     {
 
       if(data.status_code == 200){
+
+        $("#orthodontic-treatmentTimeline-ul ul").prepend('<li class="timeline-'+data.event.type+'"><div class="timeline-time"><span class="date">'+data.event.date+' </span><span class="time">'+data.event.hour+' </span></div><div class="timeline-icon"><i class="fa fa-'+data.event.icon+'"></i></div><div class="timeline-body"><h2>'+data.event.title+'</h2><div class="timeline-content">'+data.event.description+'</div></div></li>');
         $('#orthodontic-treatmentTimeline').modal('toggle');
         $('#orthodontic-treatmentTimeline-form').trigger("reset");
-        
+
           alert_notification(data.alert.type,data.alert.msg,data.alert.title);
         }else{
           alert_notification(data.alert.type,data.alert.msg,data.alert.title);
