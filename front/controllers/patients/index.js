@@ -56,7 +56,8 @@ module.exports = function (router) {
 
     router.get('/list', function (req, res) {
 
-      res.render('patients/list',new listModel(req.session.profile));
+      medicalRecordLib.listPatients(req,res);
+      //res.render('patients/list',new listModel(req.session.profile));
 
     });
 

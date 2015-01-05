@@ -11,6 +11,7 @@ var backend = require('../../backend');
 var newPatientModel=require('../../../models/backend/patients/medicalRecord/newPatient');
 var listPatientsModelBack=require('../../../models/backend/patients/medicalRecord/listPatients');
 var findMedicalRecordModelBack=require('../../../models/backend/patients/medicalRecord/findMedicalRecord');
+var delMedicalRecordModelBack=require('../../../models/backend/patients/medicalRecord/delMedicalRecord');
 var updatePersonalInfoModelBack=require('../../../models/backend/patients/medicalRecord/updatePersonalInfo');
 var updatePersonalInfoPortraitModelBack=require('../../../models/backend/patients/medicalRecord/updatePersonalInfoPortrait');
 var updateEmergencyContactModelBack=require('../../../models/backend/patients/medicalRecord/updateEmergencyContact');
@@ -27,6 +28,7 @@ var updateCurrentMedicationModelBack=require('../../../models/backend/patients/m
 var indexModel=require('../../../models/index');
 var listPatientsModel=require('../../../models/patients/list');
 var findMedicalRecordModel=require('../../../models/medicalRecord/findMedicalRecord');
+var delMedicalRecordModel=require('../../../models/medicalRecord/delMedicalRecord');
 var updatePersonalInfoModel=require('../../../models/medicalRecord/updatePersonalInfo');
 var updateEmergencyContactModel=require('../../../models/medicalRecord/updateEmergencyContact');
 var updateChiefComplaintModel=require('../../../models/medicalRecord/updateChiefComplaint');
@@ -51,7 +53,7 @@ exports.newPatient = newPatient;
 
 var listPatients=function(req, res){
 
-  var data=new listPatientsModel(req);
+  var data=new listPatientsModelBack(req);
   backend.send("/patients/medicalRecord/list",req,res,data,listPatientsResponse);
 }
 exports.listPatients = listPatients;
@@ -63,6 +65,14 @@ var findMedicalRecord=function(req, res){
   backend.send("/patients/medicalRecord/find",req,res,data,findMedicalRecordResponse);
 }
 exports.findMedicalRecord = findMedicalRecord;
+
+var delMedicalRecord=function(req, res){
+
+  var data=new delMedicalRecordModelBack(req);
+  backend.send("/patients/medicalRecord/del",req,res,data,delMedicalRecordResponse);
+}
+exports.delMedicalRecord = delMedicalRecord;
+
 
 var updatePersonalInfo=function(req, res){
 
@@ -159,6 +169,7 @@ var listPatientsResponse=function(req,res,response){
   if(response.status_code == 200){
 
     model.patients=response.data.patients;
+    res.render('patients/list', model);
 
   }else
     defaultResponse(req,res,model,"listPatients");
@@ -216,6 +227,14 @@ var findMedicalRecordResponse=function(req,res,response){
       }
 exports.findMedicalRecordResponse = findMedicalRecordResponse;
 
+var delMedicalRecordResponse=function(req,res,response){
+
+  var model=new delMedicalRecordModel();
+  model.status_code=response.status_code;
+  defaultResponse(req,res,model,"delMedicalRecord");
+
+}
+exports.delMedicalRecordResponse=delMedicalRecordResponse;
 
 var updatePersonalInfoResponse=function(req,res,response){
 

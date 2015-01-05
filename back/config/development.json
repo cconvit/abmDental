@@ -82,14 +82,14 @@
             }
         }
     },
-    "database": {
+    "database2": {
       "host": "localhost",
       "database": "abmdentalcol",
       "port":"27017",
       "user":"",
       "password":""
     },
-    "database2": {
+    "database": {
       "host": "ds053320.mongolab.com",
       "database": "abmdentalcol",
       "port":"53320",

@@ -19,13 +19,12 @@ $("#newPatient-button").click(function() {
       if(data.status_code == 200){
         $('#new_patient').modal('toggle');
 
-        setTimeout(
-          function(){
-                      $("#sa_identity").val($("#modalIdentity").val());
-                      $('#newPatient-form').trigger("reset");
-                      $("#findIdentity-form" ).submit();
-                    }, 1000);
+        var identity=$("#modalIdentity").val();
+        var csrf=$("#findIdentity-form :input[name='_csrf']").val();
 
+        $('#newPatient-form').trigger("reset");
+        
+        sendForm(identity,csrf,$("#findIdentity-form").attr( "action" ));
 
         alert_notification(data.alert.type,data.alert.msg,data.alert.title);
       }else{
@@ -38,7 +37,19 @@ $("#newPatient-button").click(function() {
     return false; // avoid to execute the actual submit of the form.
   });
 
+  var sendForm=function(id,csrf,action){
 
+    var form = $(document.createElement('form'));
+    $(form).attr("action", action);
+    $(form).attr("method", "POST");
+
+    var identity = $("<input>").attr("type", "hidden").attr("name", "sa_identity").val(id);
+    var csrf = $("<input>").attr("type", "hidden").attr("name", "_csrf").val(csrf);
+    $(form).append($(identity));
+    $(form).append($(csrf));
+    $(form).submit();
+
+  }
 
   $("#generalInfo-personalInfo-button").click(function() {
 
@@ -81,7 +92,7 @@ $("#newPatient-button").click(function() {
     // Grab the files and set them to our variable
     function prepareUpload(event)
     {
-      
+
       files = event.target.files;
     }
 

@@ -4,6 +4,7 @@ var render = require('../../util/render');
 var validator = require('./validation');
 var newPatientClass = require('./newPatient');
 var findMedicalRecordClass = require('./findMedicalRecord');
+var delMedicalRecordClass = require('./delMedicalRecord');
 var updateGeneralInfoClass = require('./updateGeneralInfo');
 var updateAnamnesisClass = require('./updateAnamnesis');
 
@@ -38,6 +39,36 @@ var findMedicalRecord=function(req, res){
   }
 
 exports.findMedicalRecord = findMedicalRecord;
+
+var listMedicalRecord=function(req, res){
+
+  //Validate request message//
+  var model=validator.listMedicalRecord(req.body.data);
+
+  //isValid//
+  if(model.status){
+    findMedicalRecordClass.listMedicalRecord(req,res,model.data);
+  }else
+    render.RenderDefault(req, res, 427);//Error bad request message
+
+}
+
+exports.listMedicalRecord = listMedicalRecord;
+
+var delMedicalRecord=function(req, res){
+
+  //Validate request message//
+  var model=validator.delMedicalRecord(req.body.data);
+
+  //isValid//
+  if(model.status){
+    delMedicalRecordClass.delMedicalRecord(req,res,model.data);
+  }else
+    render.RenderDefault(req, res, 427);//Error bad request message
+
+}
+
+exports.delMedicalRecord = delMedicalRecord;
 
 var updatePersonalInfo=function(req, res){
 

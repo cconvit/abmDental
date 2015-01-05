@@ -11,6 +11,12 @@ module.exports = function (router) {
 
   });
 
+  router.post('/del', function (req, res) {
+
+    medicalRecordLib.delMedicalRecord(req,res);
+
+  });
+
   router.post('/generalInfo/personalInfo', function (req, res) {
 
     medicalRecordLib.updatePersonalInfo(req,res);

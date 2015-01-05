@@ -17,6 +17,18 @@ module.exports = function (router) {
 
   });
 
+  router.post('/list', function (req, res) {
+
+    medicalRecordLib.listMedicalRecord(req,res);
+
+  });
+
+  router.post('/del', function (req, res) {
+
+    medicalRecordLib.delMedicalRecord(req,res);
+    
+  });
+
   router.post('/generalInfo/personalInfo/update', function (req, res) {
 
     medicalRecordLib.updatePersonalInfo(req,res);
@@ -26,7 +38,7 @@ module.exports = function (router) {
   router.post('/generalInfo/personalInfo/portrait/upload', function (req, res) {
 
     medicalRecordLib.updatePersonalInfoPortrait(req,res);
-    
+
   });
 
   router.post('/generalInfo/emergencyContact/update', function (req, res) {

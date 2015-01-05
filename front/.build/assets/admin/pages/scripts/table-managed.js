@@ -2,29 +2,27 @@ var TableManaged = function () {
 
     var initTable3 = function () {
 
-        var table = $('#sample_3');
+        var table = $('#patientsTable');
 
         // begin: third table
 
         table.dataTable({
+            "bInfo": false,
             "lengthMenu": [
                 [5, 15, 20, -1],
                 [5, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "pageLength": 2,
+            "pageLength": 5,
             "language": {
                 "lengthMenu": "  _MENU_ records"
             },
             "columnDefs": [{  // set default column settings
                 'orderable': true,
                 'targets': [0]
-            }, {
-                "searchable": false,
-                "targets": [0]
             }],
             "order": [
-                [1, "asc"]
+                [2, "asc"]
             ] // set first column as a default sort by asc
         });
 

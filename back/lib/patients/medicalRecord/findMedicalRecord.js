@@ -31,6 +31,26 @@ var findMedicalRecord=function(req, res,model){
 
 exports.findMedicalRecord = findMedicalRecord;
 
+var listMedicalRecord=function(req, res,model){
+
+  //1-Check if the medicalRecordExist()
+  var ObjectId = require('mongoose').Types.ObjectId;
+  medicalRecordModel.find({"_id.account_id":new ObjectId(model.account_id)},{"personal_info.names":1,"personal_info.last_name":1},function(err,medicalRecords){
+
+    if(medicalRecords != null)
+      {
+        console.log(medicalRecords);
+        responseMedicalRecords(req, res,medicalRecords);
+      }
+      else{
+
+        render.RenderDefault(req, res, 427);//Medical record not found
+      }
+    });
+  }
+
+exports.listMedicalRecord = listMedicalRecord;
+
 //###############################################//
 //***************END PUBLIC METHOD***************//
 //###############################################//
@@ -47,6 +67,15 @@ var responseMedicalRecord=function(req, res,mr){
                  "chief_complaint":mr.chief_complaint,"family_history":mr.family_history,
                  "medical_history":mr.medical_history,"dental_history":mr.dental_history,
                  "risk_factors":mr.risk_factors,"current_medication":mr.current_medication};
+
+  render.RenderModel(req, res, 200,response);//Signup successfully
+
+}
+
+var responseMedicalRecords=function(req, res,mr){
+
+  var response={};
+  response.data={"patients":mr};
 
   render.RenderModel(req, res, 200,response);//Signup successfully
 
