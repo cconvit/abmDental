@@ -77,6 +77,21 @@
                }
 
     },
+    "mongo":{
+      "store":{
+                "db": "abmDentalSession",
+                "host": "localhost",
+                "port": 27017,
+                "username": "",
+                "password": "",
+                "collection": "sessions",
+                "autoReconnect":true
+              },
+      "cookie":{
+                "maxAge":600000
+               }
+
+    },
     "social_api":{
       "facebook":{
         "login":{

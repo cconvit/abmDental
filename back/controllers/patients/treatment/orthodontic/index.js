@@ -46,4 +46,11 @@ module.exports = function (router) {
 
   });
 
+  router.post('/file/upload', function (req, res) {
+
+    treatmentLib.fileUpload(req,res);
+
+  });
+
+
 };

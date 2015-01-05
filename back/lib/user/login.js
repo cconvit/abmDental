@@ -22,7 +22,7 @@ var log = require('../util/log');
 
 */
 var login=function(req, res,model){
-
+console.log("aqui estoy");
   //1-Check if the userExist()
   userModel.findOne({'username':model.username},function(err,user){
 
@@ -31,6 +31,7 @@ var login=function(req, res,model){
 
       if(user.status == 1){
             user.comparePassword(model.password, function(err, isMatch) {
+
               if (err) throw err;
 
               //1.1.1 getUserProfile()
@@ -96,6 +97,7 @@ var responseUserProfile=function(req, res,user){
   response.data={"user":{"_id":user._id,"account_id":user.account_id,"name":user.name,
                          "avatar":user.avatar,"profile_type":user.profile_type,
                          "status":user.status,"language":user.language}};
+  
   render.RenderModel(req, res, 200,response);//Signup successfully
 
 }

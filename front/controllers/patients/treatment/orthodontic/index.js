@@ -40,5 +40,12 @@ module.exports = function (router) {
 
   });
 
+  router.post('/file/upload', function (req, res) {
+
+    
+    orthodonticLib.fileUpload(req,res);
+
+  });
+
 
 };

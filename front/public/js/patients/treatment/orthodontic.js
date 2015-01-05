@@ -144,3 +144,61 @@ $("#orthodontic-treatmentTimeline-button").click(function() {
 
     return false; // avoid to execute the actual submit of the form.
   });
+
+  var orthodonticFiles=[];
+
+  // Add events
+  $('#orthodontic-fileUpload-form').find('input[type=file]').on('change', orthoPrepareUpload);
+
+  // Grab the files and set them to our variable
+  function orthoPrepareUpload(event)
+  {
+
+    orthodonticFiles = event.target.files;
+  }
+
+$("#orthodontic-fileUpload-button").click(function() {
+
+  // Create a formdata object and add the files
+  var data = new FormData();
+
+  data.append("_csrf",$("input:hidden[name=_csrf]").val());
+  data.append("identity",$('#orthodontic-fileUpload-form').find('input[name="identity"]').val());
+  data.append("orthodonticsModalFileUploadName",$("#orthodonticsModalFileUploadName").val());
+  $.each(orthodonticFiles, function(key, value)
+  {
+    data.append(key, value);
+  });
+
+  // Get some values from elements on the page:
+  var $form = $("#orthodontic-fileUpload-form"),
+  url = $form.attr( "action" );
+
+  $.ajax({
+    url: url,
+    type: 'POST',
+    data: data,
+    cache: false,
+    dataType: 'json',
+    processData: false, // Don't process the files
+    contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+    success: function(data)
+    {
+        console.log(data);
+      if(data.status_code == 200){
+
+        $('#orthodontic-fileUpload').modal('toggle');
+        //$('#orthodontic-fileUpload-form').trigger("reset");
+          $('#orthodonticsModalFileUploadName').val('');
+          $('#orthodontic-fileUpload').find('.fileupload').fileupload('clear');
+
+          alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+        }else{
+          alert_notification(data.alert.type,data.alert.msg,data.alert.title);
+        }
+
+      }
+    });
+
+    return false; // avoid to execute the actual submit of the form.
+  });

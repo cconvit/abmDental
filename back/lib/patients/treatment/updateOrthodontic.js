@@ -126,6 +126,30 @@ var updateTemporomandibular=function(req, res,model){
 }
 exports.updateTemporomandibular = updateTemporomandibular;
 
+var fileUpload=function(req, res,model){
+
+  var ObjectId = require('mongoose').Types.ObjectId;
+  model.file._id=new ObjectId();
+
+  orthodonticTreatmentModel.findOneAndUpdate({"_id":{"account_id":new ObjectId(model.account_id),"id_number":model.id_number}},
+  {$push: {"files":model.file}},{upsert: true},
+  function(err, numAffected) {
+
+    if(!err){
+
+      var response={};
+      response.data={"file":model.file};
+
+      render.RenderModel(req, res, 200,response);//Signup successfully
+
+    }
+    else
+      render.RenderDefault(req, res, 536);//Medical record not found
+
+  });
+
+}
+exports.fileUpload = fileUpload;
 
 //###############################################//
 //***************END PUBLIC METHOD***************//

@@ -1,7 +1,9 @@
 {>"layouts/login" /}
 {<path}
-http://d11or7sbz4vm1i.cloudfront.net
 {/path}
+{<path2}
+http://d11or7sbz4vm1i.cloudfront.net
+{/path2}
 {<page_styles}
 <!-- BEGIN PAGE LEVEL STYLES -->
 <link href="{+path /}/assets/global/plugins/select2/select2.css" rel="stylesheet" type="text/css">

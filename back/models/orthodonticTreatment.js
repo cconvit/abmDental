@@ -12,6 +12,13 @@ var orthodonticTreatmentModel=function(){
     datetime:Date,
     icon:String
   },{ _id: false });
+
+  var fileSchema=mongoose.Schema({
+    _id:{type:mongoose.Schema.Types.ObjectId},
+    name:String,
+    datetime:Date
+  },{ _id: false });
+
   var orthodonticTreatmentModelSchema=mongoose.Schema({
 
     _id:{
@@ -75,7 +82,9 @@ var orthodonticTreatmentModel=function(){
                       deviation_right:String,
                       deflection_left:String,
                       deflection_right:String
-    }
+    },
+    files:[fileSchema]
+
   },{ _id: false });
 
   return mongoose.model('orthodonticTreatment', orthodonticTreatmentModelSchema);

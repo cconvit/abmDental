@@ -23,9 +23,14 @@ var findTreatment=function(req, res,model){
       {
         orthodonticTreatmentModel.findById({"account_id":new ObjectId(model.account_id),"id_number":model.id_number},function(err,orthodonticTreatment){
 
-          orthodonticTreatment.treatment_timeline.event=orthodonticTreatment.treatment_timeline.event.sort(sortBy('-datetime'));
-          var last=orthodonticTreatment.treatment_timeline.event.length-1;
-          orthodonticTreatment.treatment_timeline.event[last].type=orthodonticTreatment.treatment_timeline.event[last].type+" timeline-noline";
+          if(orthodonticTreatment.treatment_timeline.event != null){
+            if(orthodonticTreatment.treatment_timeline.event.length > 0){
+                orthodonticTreatment.treatment_timeline.event=orthodonticTreatment.treatment_timeline.event.sort(sortBy('-datetime'));
+                var last=orthodonticTreatment.treatment_timeline.event.length-1;
+                orthodonticTreatment.treatment_timeline.event[last].type=orthodonticTreatment.treatment_timeline.event[last].type+" timeline-noline";
+              }
+            }
+
           responseTreatment(req, res,medicalRecord,orthodonticTreatment);
         });
 

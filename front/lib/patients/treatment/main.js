@@ -40,7 +40,7 @@ exports.findTreatment = findTreatment;
 
 var findTreatmentResponse=function(req,res,response){
 
-  var model=new findTreatmentModel();
+  var model=new findTreatmentModel(req.session.profile);
   model.status_code=response.status_code;
 
   if(response.status_code == 200){
@@ -49,19 +49,22 @@ var findTreatmentResponse=function(req,res,response){
     model.id_number=response.data.id_number;
     model.personal_info.avatar=model.personal_info.image;
 
-    var event=model.treatment.orthodontic.treatment_timeline.event;
-    for (var i = 0; i < event.length; i++) {
+    if(model.treatment.orthodontic != null){
+      
+        model.treatment.orthodontic.files=[{"name":"Panoramica","id":"23dsdfsdf"},{"name":"Pariapical","id":"23sdfsfdsdfsdf"}];
+        var event=model.treatment.orthodontic.treatment_timeline.event;
+        for (var i = 0; i < event.length; i++) {
 
-      moment.locale((req.session.language == null)?"en_US":req.session.language);
-      var datetime=moment(event[i].datetime);
+          moment.locale((req.session.language == null)?"en_US":req.session.language);
+          var datetime=moment(event[i].datetime);
 
-      event[i].date=datetime.format('DD/MM/YYYY');
-      event[i].hour=datetime.format('HH:mm');
+          event[i].date=datetime.format('DD/MM/YYYY');
+          event[i].hour=datetime.format('HH:mm');
 
+        }
+
+        model.treatment.orthodontic.treatment_timeline.event=event;
     }
-
-    model.treatment.orthodontic.treatment_timeline.event=event;
-
 
     var next=function(req,res,key,url){
       model.personal_info.image=url;
@@ -92,6 +95,8 @@ var findTreatmentResponse=function(req,res,response){
         }
       }
 exports.findTreatmentResponse = findTreatmentResponse;
+
+
 
 //###############################################//
 //*************END PRIVATE METHOD****************//

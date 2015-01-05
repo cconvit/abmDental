@@ -43,6 +43,43 @@ var portrait=function(req,res,next){
     }
 exports.portrait = portrait;
 
+var orthodonticFile=function(req,res,next){
+
+  var file=req.files[0];
+
+  var name = crypto.randomBytes(48).toString('hex');
+
+  name=name+path.extname(file.name);
+
+  var s3 = new AWS.S3({params: {Bucket: 'dev-abmdental-files'}});
+
+  var path_file = file.path;
+  var key="orthodontic/"+name;
+  fs.readFile(path_file, function(err, file_buffer){
+
+    var params = {
+      Bucket: 'dev-abmdental-files',
+      Key: key,
+      Body: file_buffer
+    };
+
+    s3.putObject(params, function (err) {
+
+      if (err) {
+        console.log("Error uploading data: ", err);
+      } else {
+        next(req,res,key);
+
+      }
+
+      });
+
+
+  });
+
+    }
+exports.orthodonticFile = orthodonticFile;
+
 
 var getFile=function(bucket,key,req,res,next){
 

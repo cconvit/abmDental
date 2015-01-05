@@ -9,6 +9,7 @@ var files=require('../../aws/files');
 //##############BEGIN BACKEND MODELS#####################//
 var backend = require('../../backend');
 var newPatientModel=require('../../../models/backend/patients/medicalRecord/newPatient');
+var listPatientsModelBack=require('../../../models/backend/patients/medicalRecord/listPatients');
 var findMedicalRecordModelBack=require('../../../models/backend/patients/medicalRecord/findMedicalRecord');
 var updatePersonalInfoModelBack=require('../../../models/backend/patients/medicalRecord/updatePersonalInfo');
 var updatePersonalInfoPortraitModelBack=require('../../../models/backend/patients/medicalRecord/updatePersonalInfoPortrait');
@@ -24,6 +25,7 @@ var updateCurrentMedicationModelBack=require('../../../models/backend/patients/m
 
 //##############BEGIN PAGE MODELS#####################//
 var indexModel=require('../../../models/index');
+var listPatientsModel=require('../../../models/patients/list');
 var findMedicalRecordModel=require('../../../models/medicalRecord/findMedicalRecord');
 var updatePersonalInfoModel=require('../../../models/medicalRecord/updatePersonalInfo');
 var updateEmergencyContactModel=require('../../../models/medicalRecord/updateEmergencyContact');
@@ -46,6 +48,13 @@ var newPatient=function(req, res){
   backend.send("/patients/medicalRecord/add",req,res,data,newPatientResponse);
 }
 exports.newPatient = newPatient;
+
+var listPatients=function(req, res){
+
+  var data=new listPatientsModel(req);
+  backend.send("/patients/medicalRecord/list",req,res,data,listPatientsResponse);
+}
+exports.listPatients = listPatients;
 
 
 var findMedicalRecord=function(req, res){
@@ -137,49 +146,29 @@ var newPatientResponse=function(req,res,response){
 
   var model=new indexModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"newPatient");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.newPatient_200_msg;
-      model.alert.title = data.newPatient_200_title;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-        case 510:
-          model.alert.msg = data.newPatient_510_msg;
-          model.alert.title = data.newPatient_510_title;
-          break;
-        case 426:
-          model.alert.msg = data.newPatient_426_msg;
-          model.alert.title = data.newPatient_426_title;
-          break;
-        case 521:
-          model.alert.type="error";
-          model.alert.msg = data.newPatient_521_msg;
-          model.alert.title = data.newPatient_521_title;
-          break;
-        }
-
-      res.json(model);
-    });
-  }
 }
 exports.newPatientResponse = newPatientResponse;
 
+var listPatientsResponse=function(req,res,response){
+
+  var model=new listPatientsModel(req.session.profile);
+  model.status_code=response.status_code;
+
+  if(response.status_code == 200){
+
+    model.patients=response.data.patients;
+
+  }else
+    defaultResponse(req,res,model,"listPatients");
+
+}
+exports.listPatientsResponse = listPatientsResponse;
+
 var findMedicalRecordResponse=function(req,res,response){
 
-  var model=new findMedicalRecordModel();
+  var model=new findMedicalRecordModel(req.session.profile);
   model.status_code=response.status_code;
 
   if(response.status_code == 200){
@@ -232,161 +221,37 @@ var updatePersonalInfoResponse=function(req,res,response){
 
   var model=new updatePersonalInfoModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updatePersonalInfo");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.updatePersonalInfo_200_msg;
-      model.alert.title = data.updatePersonalInfo_200_title;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-          case 427:
-            model.alert.msg = data.updatePersonalInfo_427_msg;
-            model.alert.title = data.updatePersonalInfo_427_title;
-            break;
-          case 522:
-            model.alert.type="error";
-            model.alert.msg = data.updatePersonalInfo_522_msg;
-            model.alert.title = data.updatePersonalInfo_522_title;
-            break;
-          }
-
-            res.json(model);
-          });
-        }
-      }
+}
 exports.updatePersonalInfoResponse = updatePersonalInfoResponse;
 
 var updatePersonalInfoPortraitResponse=function(req,res,response,url){
 
   var model=new updatePersonalInfoModel();
   model.status_code=response.status_code;
+  if(response.status_code == 200)model.personal_info.image=url;
+  defaultResponse(req,res,model,"updatePersonalInfoPortrait");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.updatePersonalInfo_200_msg;
-      model.alert.title = data.updatePersonalInfo_200_title;
-      model.personal_info.image=url;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-        case 427:
-          model.alert.msg = data.updatePersonalInfo_427_msg;
-          model.alert.title = data.updatePersonalInfo_427_title;
-          break;
-          case 522:
-            model.alert.type="error";
-            model.alert.msg = data.updatePersonalInfo_522_msg;
-            model.alert.title = data.updatePersonalInfo_522_title;
-            break;
-          }
-
-          res.json(model);
-        });
-      }
-    }
+}
 exports.updatePersonalInfoPortraitResponse = updatePersonalInfoPortraitResponse;
 
 var updateEmergencyConatctResponse=function(req,res,response){
 
   var model=new updateEmergencyContactModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateEmergengyContact");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.updateEmergengyContact_200_msg;
-      model.alert.title = data.updateEmergengyContact_200_title;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-        case 427:
-          model.alert.msg = data.updateEmergencyContact_427_msg;
-          model.alert.title = data.updateEmergencyContact_427_title;
-          break;
-        case 523:
-          model.alert.type="error";
-          model.alert.msg = data.updateEmergencyContact_523_msg;
-          model.alert.title = data.updateEmergencyContact_523_title;
-          break;
-        }
-
-          res.json(model);
-        });
-      }
-    }
+}
 exports.updateEmergencyConatctResponse = updateEmergencyConatctResponse;
 
 var updateChiefComplaintResponse=function(req,res,response){
 
   var model=new updateChiefComplaintModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateChiefComplaint");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.updateChiefComplaint_200_msg;
-      model.alert.title = data.updateChiefComplaint_200_title;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-        case 427:
-          model.alert.msg = data.updateChiefComplaint_427_msg;
-          model.alert.title = data.updateChiefComplaint_427_title;
-          break;
-        case 524:
-          model.alert.type="error";
-          model.alert.msg = data.updateChiefComplaint_524_msg;
-          model.alert.title = data.updateChiefComplaint_524_title;
-          break;
-        }
-
-          res.json(model);
-        });
-      }
-    }
+}
 
 exports.updateChiefComplaintResponse = updateChiefComplaintResponse;
 
@@ -394,160 +259,36 @@ var updateFamilyHistoryResponse=function(req,res,response){
 
   var model=new updateFamilyHistoryModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateFamilyHistory");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.updateFamilyHistory_200_msg;
-      model.alert.title = data.updateFamilyHistory_200_title;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-        case 427:
-          model.alert.msg = data.updateFamilyHistory_427_msg;
-          model.alert.title = data.updateFamilyHistory_427_title;
-          break;
-        case 525:
-          model.alert.type="error";
-          model.alert.msg = data.updateFamilyHistory_525_msg;
-          model.alert.title = data.updateFamilyHistory_525_title;
-          break;
-        }
-
-          res.json(model);
-        });
-      }
-    }
+}
 exports.updateFamilyHistoryResponse = updateFamilyHistoryResponse;
 
 var updateMedicalHistoryResponse=function(req,res,response){
 
-var model=new updateMedicalHistoryModel();
-model.status_code=response.status_code;
+  var model=new updateMedicalHistoryModel();
+  model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateMedicalHistory");
 
-if(response.status_code == 200){
-
-  util.getMessageLocale("/alerts/index",res,function(res,data){
-
-    model.alert.type="success";
-    model.alert.msg = data.updateMedicalHistory_200_msg;
-    model.alert.title = data.updateMedicalHistory_200_title;
-    res.json(model);
-  });
-
-}else{
-
-  util.getMessageLocale("/alerts/index",res,function(res,data){
-
-    model.alert.type="warning";
-
-    switch(model.status_code){
-
-      case 427:
-        model.alert.msg = data.updateMedicalHistory_427_msg;
-        model.alert.title = data.updateMedicalHistory_427_title;
-        break;
-      case 526:
-        model.alert.type="error";
-        model.alert.msg = data.updateMedicalHistory_526_msg;
-        model.alert.title = data.updateMedicalHistory_526_title;
-        break;
-      }
-
-        res.json(model);
-      });
-    }
-  }
+}
 exports.updateMedicalHistoryResponse = updateMedicalHistoryResponse;
 
 var updateDentalHistoryResponse=function(req,res,response){
 
   var model=new updateDentalHistoryModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateDentalHistory");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.updateDentalHistory_200_msg;
-      model.alert.title = data.updateDentalHistory_200_title;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-        case 427:
-          model.alert.msg = data.updateDentalHistory_427_msg;
-          model.alert.title = data.updateDentalHistory_427_title;
-          break;
-        case 527:
-          model.alert.type="error";
-          model.alert.msg = data.updateDentalHistory_527_msg;
-          model.alert.title = data.updateDentalHistory_527_title;
-          break;
-        }
-
-          res.json(model);
-        });
-      }
-    }
+}
 exports.updateDentalHistoryResponse = updateDentalHistoryResponse;
 
 var updateRiskFactorsResponse=function(req,res,response){
 
   var model=new updateRiskFactorsModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateRiskFactors");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.updateRiskFactors_200_msg;
-      model.alert.title = data.updateRiskFactors_200_title;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-        case 427:
-          model.alert.msg = data.updateRiskFactors_427_msg;
-          model.alert.title = data.updateRiskFactors_427_title;
-          break;
-        case 528:
-          model.alert.type="error";
-          model.alert.msg = data.updateRiskFactors_528_msg;
-          model.alert.title = data.updateRiskFactors_528_title;
-          break;
-        }
-
-          res.json(model);
-        });
-      }
-    }
+}
 exports.updateRiskFactorsResponse = updateRiskFactorsResponse;
 
 
@@ -555,41 +296,21 @@ var updateCurrentMedicationResponse=function(req,res,response){
 
   var model=new updateCurrentMedicationModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateCurrentMedication");
 
-  if(response.status_code == 200){
+}
+exports.updateCurrentMedicationResponse = updateCurrentMedicationResponse;
 
-    util.getMessageLocale("/alerts/index",res,function(res,data){
+var defaultResponse=function(req,res,model,key){
 
-      model.alert.type="success";
-      model.alert.msg = data.updateCurrentMedication_200_msg;
-      model.alert.title = data.updateCurrentMedication_200_title;
+  util.getMessageLocale("/alerts/index",res,function(res,data){
+
+      model.alert={"type":data[key+"_"+model.status_code+"_type"] ,"msg": data[key+"_"+model.status_code+"_msg"],"title": data[key+"_"+model.status_code+"_title"]};
       res.json(model);
     });
 
-  }else{
 
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-        case 427:
-          model.alert.msg = data.updateCurrentMedication_427_msg;
-          model.alert.title = data.updateCurrentMedication_427_title;
-          break;
-        case 529:
-          model.alert.type="error";
-          model.alert.msg = data.updateCurrentMedication_529_msg;
-          model.alert.title = data.updateCurrentMedication_529_title;
-          break;
-        }
-
-          res.json(model);
-        });
-      }
-    }
-exports.updateCurrentMedicationResponse = updateCurrentMedicationResponse;
+}
 
 //###############################################//
 //*************END PRIVATE METHOD****************//

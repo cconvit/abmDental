@@ -1,7 +1,7 @@
 var app=function(){
 
-  var path="http://d11or7sbz4vm1i.cloudfront.net";
-  //var path="";
+  //var path="http://d11or7sbz4vm1i.cloudfront.net";
+  var path="";
   var handlePortletTitle = function() {
 
     $(".portlet-title").click(function(){

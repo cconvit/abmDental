@@ -1,16 +1,38 @@
-var i18n = require('makara');
 
-var config={
-    "contentPath": "path:locales",
-    "fallback": "en_US"
-};
+var i18n = res.app.kraken.get('i18n');
+var locality = "US_us";
+var bundle;
+var bundalo = require('bundalo');
 
-var provider = i18n.create(config);
+bundle = bundalo({'contentPath': i18n.contentPath, 'fallback': locality, 'engine': "none"});
 
-provider.getBundle('index',"en_US", function (err, bundle) {
+bundle.get({'bundle': '/alerts/index', 'model': {}, 'locality': locality}, function (err, data) {
 
-  console.log(bundle);
-      console.log(bundle.get('login_account'));
-      console.log(bundle.get('loginError_title'));
+    console.log(data.fileUpload_200_type);
 
-});
+  });
+
+
+
+
+/*
+
+var util=require('./lib/util/others');
+var model={};
+model.status_code=200;
+var res=
+
+var defaultResponse=function(req,res,model,key){
+
+  util.getMessageLocale("/alerts/index",res,function(res,data){
+
+      model.alert={"type":"success" ,"msg": data[key+"_"+model.status_code+"_msg"],"title": data[key+"_"+model.status_code+"_title"]};
+      res.json(model);
+    });
+
+
+}
+
+defaultResponse(null,null,{},"fileUpload");
+
+*/

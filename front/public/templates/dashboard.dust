@@ -1,7 +1,9 @@
 {>"layouts/role_admin" /}
 {<path}
-http://d11or7sbz4vm1i.cloudfront.net
 {/path}
+{<path2}
+http://d11or7sbz4vm1i.cloudfront.net
+{/path2}
 {<first_lg_image}us{/first_lg_image}
 
 {! ---BEGIN PARAMETERS MENU--- !}

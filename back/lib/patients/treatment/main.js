@@ -108,3 +108,17 @@ var updateTemporomandibular=function(req, res){
 
 }
 exports.updateTemporomandibular = updateTemporomandibular;
+
+var fileUpload=function(req, res){
+
+  //Validate request message//
+  var model=validator.fileUpload(req.body.data);
+
+  //isValid//
+  if(model.status){
+    updateOrthodonticClass.fileUpload(req,res,model.data);
+  }else
+    render.RenderDefault(req, res, 427);//Error bad request message
+
+}
+exports.fileUpload = fileUpload;

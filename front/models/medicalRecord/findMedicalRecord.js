@@ -1,10 +1,16 @@
 'use strict';
 
+var util = require('../../lib/util/others');
 
-module.exports = function PatientsModel() {
+
+module.exports = function PatientsModel(profile) {
     return {
-      id_number:"",
-      personal_info: {},
-      emergency_contact: {}
+      language:util.order_language(profile.language),
+      profile: {
+                 "name":profile.name,
+                 "avatar":profile.avatar,
+                 "language":profile.language
+               },
+      id_number:""
     };
 };

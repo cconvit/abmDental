@@ -13,6 +13,8 @@ var updateOcclusionDiagnosisModelBack=require('../../../../models/backend/patien
 var addEventTimelineModelBack=require('../../../../models/backend/patients/treatment/orthodontic/addEventTimeline');
 var updateFacialDiagnosisModelBack=require('../../../../models/backend/patients/treatment/orthodontic/updateFacialDiagnosis');
 var updateTemporomandibularModelBack=require('../../../../models/backend/patients/treatment/orthodontic/updateTemporomandibular');
+var fileUploadModelBack=require('../../../../models/backend/patients/treatment/orthodontic/fileUpload');
+
 //##############END BACKEND MODELS#####################//
 
 
@@ -24,6 +26,7 @@ var updateOcclusionDiagnosisModel=require('../../../../models/treatment/orthodon
 var addEventTimelineModel=require('../../../../models/treatment/orthodontic/addEventTimeline');
 var updateFacialDiagnosisModel=require('../../../../models/treatment/orthodontic/updateFacialDiagnosis');
 var updateTemporomandibularModel=require('../../../../models/treatment/orthodontic/updateTemporomandibular');
+var fileUploadModel=require('../../../../models/treatment/orthodontic/fileUpload');
 //##############END PAGE MODELS#####################//
 
 
@@ -73,6 +76,20 @@ var updateTemporomandibular=function(req, res){
 }
 exports.updateTemporomandibular = updateTemporomandibular;
 
+var fileUpload=function(req, res){
+
+  var next=function(req,res,key){
+
+    var data=new fileUploadModelBack(req,key);
+    backend.send("/patients/treatment/orthodontic/file/upload",req,res,data,fileUploadResponse);
+
+  }
+  files.orthodonticFile(req,res,next);
+
+  }
+
+exports.fileUpload = fileUpload;
+
 //###############################################//
 //***************END PUBLIC METHOD***************//
 //###############################################//
@@ -86,119 +103,26 @@ var updateDiagnosisResponse=function(req,res,response){
 
   var model=new updateDiagnosisModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateDiagnosis");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.updateDiagnosis_200_msg;
-      model.alert.title = data.updateDiagnosis_200_title;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-          case 427:
-            model.alert.msg = data.updateDiagnosis_427_msg;
-            model.alert.title = data.updateDiagnosis_427_title;
-            break;
-          case 530:
-            model.alert.type="error";
-            model.alert.msg = data.updateDiagnosis_530_msg;
-            model.alert.title = data.updateDiagnosis_530_title;
-            break;
-          }
-
-          res.json(model);
-        });
-      }
-    }
+}
 exports.updateDiagnosisResponse = updateDiagnosisResponse;
 
 var updateTreatmentPlanResponse=function(req,res,response){
 
   var model=new updateTreatmentPlanModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateTreatmentPlan");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.updateTreatmentPlan_200_msg;
-      model.alert.title = data.updateTreatmentPlan_200_title;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-          case 427:
-            model.alert.msg = data.updateTreatmentPlan_427_msg;
-            model.alert.title = data.updateTreatmentPlan_427_title;
-            break;
-          case 531:
-            model.alert.type="error";
-            model.alert.msg = data.updateTreatmentPlan_531_msg;
-            model.alert.title = data.updateTreatmentPlan_531_title;
-            break;
-          }
-
-          res.json(model);
-        });
-      }
-    }
+}
 exports.updateTreatmentPlanResponse = updateTreatmentPlanResponse;
 
 var updateOcclusionDiagnosisResponse=function(req,res,response){
 
   var model=new updateOcclusionDiagnosisModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateOcclusionDiagnosis");
 
-  if(response.status_code == 200){
-
-  util.getMessageLocale("/alerts/index",res,function(res,data){
-
-    model.alert.type="success";
-    model.alert.msg = data.updateOcclusionDiagnosis_200_msg;
-    model.alert.title = data.updateOcclusionDiagnosis_200_title;
-    res.json(model);
-  });
-
-  }else{
-
-  util.getMessageLocale("/alerts/index",res,function(res,data){
-
-    model.alert.type="warning";
-
-    switch(model.status_code){
-
-        case 427:
-          model.alert.msg = data.updateOcclusionDiagnosis_427_msg;
-          model.alert.title = data.updateOcclusionDiagnosis_427_title;
-          break;
-        case 532:
-          model.alert.type="error";
-          model.alert.msg = data.updateOcclusionDiagnosis_532_msg;
-          model.alert.title = data.updateOcclusionDiagnosis_532_title;
-          break;
-        }
-
-        res.json(model);
-      });
-    }
 }
 exports.updateOcclusionDiagnosisResponse = updateOcclusionDiagnosisResponse;
 
@@ -254,39 +178,9 @@ var updateFacialDiagnosisResponse=function(req,res,response){
 
   var model=new updateFacialDiagnosisModel();
   model.status_code=response.status_code;
+  console.log(model);
+  defaultResponse(req,res,model,"updateFacialDiagnosis");
 
-  if(response.status_code == 200){
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="success";
-      model.alert.msg = data.updateFacialDiagnosis_200_msg;
-      model.alert.title = data.updateFacialDiagnosis_200_title;
-      res.json(model);
-    });
-
-  }else{
-
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-        case 427:
-          model.alert.msg = data.updateFacialDiagnosis_427_msg;
-          model.alert.title = data.updateFacialDiagnosis_427_title;
-          break;
-          case 534:
-            model.alert.type="error";
-            model.alert.msg = data.updateFacialDiagnosis_534_msg;
-            model.alert.title = data.updateFacialDiagnosis_534_title;
-            break;
-          }
-
-          res.json(model);
-        });
-      }
 }
 exports.updateFacialDiagnosisResponse = updateFacialDiagnosisResponse;
 
@@ -294,41 +188,32 @@ var updateTemporomandibularResponse=function(req,res,response){
 
   var model=new updateTemporomandibularModel();
   model.status_code=response.status_code;
+  defaultResponse(req,res,model,"updateTemporomandibular");
 
-  if(response.status_code == 200){
+}
+exports.updateTemporomandibularResponse = updateTemporomandibularResponse;
 
-    util.getMessageLocale("/alerts/index",res,function(res,data){
 
-      model.alert.type="success";
-      model.alert.msg = data.updateTemporomandibular_200_msg;
-      model.alert.title = data.updateTemporomandibular_200_title;
+var fileUploadResponse=function(req,res,response){
+
+  var model=new fileUploadModel();
+  model.status_code=response.status_code;
+  defaultResponse(req,res,model,"fileUpload");
+
+}
+exports.fileUploadResponse = fileUploadResponse;
+
+
+var defaultResponse=function(req,res,model,key){
+
+  util.getMessageLocale("/alerts/index",res,function(res,data){
+
+      model.alert={"type":data[key+"_"+model.status_code+"_type"] ,"msg": data[key+"_"+model.status_code+"_msg"],"title": data[key+"_"+model.status_code+"_title"]};
       res.json(model);
     });
 
-  }else{
 
-    util.getMessageLocale("/alerts/index",res,function(res,data){
-
-      model.alert.type="warning";
-
-      switch(model.status_code){
-
-          case 427:
-            model.alert.msg = data.updateTemporomandibular_427_msg;
-            model.alert.title = data.updateTemporomandibular_427_title;
-            break;
-          case 535:
-            model.alert.type="error";
-            model.alert.msg = data.updateTemporomandibular_535_msg;
-            model.alert.title = data.updateTemporomandibular_535_title;
-            break;
-          }
-
-          res.json(model);
-        });
-      }
 }
-exports.updateTemporomandibularResponse = updateTemporomandibularResponse;
 
 //###############################################//
 //*************END PRIVATE METHOD****************//

@@ -81,6 +81,7 @@ $("#newPatient-button").click(function() {
     // Grab the files and set them to our variable
     function prepareUpload(event)
     {
+      
       files = event.target.files;
     }
 
