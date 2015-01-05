@@ -157,7 +157,7 @@ http://d11or7sbz4vm1i.cloudfront.net
         <ul class="page-breadcrumb">
           <li>
             <i class="fa fa-users"></i>
-            <a href="#">{@pre type="content" key="patients"/}</a>
+            <a href="/patients/list">{@pre type="content" key="patients"/}</a>
             <i class="fa fa-angle-right"></i>
           </li>
           <li>
@@ -174,11 +174,17 @@ http://d11or7sbz4vm1i.cloudfront.net
 							<li>
 								<a data-toggle="modal" href="#new_patient">{@pre type="content" key="new_patient"/}</a>
 							</li>
+              {?personal_info}
+              <li>
+                <a  id="viewTreatment" data_identity="{id_number}" data_action="/patients/treatment" data_csrf="{_csrf}" href="#">{@pre type="content" key="treatment"/}</a>
+              </li>
+              {/personal_info}
 						</ul>
 					</div>
 			   </div>
       </div>
       <!-- END PAGE HEADER-->
+
       <!-- BEGIN FIND -->
       <div class="inbox-header" style="padding-left: 0px;margin-bottom: 10px;">
           <form action="#" id="findIdentity-form" name="findIdentity-form" method="POST" class="form" style="padding-left: 0px;" role="search">

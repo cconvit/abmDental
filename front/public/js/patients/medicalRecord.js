@@ -23,7 +23,7 @@ $("#newPatient-button").click(function() {
         var csrf=$("#findIdentity-form :input[name='_csrf']").val();
 
         $('#newPatient-form').trigger("reset");
-        
+
         sendForm(identity,csrf,$("#findIdentity-form").attr( "action" ));
 
         alert_notification(data.alert.type,data.alert.msg,data.alert.title);
@@ -50,6 +50,18 @@ $("#newPatient-button").click(function() {
     $(form).submit();
 
   }
+
+
+  $("#viewTreatment").click(function() {
+
+    var identity=$("#viewTreatment").attr('data_identity');
+    var csrf=$("#viewTreatment").attr('data_csrf');
+    var action=$("#viewTreatment").attr('data_action');
+
+    sendForm(identity,csrf,action);
+
+    return false; // avoid to execute the actual submit of the form.
+  });
 
   $("#generalInfo-personalInfo-button").click(function() {
 

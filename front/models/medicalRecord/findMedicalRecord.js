@@ -3,13 +3,13 @@
 var util = require('../../lib/util/others');
 
 
-module.exports = function PatientsModel(profile) {
+module.exports = function PatientsModel(req) {
     return {
-      language:util.order_language(profile.language),
+      language:util.order_language(req.session.language),
       profile: {
-                 "name":profile.name,
-                 "avatar":profile.avatar,
-                 "language":profile.language
+                 "name":req.session.profile.name,
+                 "avatar":req.session.profile.avatar,
+                 "language":req.session.profile.language
                },
       id_number:""
     };

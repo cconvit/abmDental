@@ -40,7 +40,7 @@ exports.findTreatment = findTreatment;
 
 var findTreatmentResponse=function(req,res,response){
 
-  var model=new findTreatmentModel(req.session.profile);
+  var model=new findTreatmentModel(req);
   model.status_code=response.status_code;
 
   if(response.status_code == 200){
@@ -50,7 +50,7 @@ var findTreatmentResponse=function(req,res,response){
     model.personal_info.avatar=model.personal_info.image;
 
     if(model.treatment.orthodontic != null){
-      
+
         model.treatment.orthodontic.files=[{"name":"Panoramica","id":"23dsdfsdf"},{"name":"Pariapical","id":"23sdfsfdsdfsdf"}];
         var event=model.treatment.orthodontic.treatment_timeline.event;
         for (var i = 0; i < event.length; i++) {

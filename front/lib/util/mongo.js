@@ -8,8 +8,7 @@ var config=function(app){
     secret: "y0urR4nd0mT0k3n",
     resave: true,
     saveUninitialized: true,
-    store : new MongoStore(global.config.mongo.store),
-    cookie : global.config.mongo.cookie
+    store : new MongoStore(global.config.mongo.store)
   }));
 
 }

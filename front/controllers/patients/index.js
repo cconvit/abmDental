@@ -29,7 +29,7 @@ module.exports = function (router) {
 
     router.get('/medicalRecord', function (req, res) {
 
-        res.render('patients/medicalRecord', new findMedicalRecordModel(req.session.profile));
+        res.render('patients/medicalRecord', new findMedicalRecordModel(req));
 
     });
 
@@ -44,7 +44,7 @@ module.exports = function (router) {
 
 
       //treatmentLib.findTreatment(req,res);
-      res.render('patients/treatment',new findTreatmentModel(req.session.profile));
+      res.render('patients/treatment',new findTreatmentModel(req));
 
     });
 

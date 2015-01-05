@@ -82,6 +82,7 @@ var signupResponse=function(req,res,response){
   if(response.status_code == 200){
 
     req.session.profile=response.data.user;
+    req.session.profile.avatar=global.config.aws.s3.default_portrait;
     res.json(model);
 
   }else{
@@ -120,6 +121,10 @@ var loginResponse=function(req,res,response){
   if(response.status_code == 200){
 
     req.session.profile=response.data.user;
+
+    if(response.data.user.avatar == '' || response.data.user.avatar == null)
+      req.session.profile.avatar=global.config.aws.s3.default_portrait;
+
     res.json(model);
 
   }else{

@@ -163,7 +163,7 @@ exports.newPatientResponse = newPatientResponse;
 
 var listPatientsResponse=function(req,res,response){
 
-  var model=new listPatientsModel(req.session.profile);
+  var model=new listPatientsModel(req);
   model.status_code=response.status_code;
 
   if(response.status_code == 200){
@@ -179,7 +179,7 @@ exports.listPatientsResponse = listPatientsResponse;
 
 var findMedicalRecordResponse=function(req,res,response){
 
-  var model=new findMedicalRecordModel(req.session.profile);
+  var model=new findMedicalRecordModel(req);
   model.status_code=response.status_code;
 
   if(response.status_code == 200){

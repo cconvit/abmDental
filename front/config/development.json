@@ -79,17 +79,32 @@
     },
     "mongo":{
       "store":{
-                "db": "abmDentalSession",
-                "host": "localhost",
-                "port": 27017,
-                "username": "",
-                "password": "",
+                "db": "abmdentalcol",
+                "host": "ds053320.mongolab.com",
+                "port": 53320,
+                "username": "dev_session_user",
+                "password": "Aa123456*",
                 "collection": "sessions",
                 "autoReconnect":true
               },
       "cookie":{
                 "maxAge":600000
                }
+
+    },
+    "mongo2":{
+      "store":{
+        "db": "abmDentalSession",
+        "host": "localhost",
+        "port": 27017,
+        "username": "",
+        "password": "",
+        "collection": "sessions",
+        "autoReconnect":true
+      },
+      "cookie":{
+        "maxAge":600000
+      }
 
     },
     "social_api":{

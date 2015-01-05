@@ -209,7 +209,7 @@ http://d11or7sbz4vm1i.cloudfront.net
         <ul class="page-breadcrumb">
           <li>
             <i class="fa fa-users"></i>
-            <a href="#">{@pre type="content" key="patients"/}</a>
+            <a href="/patients/list">{@pre type="content" key="patients"/}</a>
             <i class="fa fa-angle-right"></i>
           </li>
           <li>
@@ -238,7 +238,7 @@ http://d11or7sbz4vm1i.cloudfront.net
                 <img src="{personal_info.image}" class="img-responsive" alt="" style="width: 80px;height: 80px;">
                 </div>
                 <div class="col-md-6">
-                <h1>{personal_info.names} {personal_info.last_name}</h1>
+                   <a  id="viewMedicalRecord" data_identity="{id_number}" data_action="/patients/medicalRecord" data_csrf="{_csrf}" href="#" style="text-decoration:none;color: #000000;"><h1>{personal_info.names} {personal_info.last_name}</h1></a>
                 </div>
             </div>
             <!-- BEGIN TABLETS-->
