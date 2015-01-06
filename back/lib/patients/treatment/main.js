@@ -122,3 +122,17 @@ var fileUpload=function(req, res){
 
 }
 exports.fileUpload = fileUpload;
+
+var fileView=function(req, res){
+
+  //Validate request message//
+  var model=validator.fileView(req.body.data);
+
+  //isValid//
+  if(model.status){
+    updateOrthodonticClass.fileView(req,res,model.data);
+  }else
+    render.RenderDefault(req, res, 427);//Error bad request message
+
+}
+exports.fileView = fileView;

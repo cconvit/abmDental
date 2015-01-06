@@ -14,6 +14,7 @@ var addEventTimelineModelBack=require('../../../../models/backend/patients/treat
 var updateFacialDiagnosisModelBack=require('../../../../models/backend/patients/treatment/orthodontic/updateFacialDiagnosis');
 var updateTemporomandibularModelBack=require('../../../../models/backend/patients/treatment/orthodontic/updateTemporomandibular');
 var fileUploadModelBack=require('../../../../models/backend/patients/treatment/orthodontic/fileUpload');
+var fileViewModelBack=require('../../../../models/backend/patients/treatment/orthodontic/fileView');
 
 //##############END BACKEND MODELS#####################//
 
@@ -27,6 +28,7 @@ var addEventTimelineModel=require('../../../../models/treatment/orthodontic/addE
 var updateFacialDiagnosisModel=require('../../../../models/treatment/orthodontic/updateFacialDiagnosis');
 var updateTemporomandibularModel=require('../../../../models/treatment/orthodontic/updateTemporomandibular');
 var fileUploadModel=require('../../../../models/treatment/orthodontic/fileUpload');
+var fileViewModel=require('../../../../models/treatment/orthodontic/fileView');
 //##############END PAGE MODELS#####################//
 
 
@@ -89,6 +91,13 @@ var fileUpload=function(req, res){
   }
 
 exports.fileUpload = fileUpload;
+
+var fileView=function(req, res){
+
+  var data=new fileViewModelBack(req);
+  backend.send("/patients/treatment/orthodontic/file/view",req,res,data,fileViewResponse);
+}
+exports.fileView = fileView;
 
 //###############################################//
 //***************END PUBLIC METHOD***************//
@@ -202,6 +211,22 @@ var fileUploadResponse=function(req,res,response){
 
 }
 exports.fileUploadResponse = fileUploadResponse;
+
+var fileViewResponse=function(req,res,response){
+
+  var next=function(req,res,key,url){
+
+    var model=new fileViewModel();
+    model.status_code=response.status_code;
+    model.data={"url":url};
+    defaultResponse(req,res,model,"fileView");
+
+  }
+    console.log(response);
+    files.getFile("dev-abmdental-files",response.data.file.key,req,res,next);
+
+}
+exports.fileViewResponse = fileViewResponse;
 
 
 var defaultResponse=function(req,res,model,key){

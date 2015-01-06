@@ -180,6 +180,28 @@ var fileUpload=function(data){
 }
 exports.fileUpload = fileUpload;
 
+var fileView=function(data){
+
+  var model={};
+  var account_id=data.account_id.trim();
+  var user_id=data.user_id.trim();
+  var id_number=data.id_number.trim();
+  
+
+  if(account_id != "" && user_id != ""  && id_number != ""){
+
+    model.status=true;
+    model.data={"account_id":account_id,"user_id":user_id,"id_number":id_number,"file":data.file};
+
+  }else{
+
+    model.status=false;
+  }
+
+  return model;
+
+}
+exports.fileView = fileView;
 
 //###############################################//
 //***************END PUBLIC METHOD***************//

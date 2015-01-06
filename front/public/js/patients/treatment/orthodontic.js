@@ -174,6 +174,9 @@ $("#orthodontic-fileUpload-button").click(function() {
   var $form = $("#orthodontic-fileUpload-form"),
   url = $form.attr( "action" );
 
+  var msg=$("#orthodontic-facialDiagnosis-button").attr( "data-msg" );
+  blockModal('#orthodontic-fileUpload-modal',msg);
+
   $.ajax({
     url: url,
     type: 'POST',
@@ -184,13 +187,13 @@ $("#orthodontic-fileUpload-button").click(function() {
     contentType: false, // Set content type to false as jQuery will tell the server its a query string request
     success: function(data)
     {
-        console.log(data);
       if(data.status_code == 200){
 
-        $('#orthodontic-fileUpload').modal('toggle');
-        //$('#orthodontic-fileUpload-form').trigger("reset");
+        $('#orthodontic-fileUpload-modal-box').modal('toggle');
+        Metronic.unblockUI('#orthodontic-fileUpload-modal');
+
           $('#orthodonticsModalFileUploadName').val('');
-          $('#orthodontic-fileUpload').find('.fileupload').fileupload('clear');
+          $('#orthodontic-fileUpload').fileinput('clear');
 
           alert_notification(data.alert.type,data.alert.msg,data.alert.title);
         }else{
@@ -202,3 +205,27 @@ $("#orthodontic-fileUpload-button").click(function() {
 
     return false; // avoid to execute the actual submit of the form.
   });
+
+
+  var orthodonticFileViewButton=function(id,url) {
+
+    // Get some values from elements on the page:
+    identity=$('#orthodontic-fileUpload-form').find('input[name="identity"]').val(),
+    csrf=$("input:hidden[name=_csrf]").val();
+
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: {"identity":identity,"file":{"_id":id},"_csrf":csrf},
+      dataType: 'json',
+      success: function(data)
+      {
+        if(data.status_code == 200)
+
+          var win = window.open(data.data.url, '_system');
+          win.focus();
+      }
+    });
+
+    return false; // avoid to execute the actual submit of the form.
+  };

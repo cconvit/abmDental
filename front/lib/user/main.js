@@ -120,6 +120,7 @@ var loginResponse=function(req,res,response){
 
   if(response.status_code == 200){
 
+    req.session.language=response.data.user.language;
     req.session.profile=response.data.user;
 
     if(response.data.user.avatar == '' || response.data.user.avatar == null)

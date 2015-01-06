@@ -52,5 +52,11 @@ module.exports = function (router) {
 
   });
 
+  router.post('/file/view', function (req, res) {
+
+    treatmentLib.fileView(req,res);
+
+  });
+
 
 };

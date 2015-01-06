@@ -16,6 +16,7 @@ var orthodonticTreatmentModel=function(){
   var fileSchema=mongoose.Schema({
     _id:{type:mongoose.Schema.Types.ObjectId},
     name:String,
+    key:String,
     datetime:Date
   },{ _id: false });
 
