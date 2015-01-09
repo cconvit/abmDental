@@ -9,7 +9,7 @@ http://d11or7sbz4vm1i.cloudfront.net
 {<page_styles}
 <link rel="stylesheet" type="text/css" href="{+path /}/assets/global/plugins/bootstrap-select/bootstrap-select.min.css">
 <link href="{+path /}/assets/admin/pages/css/timeline.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css">
+<link rel="stylesheet" type="text/css" href="{+path /}/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css">
 {/page_styles}
 {! ---END CSS--- !}
 
@@ -68,6 +68,7 @@ http://d11or7sbz4vm1i.cloudfront.net
 
 {! ---END HEAD PARAMETERS MENU--- !}
 {<content}
+<script>var treatment={};</script>
       <!-- BEGIN ORTHODONTICS MODAL -->
 
           <!-- BEGIN NEW TREATMENT TIMELINE MODAL -->
@@ -80,134 +81,34 @@ http://d11or7sbz4vm1i.cloudfront.net
 
       <!-- END ORTHODONTICS MODAL -->
 
-    <div class="page-content-wrapper">
-        <div class="page-content">
+      <div class="page-content-wrapper">
+          <div class="page-content">
 
-        <!-- BEGIN PAGE HEADER-->
-             {>"patients/treatment/header"/}
-        <!-- END PAGE HEADER-->
+          <!-- BEGIN PAGE HEADER-->
+               {>"patients/treatment/header"/}
+          <!-- END PAGE HEADER-->
 
-        <!-- BEGIN FIND -->
-             {>"patients/treatment/findTreatment"/}
-        <!-- END FIND-->
+          <!-- BEGIN FIND -->
+               {>"patients/treatment/findTreatment"/}
+          <!-- END FIND-->
 
-      {?id_number}
-            <div class="row" style="margin-bottom: 10px;">
-                <div class="col-md-1" style="width: 110px;">
-                <img src="{personal_info.image}" class="img-responsive" alt="" style="width: 80px;height: 80px;">
-                </div>
-                <div class="col-md-6">
-                   <a  id="viewMedicalRecord" data_identity="{id_number}" data_action="/patients/medicalRecord" data_csrf="{_csrf}" href="#" style="text-decoration:none;color: #000000;"><h1>{personal_info.names} {personal_info.last_name}</h1></a>
-                </div>
-            </div>
-            <!-- BEGIN TABLETS-->
-            <div class="row">
-                    <div class="col-md-12">
-                      <!-- BEGIN  PORTLET BODY-->
-                      <div class="portlet-body">
-                          <ul class="nav nav-pills nav-tabs">
-                          <li class="active">
-                              <a href="#tab_2_1" data-toggle="tab">
-                              {@pre type="content" key="general"/} </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                {@pre type="content" key="specialty"/} <i class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                  <li>
-                                    <a href="#tab_2_2" tabindex="-1" data-toggle="tab">
-                                    {@pre type="content" key="orthodontics"/}</a>
-                                  </li>
-                                  <li>
-                                    <a href="#tab_2_3" tabindex="-1" data-toggle="tab">
-                                    {@pre type="content" key="prosthodontics"/}</a>
-                                  </li>
-                                  <li>
-                                    <a href="#tab_2_4" tabindex="-1" data-toggle="tab">
-                                    {@pre type="content" key="endodontics"/}</a>
-                                  </li>
-                                  <li>
-                                    <a href="#tab_2_5" tabindex="-1" data-toggle="tab">
-                                    {@pre type="content" key="periodontics"/}</a>
-                                  </li>
-                                  <li>
-                                    <a href="#tab_2_6" tabindex="-1" data-toggle="tab">
-                                    {@pre type="content" key="oral_surgery"/}</a>
-                                  </li>
-                                  <li>
-                                    <a href="#tab_2_7" tabindex="-1" data-toggle="tab">
-                                    {@pre type="content" key="operative_esthetic_dentistry"/}</a>
-                                  </li>
-                                  <li>
-                                    <a href="#tab_2_8" tabindex="-1" data-toggle="tab">
-                                    {@pre type="content" key="pediatric_dentistry"/}</a>
-                                  </li>
-                                </ul>
-                              </li>
-                          </ul>
-                          <div class="tab-content">
-                            <!-- BEGIN  GENERAL-->
-                            <div class="tab-pane fade active in" id="tab_2_1">
-                              <div class="caption font-blue-hoki" style="margin-bottom:200px;">
-                                  <span class="caption-subject bold"><h3>{@pre type="content" key="coming_soon"/}<h3></span>
-                              </div>
-                            </div>
-                          <!-- END  GENERAL-->
-                          <!-- BEGIN  ORTHODONTICS-->
-                              {>"patients/treatment/orthodontics/content"/}
-                          <!-- END  ORTHODONTICS-->
-                          <!-- BEGIN  PROSTHODONTICS-->
-                            <div class="tab-pane fade  in" id="tab_2_3">
-                              <div class="caption font-blue-hoki" style="margin-bottom:200px;">
-                                  <span class="caption-subject bold"><h2>{@pre type="content" key="coming_soon"/}<h2></span>
-                              </div>
-                            </div>
-                          <!-- END  PROSTHODONTICS-->
-                          <!-- BEGIN  ENDODONTICS-->
-                            <div class="tab-pane fade  in" id="tab_2_4">
-                              <div class="caption font-blue-hoki" style="margin-bottom:200px;">
-                                  <span class="caption-subject bold"><h2>{@pre type="content" key="coming_soon"/}<h2></span>
-                              </div>
-                            </div>
-                          <!-- END  ENDODONTICS-->
-                          <!-- BEGIN  PERIODONTICS-->
-                            <div class="tab-pane fade  in" id="tab_2_5">
-                              <div class="caption font-blue-hoki" style="margin-bottom:200px;">
-                                  <span class="caption-subject bold"><h2>{@pre type="content" key="coming_soon"/}<h2></span>
-                              </div>
-                            </div>
-                          <!-- END  PERIODONTICS-->
-                          <!-- BEGIN  ORAL SURGERY-->
-                            <div class="tab-pane fade  in" id="tab_2_6">
-                              <div class="caption font-blue-hoki" style="margin-bottom:200px;">
-                                  <span class="caption-subject bold"><h2>{@pre type="content" key="coming_soon"/}<h2></span>
-                              </div>
-                            </div>
-                          <!-- END  ORAL SURGERY-->
-                          <!-- BEGIN  OPERATIVE ESTHETIC DENTISTRY-->
-                            <div class="tab-pane fade  in" id="tab_2_7">
-                              <div class="caption font-blue-hoki" style="margin-bottom:200px;">
-                                  <span class="caption-subject bold"><h2>{@pre type="content" key="coming_soon"/}<h2></span>
-                              </div>
-                            </div>
-                          <!-- END  OPERATIVE ESTHETIC DENTISTRY-->
-                          <!-- BEGIN  PEDIATRIC DENTISTRY-->
-                            <div class="tab-pane fade  in" id="tab_2_8">
-                              <div class="caption font-blue-hoki" style="margin-bottom:200px;">
-                                  <span class="caption-subject bold"><h2>{@pre type="content" key="coming_soon"/}<h2></span>
-                              </div>
-                            </div>
-                          <!-- END  PEDIATRIC DENTISTRY-->
-                          </div>
-                        </div>
-                      <!-- END PORTLET BODY-->
+          {?id_number}
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-1" style="width: 110px;">
+                    <img src="{personal_info.image}" class="img-responsive" alt="" style="width: 80px;height: 80px;">
                     </div>
-                  </div>
-            <!-- END TABLETS-->
-            {/id_number}
-        </div>
-    </div>
+                    <div class="col-md-6">
+                       <a  id="viewMedicalRecord" data_identity="{id_number}" data_action="/patients/medicalRecord" data_csrf="{_csrf}" href="#" style="text-decoration:none;color: #000000;"><h1>{personal_info.names} {personal_info.last_name}</h1></a>
+                    </div>
+                </div>
+                <!-- BEGIN TREATMENT CONTENT -->
+                    {>"patients/treatment/content"/}
+                <!-- END TREATMENT CONTENT -->
+
+          {/id_number}
+          </div>
+     </div>
+
 {/content}
 
 
@@ -216,7 +117,7 @@ http://d11or7sbz4vm1i.cloudfront.net
 <script src="{+path /}/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script>
 <script src="/js/patients/treatment/treatment.js" type="text/javascript"></script>
 <script src="/js/patients/treatment/orthodontic.js" type="text/javascript"></script>
-<script type="text/javascript" src="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
+<script type="text/javascript" src="{+path /}/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {
@@ -225,33 +126,11 @@ jQuery(document).ready(function() {
    app.init();
    app.initTreatment();
 
-   {?treatment.orthodontic.occlusion_diagnosis}
-                    $("#dentitionType option[value='{treatment.orthodontic.occlusion_diagnosis.dentition_type}']").attr('selected', 'selected');
-                    $("#superiorArch option[value='{treatment.orthodontic.occlusion_diagnosis.superior_arch}']").attr('selected', 'selected');
-                    $("#lowerArch option[value='{treatment.orthodontic.occlusion_diagnosis.lower_arch}']").attr('selected', 'selected');
-                    $("#maxillaryMidline option[value='{treatment.orthodontic.occlusion_diagnosis.maxillary_dental_midline}']").attr('selected', 'selected');
-                    $("#mandibularMidline option[value='{treatment.orthodontic.occlusion_diagnosis.mandibular_dental_midline}']").attr('selected', 'selected');
-                    $("#speeCurve option[value='{treatment.orthodontic.occlusion_diagnosis.spee_curve}']").attr('selected', 'selected');
-   {/treatment.orthodontic.occlusion_diagnosis}
-   {?treatment.orthodontic.facial_diagnosis}
-                    $("#faceType option[value='{treatment.orthodontic.facial_diagnosis.facial_type}']").attr('selected', 'selected');
-                    $("#asymmetry option[value='{treatment.orthodontic.facial_diagnosis.asymmetry}']").attr('selected', 'selected');
-                    $("#smileLine option[value='{treatment.orthodontic.facial_diagnosis.smile_line}']").attr('selected', 'selected');
-                    $("#lipIncompetence option[value='{treatment.orthodontic.facial_diagnosis.lip_incompetence}']").attr('selected', 'selected');
-                    $("#facialProfile option[value='{treatment.orthodontic.facial_diagnosis.facial_profile}']").attr('selected', 'selected');
-   {/treatment.orthodontic.facial_diagnosis}
-   {?treatment.orthodontic.temporomandibular}
-                    $("#clickingLeft option[value='{treatment.orthodontic.temporomandibular.clicking_left}']").attr('selected', 'selected');
-                    $("#clickingRight option[value='{treatment.orthodontic.temporomandibular.clicking_right}']").attr('selected', 'selected');
-                    $("#painLeft option[value='{treatment.orthodontic.temporomandibular.pain_left}']").attr('selected', 'selected');
-                    $("#painRight option[value='{treatment.orthodontic.temporomandibular.pain_right}']").attr('selected', 'selected');
-                    $("#deviationLeft option[value='{treatment.orthodontic.temporomandibular.deviation_left}']").attr('selected', 'selected');
-                    $("#deviationRight option[value='{treatment.orthodontic.temporomandibular.deviation_right}']").attr('selected', 'selected');
-                    $("#deflectionLeft option[value='{treatment.orthodontic.temporomandibular.deflection_left}']").attr('selected', 'selected');
-                    $("#deflectionRight option[value='{treatment.orthodontic.temporomandibular.deflection_right}']").attr('selected', 'selected');
-   {/treatment.orthodontic.temporomandibular}
-
-
+   {?id_number}
+     treatment.orthodontics.initOcclusionDiagnosis();
+     treatment.orthodontics.initTemporomandibular();
+     treatment.orthodontics.initFacialDiagnosis();
+   {/id_number}
 
    });
 </script>

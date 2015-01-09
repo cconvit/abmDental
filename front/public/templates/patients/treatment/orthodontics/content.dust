@@ -1,3 +1,4 @@
+<script>treatment.orthodontics={};</script>
 <div class="tab-pane fade  in" id="tab_2_2">
   <div class="caption font-blue-steel" style="margin-bottom:10px;">
         <strong><span class="caption-subject"><h3>{@pre type="content" key="orthodontics"/}<h3></span></strong>

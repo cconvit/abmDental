@@ -10,10 +10,14 @@ var order_language=function(lg){
       language.first={"name":"ES","locale":lg};
       language.second={"name":"EN","locale":"us_US"};
       break;
-      case "us_US":
-        language.first={"name":"EN","locale":lg};
-        language.second={"name":"ES","locale":"es_ES"};
-        break;
+    case "us_US":
+      language.first={"name":"EN","locale":lg};
+      language.second={"name":"ES","locale":"es_ES"};
+      break;
+    default:
+      language.first={"name":"EN","locale":"us_US"};
+      language.second={"name":"ES","locale":"es_ES"};
+      break;
 
       }
    return language;

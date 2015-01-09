@@ -340,3 +340,17 @@
     </form>
   </div>
  </div>
+
+ <script>
+ treatment.orthodontics.initOcclusionDiagnosis=function(){
+
+     {?treatment.orthodontic.occlusion_diagnosis}
+                        $("#dentitionType option[value='{treatment.orthodontic.occlusion_diagnosis.dentition_type}']").attr('selected', 'selected');
+                        $("#superiorArch option[value='{treatment.orthodontic.occlusion_diagnosis.superior_arch}']").attr('selected', 'selected');
+                        $("#lowerArch option[value='{treatment.orthodontic.occlusion_diagnosis.lower_arch}']").attr('selected', 'selected');
+                        $("#maxillaryMidline option[value='{treatment.orthodontic.occlusion_diagnosis.maxillary_dental_midline}']").attr('selected', 'selected');
+                        $("#mandibularMidline option[value='{treatment.orthodontic.occlusion_diagnosis.mandibular_dental_midline}']").attr('selected', 'selected');
+                        $("#speeCurve option[value='{treatment.orthodontic.occlusion_diagnosis.spee_curve}']").attr('selected', 'selected');
+       {/treatment.orthodontic.occlusion_diagnosis}
+   }
+ </script>

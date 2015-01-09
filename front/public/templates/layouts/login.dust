@@ -66,7 +66,7 @@
 <!-- END CORE PLUGINS -->
 <script src="{+path /}/assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="{+path /}/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-<script src="/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
+<script src="{+path /}/assets/global/plugins/bootstrap-toastr/toastr.min.js"></script>
 {+scripts /}
 <script src="/js/app.js" type="text/javascript"></script>
 <script src="/js/alerts.js" type="text/javascript"></script>

@@ -87,3 +87,17 @@
     </form>
   </div>
  </div>
+
+<script>
+ treatment.orthodontics.initFacialDiagnosis=function(){
+
+     {?treatment.orthodontic.facial_diagnosis}
+                    $("#faceType option[value='{treatment.orthodontic.facial_diagnosis.facial_type}']").attr('selected', 'selected');
+                    $("#asymmetry option[value='{treatment.orthodontic.facial_diagnosis.asymmetry}']").attr('selected', 'selected');
+                    $("#smileLine option[value='{treatment.orthodontic.facial_diagnosis.smile_line}']").attr('selected', 'selected');
+                    $("#lipIncompetence option[value='{treatment.orthodontic.facial_diagnosis.lip_incompetence}']").attr('selected', 'selected');
+                    $("#facialProfile option[value='{treatment.orthodontic.facial_diagnosis.facial_profile}']").attr('selected', 'selected');
+     {/treatment.orthodontic.facial_diagnosis}
+     
+   }
+</script>

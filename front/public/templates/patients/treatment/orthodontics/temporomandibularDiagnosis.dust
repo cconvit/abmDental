@@ -162,3 +162,20 @@
     </form>
   </div>
  </div>
+
+<script>
+ treatment.orthodontics.initTemporomandibular=function(){
+
+     {?treatment.orthodontic.temporomandibular}
+                    $("#clickingLeft option[value='{treatment.orthodontic.temporomandibular.clicking_left}']").attr('selected', 'selected');
+                    $("#clickingRight option[value='{treatment.orthodontic.temporomandibular.clicking_right}']").attr('selected', 'selected');
+                    $("#painLeft option[value='{treatment.orthodontic.temporomandibular.pain_left}']").attr('selected', 'selected');
+                    $("#painRight option[value='{treatment.orthodontic.temporomandibular.pain_right}']").attr('selected', 'selected');
+                    $("#deviationLeft option[value='{treatment.orthodontic.temporomandibular.deviation_left}']").attr('selected', 'selected');
+                    $("#deviationRight option[value='{treatment.orthodontic.temporomandibular.deviation_right}']").attr('selected', 'selected');
+                    $("#deflectionLeft option[value='{treatment.orthodontic.temporomandibular.deflection_left}']").attr('selected', 'selected');
+                    $("#deflectionRight option[value='{treatment.orthodontic.temporomandibular.deflection_right}']").attr('selected', 'selected');
+     {/treatment.orthodontic.temporomandibular}
+
+   }
+</script>
