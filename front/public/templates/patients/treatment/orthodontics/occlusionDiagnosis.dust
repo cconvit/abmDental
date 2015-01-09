@@ -1,0 +1,342 @@
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-compress"></i>{@pre type="content" key="occlusion_diagnosis"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div id="orthodontic-occlusionDiagnosis-portlet" class="portlet-body form" style="display: none;">
+   <form id="orthodontic-occlusionDiagnosis-form" name="orthodontic-occlusionDiagnosis-form" action="/patients/treatment/orthodontic/occlusionDiagnosis/update" method="post" class="horizontal-form">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <input type="hidden" name="identity" value="{id_number}">
+      <div class="form-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="dentition_type"/}</label>
+          <select id="dentitionType" name="dentitionType" class="form-control">
+            <option value="primary">{@pre type="content" key="primary"/}</option>
+            <option value="mixed">{@pre type="content" key="mixed"/}</option>
+            <option value="permanent">{@pre type="content" key="permanent"/}</option>
+          </select>
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="superior_arch"/}</label>
+          <select id="superiorArch" name="superiorArch" class="form-control">
+            <option value="ovoid">{@pre type="content" key="ovoid"/}</option>
+            <option value="triangular">{@pre type="content" key="triangular"/}</option>
+            <option value="rectangular">{@pre type="content" key="rectangular"/}</option>
+          </select>
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="lower_arch"/}</label>
+          <select id="lowerArch" name="lowerArch" class="form-control">
+            <option value="ovoid">{@pre type="content" key="ovoid"/}</option>
+            <option value="triangular">{@pre type="content" key="triangular"/}</option>
+            <option value="rectangular">{@pre type="content" key="rectangular"/}</option>
+          </select>
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label bold">{@pre type="content" key="dental_malposition"/}</label>
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="rotation"/}</label>
+          <input type="text" class="form-control" id="rotation" name="rotation" placeholder="{@pre type="content" key="rotation"/}" value="{treatment.orthodontic.occlusion_diagnosis.dm_rotation}">
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="version"/}</label>
+          <input type="text" class="form-control" id="version" name="version" placeholder="{@pre type="content" key="version"/}" value="{treatment.orthodontic.occlusion_diagnosis.dm_version}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="gresion"/}</label>
+          <input type="text" class="form-control" id="gresion" name="gresion" placeholder="{@pre type="content" key="gresion"/}" value="{treatment.orthodontic.occlusion_diagnosis.dm_gresion}">
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="extrusion"/}</label>
+          <input type="text" class="form-control" id="extrusion" name="extrusion" placeholder="{@pre type="content" key="extrusion"/}" value="{treatment.orthodontic.occlusion_diagnosis.dm_extrusion}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="intrusion"/}</label>
+          <input type="text" class="form-control" id="intrusion" name="intrusion" placeholder="{@pre type="content" key="intrusion"/}" value="{treatment.orthodontic.occlusion_diagnosis.dm_intrusion}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label bold">{@pre type="content" key="spaced_teeth"/}</label>
+          <input type="text" class="form-control" id="spacedTeeth" name="spacedTeeth" placeholder="{@pre type="content" key="spaced_teeth"/}" value="{treatment.orthodontic.occlusion_diagnosis.spaced_teeth}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label bold">{@pre type="content" key="overbite"/}</label>
+          <input type="text" class="form-control" id="overbite" name="overbite" placeholder="{@pre type="content" key="overbite"/}" value="{treatment.orthodontic.occlusion_diagnosis.overbite}">
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label bold">{@pre type="content" key="overjet"/}</label>
+          <input type="text" class="form-control" id="overjet" name="overjet" placeholder="{@pre type="content" key="overjet"/}" value="{treatment.orthodontic.occlusion_diagnosis.overjet}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label bold">{@pre type="content" key="molar_relationship"/}</label>
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="left"/}</label>
+          <input type="text" class="form-control" id="leftMolarRatio" name="leftMolarRatio" placeholder="{@pre type="content" key="left"/}" value="{treatment.orthodontic.occlusion_diagnosis.left_molar_relationship}">
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="right"/}</label>
+          <input type="text" class="form-control" id="rightMolarRatio" name="rightMolarRatio" placeholder="{@pre type="content" key="right"/}" value="{treatment.orthodontic.occlusion_diagnosis.right_molar_relationship}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label bold">{@pre type="content" key="canine_relationship"/}</label>
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="left"/}</label>
+          <input type="text" class="form-control" id="leftCanineRatio" name="leftCanineRatio" placeholder="{@pre type="content" key="left"/}" value="{treatment.orthodontic.occlusion_diagnosis.left_canine_relationship}">
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="right"/}</label>
+          <input type="text" class="form-control" id="rightCanineRatio" name="rightCanineRatio" placeholder="{@pre type="content" key="right"/}" value="{treatment.orthodontic.occlusion_diagnosis.right_canine_relationship}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label bold">{@pre type="content" key="dental_midline"/}</label>
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="maxillary"/}</label>
+          <select id="maxillaryMidline" name="maxillaryMidline" class="form-control">
+            <option value="centered">{@pre type="content" key="centered"/}</option>
+            <option value="right">{@pre type="content" key="diverted_to_the_right"/}</option>
+            <option value="left">{@pre type="content" key="diverted_to_the_left"/}</option>
+          </select>
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="distance"/}</label>
+          <div class="input-group input-small">
+             <input id="maxillaryMidlineDistance" type="text" name="maxillaryMidlineDistance" class="input-group input-small" value="{treatment.orthodontic.occlusion_diagnosis.maxillary_dental_distance}">
+          </div>
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="mandibular"/}</label>
+          <select id="mandibularMidline" name="mandibularMidline" class="form-control">
+            <option value="centered">{@pre type="content" key="centered"/}</option>
+            <option value="right">{@pre type="content" key="diverted_to_the_right"/}</option>
+            <option value="left">{@pre type="content" key="diverted_to_the_left"/}</option>
+          </select>
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="distance"/}</label>
+          <div class="input-group input-small">
+             <input id="mandibularMidlineDistance" type="text" name="mandibularMidlineDistance" class="input-group input-small" value="{treatment.orthodontic.occlusion_diagnosis.mandibular_dental_distance}">
+          </div>
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label bold">{@pre type="content" key="lateral_movements"/}</label>
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="working_side_right"/}</label>
+          <input type="text" class="form-control" id="workingSideRight" name="workingSideRight" placeholder="{@pre type="content" key="working_side_right"/}" value="{treatment.orthodontic.occlusion_diagnosis.right_working_side}">
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="working_side_left"/}</label>
+          <input type="text" class="form-control" id="workingSideLeft" name="workingSideLeft" placeholder="{@pre type="content" key="working_side_left"/}" value="{treatment.orthodontic.occlusion_diagnosis.left_working_side}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="balancing_side_right"/}</label>
+          <input type="text" class="form-control" id="balancingSideRight" name="balancingSideRight" placeholder="{@pre type="content" key="balancing_side_left"/}" value="{treatment.orthodontic.occlusion_diagnosis.left_balancing_side}">
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="balancing_side_left"/}</label>
+          <input type="text" class="form-control" id="balancingSideLeft" name="balancingSideLeft" placeholder="{@pre type="content" key="balancing_side_right"/}" value="{treatment.orthodontic.occlusion_diagnosis.right_balancin_side}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label bold">{@pre type="content" key="others"/}</label>
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="protrusive_incisal_guide"/}</label>
+          <input type="text" class="form-control" id="protrusiveIncisalGuide" name="protrusiveIncisalGuide" placeholder="{@pre type="content" key="protrusive_incisal_guide"/}" value="{treatment.orthodontic.occlusion_diagnosis.protrusive_incisal_guide}">
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="protrusive_interference"/}</label>
+          <input type="text" class="form-control" id="protrusiveInterference" name="protrusiveInterference" placeholder="{@pre type="content" key="protrusive_interference"/}" value="{treatment.orthodontic.occlusion_diagnosis.protrusive_interference}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="spee_curve"/}</label>
+          <select id="speeCurve" name="speeCurve" class="form-control">
+            <option value="plane">{@pre type="content" key="plane"/}</option>
+            <option value="deep">{@pre type="content" key="deep"/}</option>
+          </select>
+        </div>
+      </div>
+      <!--/span-->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">{@pre type="content" key="dental_relationship"/}</label>
+          <input type="text" class="form-control" id="dentalRelationship" name="dentalRelationship" placeholder="{@pre type="content" key="dental_relationship"/}" value="{treatment.orthodontic.occlusion_diagnosis.dental_relationship}">
+        </div>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+      <div class="row">
+        <div class="col-md-6">
+            <div class="clearfix">
+              <button type="button" name="orthodontic-occlusionDiagnosis-button" id="orthodontic-occlusionDiagnosis-button" class="btn green" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+            </div>
+        </div>
+      </div>
+      <!--/row-->
+      </div>
+    </form>
+  </div>
+ </div>

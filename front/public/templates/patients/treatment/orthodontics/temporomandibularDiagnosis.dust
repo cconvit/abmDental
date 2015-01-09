@@ -1,0 +1,164 @@
+<div class="portlet box purple">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-chain"></i>{@pre type="content" key="temporomandibular_joint_disorders"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div id="orthodontic-temporomandibular-portlet" class="portlet-body form" style="display: none;">
+   <form id="orthodontic-temporomandibular-form" name="orthodontic-temporomandibular-form" action="/patients/treatment/orthodontic/temporomandibular/update" method="post" class="horizontal-form">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <input type="hidden" name="identity" value="{id_number}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label bold">{@pre type="content" key="clicking"/}</label>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="left"/}</label>
+              <select id="clickingLeft" name="clickingLeft" class="form-control">
+                <option value="none">{@pre type="content" key="none"/}</option>
+                <option value="opening">{@pre type="content" key="opening"/}</option>
+                <option value="closing">{@pre type="content" key="closing"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="right"/}</label>
+              <select id="clickingRight" name="clickingRight" class="form-control">
+                <option value="none">{@pre type="content" key="none"/}</option>
+                <option value="opening">{@pre type="content" key="opening"/}</option>
+                <option value="closing">{@pre type="content" key="closing"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label bold">{@pre type="content" key="pain"/}</label>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="left"/}</label>
+              <select id="painLeft" name="painLeft" class="form-control">
+                <option value="none">{@pre type="content" key="none"/}</option>
+                <option value="opening">{@pre type="content" key="opening"/}</option>
+                <option value="closing">{@pre type="content" key="closing"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="right"/}</label>
+              <select id="painRight" name="painRight" class="form-control">
+                <option value="none">{@pre type="content" key="none"/}</option>
+                <option value="opening">{@pre type="content" key="opening"/}</option>
+                <option value="closing">{@pre type="content" key="closing"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label bold">{@pre type="content" key="deviation"/}</label>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="left"/}</label>
+              <select id="deviationLeft" name="deviationLeft" class="form-control">
+                <option value="none">{@pre type="content" key="none"/}</option>
+                <option value="opening">{@pre type="content" key="opening"/}</option>
+                <option value="closing">{@pre type="content" key="closing"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="right"/}</label>
+              <select id="deviationRight" name="deviationRight" class="form-control">
+                <option value="none">{@pre type="content" key="none"/}</option>
+                <option value="opening">{@pre type="content" key="opening"/}</option>
+                <option value="closing">{@pre type="content" key="closing"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label bold">{@pre type="content" key="deflection"/}</label>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="left"/}</label>
+              <select id="deflectionLeft" name="deflectionLeft" class="form-control">
+                <option value="none">{@pre type="content" key="none"/}</option>
+                <option value="opening">{@pre type="content" key="opening"/}</option>
+                <option value="closing">{@pre type="content" key="closing"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="right"/}</label>
+              <select id="deflectionRight" name="deflectionRight" class="form-control">
+                <option value="none">{@pre type="content" key="none"/}</option>
+                <option value="opening">{@pre type="content" key="opening"/}</option>
+                <option value="closing">{@pre type="content" key="closing"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+
+
+      <div class="row">
+        <div class="col-md-6">
+            <div class="clearfix">
+              <button type="button" name="orthodontic-temporomandibular-button" id="orthodontic-temporomandibular-button" class="btn purple" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+            </div>
+        </div>
+      </div>
+      <!--/row-->
+      </div>
+    </form>
+  </div>
+ </div>

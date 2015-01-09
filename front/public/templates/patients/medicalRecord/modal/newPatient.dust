@@ -1,0 +1,74 @@
+<div id="new_patient" class="modal fade" tabindex="-1" aria-hidden="true">
+  <form id="newPatient-form" name="newPatient-form" action="/patients/medicalRecord/add" method="get">
+    <input type="hidden" name="_csrf" value="{_csrf}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header-blue">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">{@pre type="content" key="new_patient"/}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="scroller" style="height:220px" data-always-visible="1" data-rail-visible1="1">
+            <div class="row">
+              <div class="col-md-12">
+                <p>
+                    <div class="col-md-12 form-group">
+                      <label class="col-md-3 control-label">
+                           {@pre type="content" key="names"/}
+                           <span class="required" aria-required="true"> * </span>
+                       </label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" id="modalNames" name="modalNames" placeholder="{@pre type="content" key="names"/}">
+                      </div>
+                    </div>
+                </p>
+                <p>
+                    <div class="col-md-12 form-group">
+                      <label class="col-md-3 control-label">
+                           {@pre type="content" key="last_name"/}
+                           <span class="required" aria-required="true"> * </span>
+                       </label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" id="modalLastName" name="modalLastName" placeholder="{@pre type="content" key="last_name"/}">
+                      </div>
+                    </div>
+                </p>
+                <p>
+                    <div class="col-md-12 form-group">
+                      <label class="col-md-3 control-label">
+                           {@pre type="content" key="identity"/}
+                           <span class="required" aria-required="true"> * </span>
+                       </label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" id="modalIdentity" name="modalIdentity" placeholder="{@pre type="content" key="identity"/}">
+                      </div>
+                    </div>
+                </p>
+                <p>
+                    <div class="col-md-12 form-group">
+                      <label class="col-md-3 control-label">
+                           {@pre type="content" key="identity_type"/}
+                           <span class="required" aria-required="true"> * </span>
+                       </label>
+                      <div class="col-md-9">
+                        <select id="modalIdentityType" name="modalIdentityType" class="form-control">
+                              <option value="1">CC</option>
+                              <option value="2">CE</option>
+                              <option value="3">TI</option>
+                              <option value="4">PA</option>
+                        </select>
+                      </div>
+                    </div>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" class="btn default">{@pre type="content" key="close"/}</button>
+          <button type="button" name="newPatient-button" id="newPatient-button" class="btn blue-steel">{@pre type="content" key="save"/}</button>
+        </div>
+      </div>
+    </div>
+    </form>
+</div>

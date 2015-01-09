@@ -1,0 +1,222 @@
+<div class="portlet box yellow">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-child"></i>{@pre type="content" key="personal_information"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div id="generalInfo-personalInfo-portlet" class="portlet-body form" style="display: none;">
+   <form id="generalInfo-personalInfo-form" name="generalInfo-personalInfo-form" action="/patients/medicalRecord/generalInfo/personalInfo" method="post" class="horizontal-form">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <input type="hidden" name="identity" value="{id_number}">
+      <input type="hidden" name="avatar" value="{personal_info.avatar}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="names"/}</label>
+              <input type="text" id="names" name="names" class="form-control" placeholder="{@pre type="content" key="names"/}" value="{personal_info.names}">
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="last_name"/}</label>
+              <input type="text" id="lastName" name="lastName" class="form-control" placeholder="{@pre type="content" key="last_name"/}" value="{personal_info.last_name}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="identity"/}</label>
+              <input type="text" id="identity" disabled class="form-control" placeholder="{@pre type="content" key="identity"/}" value="{id_number}">
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="identity_type"/}</label>
+                  <select id="identityType" name="identityType" class="form-control">
+                    <option value="1">CC</option>
+                    <option value="2">CE</option>
+                    <option value="3">TI</option>
+                    <option value="4">PA</option>
+                  </select>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="date_of_birth"/}</label>
+              <div class="input-group input-large date date-picker" data-date-format="{@pre type="content" key="date_format"/}" data-date={personal_info.date_of_birth}>
+                <input type="text" class="form-control" readonly="" id="dateOfBirth" name="dateOfBirth" value="{personal_info.date_of_birth}">
+                <span class="input-group-btn">
+                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="place_of_birth"/}</label>
+              <input type="text" id="placeOfBirth" name="placeOfBirth" class="form-control" placeholder="{@pre type="content" key="place_of_birth"/}" value="{personal_info.place_of_birth}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="age"/}</label>
+              <input type="text" id="age" name="age" class="form-control" placeholder="{@pre type="content" key="age"/}" value="{personal_info.age}">
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="civil_status"/}</label>
+              <input type="text" id="civilStatus" name="civilStatus" class="form-control" placeholder="{@pre type="content" key="civil_status"/}" value="{personal_info.civil_status}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="genre"/}</label>
+              <select id="genre" name="genre" class="form-control">
+                <option value="F">{@pre type="content" key="female"/}</option>
+                <option value="M">{@pre type="content" key="male"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="origin"/}</label>
+              <input type="text" id="origin" name="origin" class="form-control" placeholder="origin" value="{personal_info.origin}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="occupation"/}</label>
+              <input type="text" id="occupation" name="occupation" class="form-control" placeholder="{@pre type="content" key="occupation"/}" value="{personal_info.occupation}">
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="workplace"/}</label>
+              <input type="text" id="workplace" name="workplace" class="form-control" placeholder="{@pre type="content" key="workplace"/}" value="{personal_info.workplace}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="phone"/}</label>
+              <input type="text" id="phone" name="phone" class="form-control" placeholder="{@pre type="content" key="phone"/}" value="{personal_info.phone}">
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="cell_phone"/}</label>
+              <input type="text" id="cellPhone" name="cellPhone" class="form-control" placeholder="{@pre type="content" key="cell_phone"/}" value="{personal_info.cell_phone}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="email"/}</label>
+              <div class="input-group margin-top-10">
+                <span class="input-group-addon">
+                <i class="fa fa-envelope"></i>
+                </span>
+                <input type="email" id="email" name="email" class="form-control" placeholder="{@pre type="content" key="email"/}" value="{personal_info.email}">
+              </div>
+              </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="neighborhood"/}</label>
+              <input type="text" id="neighborhood" name="neighborhood" class="form-control" placeholder="{@pre type="content" key="neighborhood"/}" value="{personal_info.neighborhood}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="home_phone"/}</label>
+              <input type="text" id="homePhone" name="homePhone" class="form-control" placeholder="{@pre type="content" key="home_phone"/}" value="{personal_info.home_phone}">
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+               <label class="control-label">{@pre type="content" key="department"/}</label>
+               <input type="text" id="department" name="department" class="form-control" placeholder="{@pre type="content" key="department"/}" value="{personal_info.department}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="patient_portrait"/}</label>
+              <input type="file" id="patientPortrait" name="patientPortrait">
+              <p class="help-block">{@pre type="content" key="upload_patient_portrait"/}</p>
+              </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+              <div class="clearfix">
+                <button type="button" id="generalInfo-personalInfo-button" name="generalInfo-personalInfo-button" class="btn yellow" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+              </div>
+          </div>
+          <div class="col-md-6">
+          </div>
+        </div>
+        <!--/row-->
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+medicalRecord.initPersonalInformation=function(){
+
+  {?personal_info}
+                    $("#identityType option[value='{personal_info.id_type}']").attr('selected', 'selected');
+                    $("#genre option[value='{personal_info.genre}']").attr('selected', 'selected');
+   {/personal_info}
+}
+</script>

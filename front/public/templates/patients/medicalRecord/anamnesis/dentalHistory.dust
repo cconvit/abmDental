@@ -1,0 +1,37 @@
+<div class="portlet box red-flamingo">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-users"></i>{@pre type="content" key="dental_history"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div id="anamnesis-dentalHistory-portlet" class="portlet-body form" style="display: none;">
+   <form id="anamnesis-dentalHistory-form" name="anamnesis-dentalHistory-form" action="/patients/medicalRecord/anamnesis/dentalHistory" method="POST" class="horizontal-form">
+      <input type="hidden" name="identity" value="{id_number}">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="dental_information"/}</label>
+              <textarea class="form-control"name="dentalInformation" id="dentalInformation" rows="6">{dental_history.dental_info}</textarea>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+      <div class="row">
+        <div class="col-md-6">
+            <div class="clearfix">
+              <button type="button" name="anamnesis-dentalHistory-button" id="anamnesis-dentalHistory-button" data-msg="{@pre type="content" key="processing"/}" class="btn red-flamingo"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+            </div>
+        </div>
+      </div>
+      <!--/row-->
+      </div>
+    </form>
+  </div>
+ </div>

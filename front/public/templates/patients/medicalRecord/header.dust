@@ -1,0 +1,33 @@
+<h3 class="page-title">
+      {@pre type="content" key="patients"/}
+</h3>
+      <div class="page-bar">
+        <ul class="page-breadcrumb">
+          <li>
+            <i class="fa fa-users"></i>
+            <a href="/patients/list">{@pre type="content" key="patients"/}</a>
+            <i class="fa fa-angle-right"></i>
+          </li>
+          <li>
+            <i class="icon-docs"></i>
+            <a href="#">{@pre type="content" key="medical_record"/}</a>
+          </li>
+        </ul>
+        <div class="page-toolbar">
+          <div class="btn-group pull-right">
+            <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+            {@pre type="content" key="actions"/} <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+              <li>
+                <a data-toggle="modal" href="#new_patient">{@pre type="content" key="new_patient"/}</a>
+              </li>
+              {?personal_info}
+              <li>
+                <a  id="viewTreatment" data_identity="{id_number}" data_action="/patients/treatment" data_csrf="{_csrf}" href="#">{@pre type="content" key="treatment"/}</a>
+              </li>
+              {/personal_info}
+            </ul>
+          </div>
+         </div>
+      </div>

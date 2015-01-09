@@ -1,0 +1,37 @@
+<div class="portlet box yellow">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-users"></i>{@pre type="content" key="chief_complaint"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div id="anamnesis-chiefComplaint-portlet" class="portlet-body form" style="display: none;">
+   <form id="anamnesis-chiefComplaint-form" name="anamnesis-chiefComplaint-form" action="/patients/medicalRecord/anamnesis/chiefComplaint" method="POST" class="horizontal-form">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <input type="hidden" name="identity" value="{id_number}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="chief_complaint"/}</label>
+              <textarea class="form-control"name="chiefComplaint" id="chiefComplaint" rows="6">{chief_complaint.chief_complaint}</textarea>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+      <div class="row">
+        <div class="col-md-6">
+            <div class="clearfix">
+              <button type="button" name="anamnesis-chiefComplaint-button" id="anamnesis-chiefComplaint-button" data-msg="{@pre type="content" key="processing"/}" class="btn yellow"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+            </div>
+        </div>
+      </div>
+      <!--/row-->
+      </div>
+    </form>
+  </div>
+ </div>

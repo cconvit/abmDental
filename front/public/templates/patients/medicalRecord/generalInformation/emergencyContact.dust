@@ -1,0 +1,108 @@
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-phone"></i>{@pre type="content" key="emergency_contact"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand"></a>
+    </div>
+  </div>
+  <div id="generalInfo-emergencyConatct-portlet" class="portlet-body form" style="display: none;">
+   <form id="generalInfo-emergencyConatct-form" name="generalInfo-emergencyConatct-form" action="/patients/medicalRecord/generalInfo/emergencyContact" class="horizontal-form">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <input type="hidden" name="identity" value="{id_number}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="names"/}</label>
+              <input type="text" id="ec_names" name="ec_names"  class="form-control" placeholder="{@pre type="content" key="names"/}" value="{emergency_contact.names}">
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="last_name"/}</label>
+              <input type="text" id="ec_lastName" name="ec_lastName" class="form-control" placeholder="{@pre type="content" key="last_name"/}" value="{emergency_contact.last_name}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="identity"/}</label>
+              <input type="text" id="ec_identity" name="ec_identity" class="form-control" placeholder="{@pre type="content" key="identity"/}" value="{emergency_contact.id_number}">
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="identity_type"/}</label>
+                  <select id="ec_identityType" name="ec_identityType" class="form-control">
+                    <option value="1">CC</option>
+                    <option value="2">CE</option>
+                    <option value="3">TI</option>
+                    <option value="4">PA</option>
+                  </select>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="relationship"/}</label>
+              <input type="text" id="ec_relationship" name="ec_relationship" class="form-control" placeholder="{@pre type="content" key="relationship"/}" value="{emergency_contact.relationship}">
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="occupation"/}</label>
+              <input type="text" id="ec_occupation" name="ec_occupation" class="form-control" placeholder="{@pre type="content" key="occupation"/}" value="{emergency_contact.occupation}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="phone"/}</label>
+              <input type="text" id="ec_phone" name="ec_phone" class="form-control" placeholder="{@pre type="content" key="phone"/}" value="{emergency_contact.phone}">
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="cell_phone"/}</label>
+              <input type="text" id="ec_cell_phone" name="ec_cell_phone" class="form-control" placeholder="{@pre type="content" key="cell_phone"/}" value="{emergency_contact.cell_phone}">
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+              <div class="clearfix">
+                <button type="button" name="generalInfo-emergencyConatct-button" id="generalInfo-emergencyConatct-button" class="btn green" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+           </div>
+          </div>
+        </div>
+        <!--/row-->
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+medicalRecord.initEmergencyContact=function(){
+
+  {?emergency_contact}
+                    $("#ec_identityType option[value='{emergency_contact.id_type}']").attr('selected', 'selected');
+  {/emergency_contact}
+}
+</script>

@@ -1,0 +1,60 @@
+<div id="orthodontic-fileUpload" class="modal fade" tabindex="-1" aria-hidden="true">
+  <form id="orthodontic-fileUpload-form" name="orthodontic-fileUpload-form" action="/patients/treatment/orthodontic/file/upload" method="post">
+    <input type="hidden" name="_csrf" value="{_csrf}">
+    <input type="hidden" name="identity" value="{id_number}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header-blue">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">{@pre type="content" key="fileUpload_title"/}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="scroller" style="height:100px" data-always-visible="1" data-rail-visible1="1">
+            <div class="row">
+              <div class="col-md-12">
+                <p>
+                    <div class="col-md-12 form-group">
+                      <label class="col-md-3 control-label">
+                           {@pre type="content" key="fileUpload_name"/}
+                           <span class="required" aria-required="true"></span>
+                       </label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" id="orthodonticsModalFileUploadName" name="orthodonticsModalFileUploadName" placeholder="{@pre type="content" key="fileUpload_name"/}">
+                      </div>
+                    </div>
+                </p>
+                <p>
+                    <div class="col-md-12 form-group">
+                      <label class="col-md-3 control-label">
+                           {@pre type="content" key="fileUpload_file"/}
+                           <span class="required" aria-required="true"></span>
+                       </label>
+                      <div class="col-md-9">
+                         <div id="orthodontic-fileUpload" class="fileinput fileinput-new" data-provides="fileinput">
+                            <span class="btn default btn-file">
+                            <span class="fileinput-new">
+                            {@pre type="content" key="fileUpload_button"/} </span>
+                            <span class="fileinput-exists">
+                            {@pre type="content" key="fileUpload_button_change"/} </span>
+                            <input type="hidden"><input type="file" id="orthodonticsModalFileUploadFile" name="orthodonticsModalFileUploadFile">
+                            </span>
+                            <span class="fileinput-filename">
+                            </span>
+                            &nbsp; <a href="#" class="close fileinput-exists" data-dismiss="fileinput">
+                            </a>
+                        </div>
+                      </div>
+                    </div>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" class="btn default">{@pre type="content" key="close"/}</button>
+          <button type="button" name="orthodontic-fileUpload-button" id="orthodontic-fileUpload-button" class="btn blue">{@pre type="content" key="save"/}</button>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>

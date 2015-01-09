@@ -1,0 +1,11 @@
+<div class="inbox-header" style="padding-left: 0px;margin-bottom: 10px;">
+    <form action="#" id="findIdentity-form" name="findIdentity-form" method="POST" class="form" style="padding-left: 0px;" role="search">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <div class="input-group input-medium">
+        <input type="text" class="form-control" id="sa_identity" name="sa_identity" placeholder="{@pre type="content" key="identity"/}">
+        <span class="input-group-btn">
+          <button type="submit" class="btn blue"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+    </form>
+</div>

@@ -1,0 +1,37 @@
+<div class="portlet box grey-cascade">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-list-ol"></i>{@pre type="content" key="treatment_plan"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div id="orthodontic-treatmentPlan-portlet" class="portlet-body form" style="display: none;">
+   <form id="orthodontic-treatmentPlan-form" name="orthodontic-treatmentPlan-form" action="/patients/treatment/orthodontic/treatmentPlan/update" method="post" class="horizontal-form">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <input type="hidden" name="identity" value="{id_number}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="plan"/}</label>
+              <textarea class="form-control"name="plan" id="plan" rows="2">{treatment.orthodontic.treatment_plan.plan}</textarea>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+      <div class="row">
+        <div class="col-md-6">
+            <div class="clearfix">
+              <button type="button" name="orthodontic-treatmentPlan-button" id="orthodontic-treatmentPlan-button" class="btn grey-cascade" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+            </div>
+        </div>
+      </div>
+      <!--/row-->
+      </div>
+    </form>
+  </div>
+ </div>

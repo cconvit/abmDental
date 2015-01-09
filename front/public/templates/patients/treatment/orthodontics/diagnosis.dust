@@ -1,0 +1,57 @@
+<div class="portlet box red-flamingo">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-pencil"></i>{@pre type="content" key="diagnosis"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div id="orthodontic-diagnosis-portlet" class="portlet-body form" style="display: none;">
+   <form id="orthodontic-diagnosis-form" name="orthodontic-diagnosis-form" action="/patients/treatment/orthodontic/diagnosis/update" method="post" class="horizontal-form">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <input type="hidden" name="identity" value="{id_number}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="facial"/}</label>
+              <textarea class="form-control"name="facial" id="facial" rows="2">{treatment.orthodontic.diagnosis.facial}</textarea>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="skeletal"/}</label>
+              <textarea class="form-control"name="skeletal" id="skeletal" rows="2">{treatment.orthodontic.diagnosis.skeletal}</textarea>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="dental"/}</label>
+              <textarea class="form-control"name="dental" id="dental" rows="2">{treatment.orthodontic.diagnosis.dental}</textarea>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+      <div class="row">
+        <div class="col-md-6">
+            <div class="clearfix">
+              <button type="button" name="orthodontic-diagnosis-button" id="orthodontic-diagnosis-button" class="btn red-flamingo" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+            </div>
+        </div>
+      </div>
+      <!--/row-->
+      </div>
+    </form>
+  </div>
+ </div>

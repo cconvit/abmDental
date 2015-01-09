@@ -1,0 +1,59 @@
+<div class="portlet box green-meadow">
+    <div class="portlet-title">
+      <div class="caption">
+        <i class="fa fa-folder-o"></i>{@pre type="content" key="files"/}
+      </div>
+      <div class="tools">
+        <a href="javascript:;" class="expand">
+        </a>
+      </div>
+    </div>
+    <div class="portlet-body form" style="display: none;">
+     <form action="patient/pi/update" method="get" class="horizontal-form">
+        <input type="hidden" name="identity" value="{identity}">
+        <div class="form-body">
+          <div class="row" style="margin-bottom: 20px;"><div class="col-md-12"><a data-toggle="modal" href="#orthodontic-fileUpload" class="btn btn-lg grey">Add <i class="fa fa-plus"></i></a></div></div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="portlet-body">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>{@pre type="content" key="name"/}</th>
+                          <th>{@pre type="content" key="action"/}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {#treatment.orthodontic.files}
+                        <tr>
+                          <td>{@math key=$idx method="add" operand="1"/}</td>
+                          <td>{name}</td>
+                          <td>
+                                <div class="clearfix">
+                                  <button type="button" id="orthodontic-fileView-button" data-id="{id}" class="btn green-meadow"><i class="fa fa-search"></i></button>
+                                  <button type="button" id="orthodontic-fileDelete-button" data-id="{id}" class="btn red"><i class="fa fa-trash-o"></i></button>
+                                </div>
+                          </td>
+                        </tr>
+                        {/treatment.orthodontic.files}
+                        </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                 </div>
+                 <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+              <div class="clearfix">
+                <button type="submit" class="btn green-meadow"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+              </div>
+          </div>
+        </div>
+        <!--/row-->
+        </div>
+      </form>
+    </div>
+   </div>

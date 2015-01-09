@@ -1,0 +1,16 @@
+<h3 class="page-title">
+  {@pre type="content" key="patients"/}
+</h3>
+  <div class="page-bar">
+    <ul class="page-breadcrumb">
+      <li>
+        <i class="fa fa-users"></i>
+        <a href="/patients/list">{@pre type="content" key="patients"/}</a>
+        <i class="fa fa-angle-right"></i>
+      </li>
+      <li>
+        <i class="icon-layers"></i>
+        <a href="#">{@pre type="content" key="treatment"/}</a>
+      </li>
+    </ul>
+  </div>

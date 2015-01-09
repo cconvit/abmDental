@@ -1,0 +1,76 @@
+{?personal_info}
+      <div class="row" style="margin-bottom: 10px;">
+          <div id="patient_portrait" name="patient_portrait" class="col-md-1" style="width: 110px;">
+          <img src="{personal_info.image}" class="img-responsive" alt="" style="width: 80px;height: 80px;">
+          </div>
+          <div id="patient_name" class="col-md-6">
+          <h1>{personal_info.names} {personal_info.last_name}</h1>
+          </div>
+      </div>
+      <!-- BEGIN TABLETS-->
+      <div class="row">
+              <div class="col-md-12">
+                <!-- BEGIN  PORTLET BODY-->
+                <div class="tabbable-line tabs-below" style="margin-bottom: 30px;">
+
+                    <ul class="nav nav-tabs">
+                      <li class="active">
+                        <a href="#tab_2_1" data-toggle="tab">
+                        {@pre type="content" key="general_information"/} </a>
+                      </li>
+                      <li class="">
+                        <a href="#tab_2_2" data-toggle="tab">
+                        {@pre type="content" key="anamnesis"/} </a>
+                      </li>
+                    </ul>
+
+                    <div class="tab-content">
+                      <!-- BEGIN  GENERAL INFORMATION-->
+                        <div class="tab-pane fade active in" id="tab_2_1">
+
+                          <!-- BEGIN PERSONAL INFORMATION YELLOW BOX-->
+                              {>"patients/medicalRecord/generalInformation/personalInformation"/}
+                          <!-- END PERSONAL INFORMATION YELLOW BOX-->
+
+                          <!-- BEGIN EMERGENCY CONTACT GREEN BOX-->
+                              {>"patients/medicalRecord/generalInformation/emergencyContact"/}
+                          <!-- END EMERGENCY CONTACT GREEN BOX-->
+                        </div>
+                      <!-- END  GENERAL INFORMATION-->
+
+                      <!-- BEGIN  ANAMNESIS-->
+                          <div class="tab-pane fade" id="tab_2_2">
+
+                            <!-- BEGIN CHIEF COMPLAINT YELLOW BOX-->
+                                {>"patients/medicalRecord/anamnesis/chiefComplaint"/}
+                            <!-- END CHIEF COMPLAINT YELLOW BOX-->
+
+                            <!-- BEGIN FAMILY HISTORY GREEN BOX-->
+                                {>"patients/medicalRecord/anamnesis/familyHistory"/}
+                            <!-- END FAMILY HISTORY GREEN BOX-->
+
+                            <!-- BEGIN MEDICAL HISTORY PURBLE BOX-->
+                                {>"patients/medicalRecord/anamnesis/medicalHistory"/}
+                            <!-- END MEDICAL HISTORY PURPLE BOX-->
+
+                            <!-- BEGIN DENTAL HISTORY RED FLAMINGO BOX-->
+                                {>"patients/medicalRecord/anamnesis/dentalHistory"/}
+                            <!-- END DENTAL HISTORY RED FLAMINGO BOX-->
+
+                            <!-- BEGIN RISK FACTORS GREY-CASCADE BOX-->
+                                {>"patients/medicalRecord/anamnesis/riskFactors"/}
+                            <!-- END RISK FACTORS RED GREY-CASCADE BOX-->
+
+                            <!-- BEGIN CURRENT MEDICATION YELLOW-CASABLANCA BOX-->
+                                {>"patients/medicalRecord/anamnesis/currentMedication"/}
+                            <!-- END CURRENT MEDICATION YELLOW-CASABLANCA BOX-->
+
+                          </div>
+                      <!-- END  ANAMNESIS-->
+                    </div>
+                  </div>
+                <!-- END PORTLET BODY-->
+              </div>
+            </div>
+      <!-- END TABLETS-->
+{/personal_info}

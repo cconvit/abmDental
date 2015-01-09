@@ -1,0 +1,32 @@
+<div class="tab-pane fade  in" id="tab_2_2">
+  <div class="caption font-blue-steel" style="margin-bottom:10px;">
+        <strong><span class="caption-subject"><h3>{@pre type="content" key="orthodontics"/}<h3></span></strong>
+  </div>
+        <!-- BEGIN FACIAL DIAGNOSIS YELLOW BOX-->
+            {>"patients/treatment/orthodontics/facialDiagnosis"/}
+        <!-- END FACIAL DIAGNOSIS YELLOW BOX-->
+
+        <!-- BEGIN OCCLUSION DIAGNOSIS GREEN BOX-->
+            {>"patients/treatment/orthodontics/occlusionDiagnosis"/}
+        <!-- END OCCLUSION DIAGNOSIS GREEN BOX-->
+
+        <!-- BEGIN TEMPOROMANDIBULAR PURPLE BOX-->
+            {>"patients/treatment/orthodontics/temporomandibularDiagnosis"/}
+        <!-- END TEMPOROMANDIBULAR PURPLE BOX-->
+
+        <!-- BEGIN DIAGNOSIS RED FLAMINGO BOX-->
+            {>"patients/treatment/orthodontics/diagnosis"/}
+        <!-- END DIAGNOSIS RED FLAMINGO BOX-->
+
+        <!-- BEGIN TREATMENT PLAN GREY CASCADE BOX-->
+            {>"patients/treatment/orthodontics/treatmentPlan"/}
+        <!-- END TREATMENT PLAN GREY CASCADE BOX-->
+
+        <!-- BEGIN TREATMENT TIMELINE YELLOW-CASABLANCA BOX-->
+            {>"patients/treatment/orthodontics/treatmentTimeline"/}
+        <!-- END TREATMENT TIMELINE YELLOW-CASABLANCA BOX-->
+
+        <!-- BEGIN FILES GREEN MEADOW BOX-->
+            {>"patients/treatment/orthodontics/files"/}
+        <!-- END FILES GREEN MEADOW BOX-->
+  </div>

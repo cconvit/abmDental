@@ -1,0 +1,37 @@
+<div id="anamnesis-familyHistory-portlet" class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-users"></i>{@pre type="content" key="family_history"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div class="portlet-body form" style="display: none;">
+   <form id="anamnesis-familyHistory-form" name="anamnesis-familyHistory-form" action="/patients/medicalRecord/anamnesis/familyHistory" method="POST" class="horizontal-form">
+      <input type="hidden" name="identity" value="{id_number}">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="family"/}</label>
+              <textarea class="form-control"name="family" id="family" rows="6">{family_history.family}</textarea>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+      <div class="row">
+        <div class="col-md-6">
+            <div class="clearfix">
+              <button type="button" name="anamnesis-familyHistory-button" id="anamnesis-familyHistory-button" data-msg="{@pre type="content" key="processing"/}" class="btn green"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+            </div>
+        </div>
+      </div>
+      <!--/row-->
+      </div>
+    </form>
+  </div>
+ </div>

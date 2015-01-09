@@ -1,0 +1,50 @@
+<div class="portlet box yellow-casablanca">
+    <div class="portlet-title">
+      <div class="caption">
+        <i class="fa fa-clock-o"></i>{@pre type="content" key="treatment_timeline"/}
+      </div>
+      <div class="tools">
+        <a href="javascript:;" class="expand">
+        </a>
+      </div>
+    </div>
+    <div class="portlet-body form" style="display: none;">
+     <form action="patient/pi/update" method="get" class="horizontal-form">
+        <input type="hidden" name="identity" value="{identity}">
+        <div class="form-body">
+            <div class="row" style="margin-bottom: 20px;">
+              <div class="col-md-12">
+                 <a data-toggle="modal" href="#orthodontic-treatmentTimeline" class="btn btn-lg grey">
+                    {@pre type="content" key="add"/} <i class="fa fa-plus"></i>
+                 </a>
+              </div>
+            </div>
+            <div class="row">
+              <div id="orthodontic-treatmentTimeline-ul" class="col-md-12">
+                <ul class="timeline">
+                {#treatment.orthodontic.treatment_timeline.event}
+                   <li class="timeline-{type}">
+                      <div class="timeline-time">
+                        <span class="date">
+                        {date} </span>
+                        <span class="time">
+                        {hour} </span>
+                      </div>
+                      <div class="timeline-icon">
+                        <i class="fa fa-{icon}"></i>
+                      </div>
+                      <div class="timeline-body">
+                        <h2>{title}</h2>
+                        <div class="timeline-content">
+                          {description}
+                        </div>
+                      </div>
+                  </li>
+                  {/treatment.orthodontic.treatment_timeline.event}
+                </ul>
+              </div>
+            </div>
+        </div>
+      </form>
+    </div>
+   </div>

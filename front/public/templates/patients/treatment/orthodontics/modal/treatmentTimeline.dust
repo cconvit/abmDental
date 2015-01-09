@@ -1,0 +1,66 @@
+<div id="orthodontic-treatmentTimeline" class="modal fade" tabindex="-1" aria-hidden="true">
+  <form id="orthodontic-treatmentTimeline-form" name="orthodontic-treatmentTimeline-form" action="/patients/treatment/orthodontic/treatmentTimeline/add" method="get">
+    <input type="hidden" name="_csrf" value="{_csrf}">
+    <input type="hidden" name="identity" value="{id_number}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header-green">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">{@pre type="content" key="main_title"/}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="scroller" style="height:270px" data-always-visible="1" data-rail-visible1="1">
+            <div class="row">
+              <div class="col-md-12">
+                <p>
+                    <div class="col-md-12 form-group">
+                      <label class="col-md-3 control-label">
+                           {@pre type="content" key="title"/}
+                           <span class="required" aria-required="true"> * </span>
+                       </label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" id="orthodonticsModalTitle" name="orthodonticsModalTitle" placeholder="{@pre type="content" key="title"/}">
+                      </div>
+                    </div>
+                </p>
+                <p>
+                    <div class="col-md-12 form-group">
+                      <label class="col-md-3 control-label">
+                           {@pre type="content" key="description"/}
+                           <span class="required" aria-required="true"> * </span>
+                       </label>
+                      <div class="col-md-9">
+                         <textarea class="form-control"name="orthodonticsModalDescription" id="orthodonticsModalDescription" rows="6"></textarea>
+                      </div>
+                    </div>
+                </p>
+                <p>
+                    <div class="col-md-12 form-group">
+                      <label class="col-md-3 control-label">
+                           {@pre type="content" key="type"/}
+                           <span class="required" aria-required="true"> * </span>
+                       </label>
+                      <div class="col-md-9">
+                        <select id="orthodonticsModalType" name="orthodonticsModalType" class="form-control">
+                              <option value="control">{@pre type="content" key="control"/}</option>
+                              <option value="diagnosis">{@pre type="content" key="diagnosis"/}</option>
+                              <option value="assembly">{@pre type="content" key="assembly"/}</option>
+                              <option value="retirement">{@pre type="content" key="retirement"/}</option>
+                              <option value="retention">{@pre type="content" key="retention"/}</option>
+                              <option value="emergency">{@pre type="content" key="emergency"/}</option>
+                        </select>
+                      </div>
+                    </div>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" class="btn default">{@pre type="content" key="close"/}</button>
+          <button type="button" name="orthodontic-treatmentTimeline-button" id="orthodontic-treatmentTimeline-button" class="btn green">{@pre type="content" key="save"/}</button>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>

@@ -1,0 +1,89 @@
+<div class="portlet box yellow">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-meh-o"></i>{@pre type="content" key="facial_diagnosis"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div id="orthodontic-facialDiagnosis-portlet" class="portlet-body form" style="display: none;">
+   <form id="orthodontic-facialDiagnosis-form" name="orthodontic-facialDiagnosis-form" action="/patients/treatment/orthodontic/facialDiagnosis/update" method="post" class="horizontal-form">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <input type="hidden" name="identity" value="{id_number}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="face_type"/}</label>
+              <select id="faceType" name="faceType" class="form-control">
+                <option value="brachyfacial">{@pre type="content" key="brachyfacial"/}</option>
+                <option value="dolicofacial">{@pre type="content" key="dolicofacial"/}</option>
+                <option value="mesofacial">{@pre type="content" key="mesofacial"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="asymmetry"/}</label>
+              <select id="asymmetry" name="asymmetry" class="form-control">
+                <option value="yes">{@pre type="content" key="yes"/}</option>
+                <option value="no">{@pre type="content" key="no"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="smile_line"/}</label>
+              <select id="smileLine" name="smileLine" class="form-control">
+                <option value="high">{@pre type="content" key="high"/}</option>
+                <option value="medium">{@pre type="content" key="medium"/}</option>
+                <option value="low">{@pre type="content" key="low"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="lip_incompetence"/}</label>
+              <select id="lipIncompetence" name="lipIncompetence" class="form-control">
+                <option value="yes">{@pre type="content" key="yes"/}</option>
+                <option value="no">{@pre type="content" key="no"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="facial_profile"/}</label>
+              <select id="facialProfile" name="facialProfile" class="form-control">
+                <option value="convex">{@pre type="content" key="convex"/}</option>
+                <option value="straight">{@pre type="content" key="straight"/}</option>
+                <option value="concave">{@pre type="content" key="concave"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+      <div class="row">
+        <div class="col-md-6">
+            <div class="clearfix">
+              <button type="button" name="orthodontic-facialDiagnosis-button" id="orthodontic-facialDiagnosis-button" class="btn yellow" data-msg="{@pre type="content" key="processing"/}"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+            </div>
+        </div>
+      </div>
+      <!--/row-->
+      </div>
+    </form>
+  </div>
+ </div>

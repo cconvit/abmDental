@@ -1,0 +1,104 @@
+<div class="portlet box grey-cascade">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-th-list"></i>{@pre type="content" key="risk_factors"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div id="anamnesis-riskFactors-portlet" class="portlet-body form" style="display: none;">
+   <form id="anamnesis-riskFactors-form" name="anamnesis-riskFactors-form" action="/patients/medicalRecord/anamnesis/riskFactors" method="POST" class="horizontal-form">
+      <input type="hidden" name="identity" value="{id_number}">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="oral_hygiene"/}</label>
+              <select id="oralHygiene" name="oralHygiene" class="form-control">
+                <option value="good">{@pre type="content" key="good"/}</option>
+                <option value="regular">{@pre type="content" key="regular"/}</option>
+                <option value="poor">{@pre type="content" key="poor"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+          <div class="col-md-6">
+
+              <label class="control-label">{@pre type="content" key="use_of"/}</label>
+              <!-- BEGIN MULTI SELECT USE OF -->
+              <select class="bs-select form-control" multiple="" name="useOf" id="useOf" style="display: none;">
+                <option value="1">{@pre type="content" key="toothpaste"/}</option>
+                <option value="2">{@pre type="content" key="floss"/}</option>
+                <option value="3">{@pre type="content" key="fluoride_rinse"/}</option>
+                <option value="4">{@pre type="content" key="interdental_brush"/}</option>
+              </select>
+              <!-- END MULTI SELECT USE OF -->
+
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="bleeding_gums"/}</label>
+              <select id="bleedingGums" name="bleedingGums" class="form-control">
+                <option value="N">{@pre type="content" key="no"/}</option>
+                <option value="Y">{@pre type="content" key="yes"/}</option>
+              </select>
+            </div>
+          </div>
+          <!--/span-->
+          <!--/span-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="dental_habits"/}</label>
+              <textarea class="form-control"name="dentalHabits" id="dentalHabits" rows="2">{risk_factors.habits}</textarea>
+            </div>
+          </div>
+          <!--/span-->
+          </div>
+        <!--/row-->
+        <div class="row">
+          <!--/span-->
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="others"/}</label>
+              <textarea class="form-control"name="others" id="others" rows="3">{risk_factors.others}</textarea>
+            </div>
+          </div>
+          <!--/span-->
+          </div>
+        <!--/row-->
+      <div class="row">
+        <div class="col-md-6">
+            <div class="clearfix">
+              <button type="button" name="anamnesis-riskFactors-button" id="anamnesis-riskFactors-button" data-msg="{@pre type="content" key="processing"/}" class="btn grey-cascade"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+            </div>
+        </div>
+      </div>
+      <!--/row-->
+      </div>
+    </form>
+  </div>
+ </div>
+
+<script>
+medicalRecord.initRiskFactors=function(){
+
+  {?risk_factors}
+                    $("#oralHygiene option[value='{risk_factors.oral_hygiene}']").attr('selected', 'selected');
+                    $("#bleedingGums option[value='{risk_factors.bleeding_gums}']").attr('selected', 'selected');
+                    var arr = '{risk_factors.use_of}'.split(",");
+                    var text="";
+                    for (var i in arr) {
+                    $("#useOf option[value='"+arr[i]+"']").attr('selected', 'selected');
+                    if(i==0)text=$("#useOf option[value='"+arr[i]+"']").text(); else text=text+","+$("#useOf option[value='"+arr[i]+"']").text();
+                    }
+                    if(text != "")$("span.filter-option").text(text);
+   {/risk_factors}
+}
+</script>

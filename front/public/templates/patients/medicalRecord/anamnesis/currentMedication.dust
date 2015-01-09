@@ -1,0 +1,37 @@
+<div class="portlet box yellow-casablanca">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-medkit"></i>{@pre type="content" key="current_medication"/}
+    </div>
+    <div class="tools">
+      <a href="javascript:;" class="expand">
+      </a>
+    </div>
+  </div>
+  <div id="anamnesis-currentMedication-portlet" class="portlet-body form" style="display: none;">
+   <form id="anamnesis-currentMedication-form" name="anamnesis-currentMedication-form" action="/patients/medicalRecord/anamnesis/currentMedication" method="POST" class="horizontal-form">
+      <input type="hidden" name="identity" value="{id_number}">
+      <input type="hidden" name="_csrf" value="{_csrf}">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label">{@pre type="content" key="medication"/}</label>
+              <textarea class="form-control"name="medication" id="medication" rows="6">{current_medication.medication}</textarea>
+            </div>
+          </div>
+          <!--/span-->
+        </div>
+        <!--/row-->
+      <div class="row">
+        <div class="col-md-6">
+            <div class="clearfix">
+              <button type="button" name="anamnesis-currentMedication-button" id="anamnesis-currentMedication-button" data-msg="{@pre type="content" key="processing"/}" class="btn yellow-casablanca"><i class="fa fa-edit"></i>{@pre type="content" key="save"/}</button>
+            </div>
+        </div>
+      </div>
+      <!--/row-->
+      </div>
+    </form>
+  </div>
+ </div>

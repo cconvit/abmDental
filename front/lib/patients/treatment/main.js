@@ -51,7 +51,7 @@ var findTreatmentResponse=function(req,res,response){
 
     if(model.treatment.orthodontic != null){
 
-        model.treatment.orthodontic.files=[{"name":"Panoramica","id":"23dsdfsdf"},{"name":"Pariapical","id":"23sdfsfdsdfsdf"}];
+        model.treatment.orthodontic.files=response.data.treatment.orthodontic.files;
         var event=model.treatment.orthodontic.treatment_timeline.event;
         for (var i = 0; i < event.length; i++) {
 
