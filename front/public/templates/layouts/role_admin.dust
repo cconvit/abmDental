@@ -190,7 +190,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li {+patient_medical_record /}>
-							<a href="/patients/medicalRecord">
+							<a href="#" id="medicalRecord" data-id="{+patient_id /}" data-csrf="{+csrf /}">
 							<i class="icon-docs" style="right: 5px;"></i>
 							{+medical_record /}</a>
 						</li>
