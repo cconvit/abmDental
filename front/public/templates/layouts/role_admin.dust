@@ -190,12 +190,12 @@
 					</a>
 					<ul class="sub-menu">
 						<li {+patient_medical_record /}>
-							<a href="#" id="medicalRecord" data-id="{+patient_id /}" data-csrf="{+csrf /}">
+							<a href="#" id="medicalRecordLink" data-id="{+patient_id /}" data-csrf="{+csrf /}">
 							<i class="icon-docs" style="right: 5px;"></i>
 							{+medical_record /}</a>
 						</li>
 						<li {+patient_treatment /}>
-							<a href="/patients/treatment">
+							<a href="#" id="treatmentLink" data-id="{+patient_id /}" data-csrf="{+csrf /}">
 							<i class="icon-layers" style="right: 5px;"></i>
 							{+treatment /}</a>
 						</li>

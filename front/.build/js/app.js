@@ -145,6 +145,47 @@ $("#setLanguage").click(function() {
     return false; // avoid to execute the actual submit of the form.
   });
 
+$("#medicalRecordLink").click(function() {
+
+  var id = $(this).attr( "data-id" );
+  var csrf = $(this).attr( "data-csrf" );
+
+  if(id != ''){
+    alert(id)
+    var form=sendForm(id,csrf,"/patients/medicalRecord");
+    $(form).submit();
+  }else
+    location.href ="/patients/medicalRecord"
+
+});
+
+$("#treatmentLink").click(function() {
+
+  var id = $(this).attr( "data-id" );
+  var csrf = $(this).attr( "data-csrf" );
+
+  if(id != ''){
+    var form=sendForm(id,csrf,"/patients/treatment");
+    $(form).submit();
+  }else
+    location.href ="/patients/treatment"
+
+});
+
+var sendForm=function(id,csrf,action){
+
+  var form = $(document.createElement('form'));
+  $(form).attr("action", action);
+  $(form).attr("method", "POST");
+
+  var identity = $("<input>").attr("type", "hidden").attr("name", "sa_identity").val(id);
+  var csrf = $("<input>").attr("type", "hidden").attr("name", "_csrf").val(csrf);
+  $(form).append($(identity));
+  $(form).append($(csrf));
+  return form;
+
+}
+
 var blockPortlet=function(id,msg){
 
   Metronic.blockUI({

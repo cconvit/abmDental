@@ -67,6 +67,10 @@ http://d11or7sbz4vm1i.cloudfront.net
 
 {! ---END HEAD PARAMETERS MENU--- !}
 
+{?personal_info}
+{<patient_id}{id_number}{/patient_id}
+{<csrf}{_csrf}{/csrf}
+{/personal_info}
 
 {<content}
 

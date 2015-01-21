@@ -35,17 +35,3 @@ var deletePatient=function(id,csrf){
   });
 
 }
-
-var sendForm=function(id,csrf,action){
-
-  var form = $(document.createElement('form'));
-  $(form).attr("action", action);
-  $(form).attr("method", "POST");
-
-  var identity = $("<input>").attr("type", "hidden").attr("name", "sa_identity").val(id);
-  var csrf = $("<input>").attr("type", "hidden").attr("name", "_csrf").val(csrf);
-  $(form).append($(identity));
-  $(form).append($(csrf));
-  return form;
-
-}

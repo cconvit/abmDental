@@ -1,7 +1,4 @@
 {?personal_info}
-{<patient_id}{id_number}{/patient_id}
-{<csrf}{_csrf}{/csrf}
-
       <div class="row" style="margin-bottom: 10px;">
           <div id="patient_portrait" name="patient_portrait" class="col-md-1" style="width: 110px;">
           <img src="{personal_info.image}" class="img-responsive" alt="" style="width: 80px;height: 80px;">

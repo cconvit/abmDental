@@ -24,17 +24,11 @@ http://d11or7sbz4vm1i.cloudfront.net
 <div class="menu-toggler sidebar-toggler">
 </div>
 <!-- END SIDEBAR TOGGLER BUTTON -->
-<<<<<<< Updated upstream
-  <!-- BEGIN LOGIN -->
-  <div class="content">
-  <!-- BEGIN LOGIN FORM -->
-  {>"login/loginForm"/}
-  <!-- END LOGIN FORM -->
-=======
+
 <!-- BEGIN LOGIN -->
 <div class="content">
 {>"login/loginForm"/}
->>>>>>> Stashed changes
+
   <!-- BEGIN FORGOT PASSWORD FORM -->
   {>"login/forgotPasswordForm"/}
   <!-- END FORGOT PASSWORD FORM -->
