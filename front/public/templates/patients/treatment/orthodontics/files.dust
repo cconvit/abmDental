@@ -32,9 +32,12 @@
                           <td>{name}</td>
                           <td>
                                 <div class="clearfix">
-                                  <button type="button" id="orthodontic-fileView-button" data-id="{id}" class="btn green-meadow"><i class="fa fa-search"></i></button>
-                                  <button type="button" id="orthodontic-fileDelete-button" data-id="{id}" class="btn red"><i class="fa fa-trash-o"></i></button>
-                                </div>
+                                <a href="#" onClick="orthodonticFileViewButton('{_id}','/patients/treatment/orthodontic/file/view');"  class="btn btn-icon-only green-meadow">
+                                  <i class="fa fa-search"></i>
+                                </a>
+                                <a href="#" onClick="orthodonticFileDelButton('{_id}','/patients/treatment/orthodontic/file/del');" class="btn btn-icon-only red-flamingo">
+                                  <i class="fa fa-trash-o"></i>
+                                </a>                                                                </div>
                           </td>
                         </tr>
                         {/treatment.orthodontic.files}

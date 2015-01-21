@@ -42,8 +42,14 @@ module.exports = function (router) {
 
   router.post('/file/upload', function (req, res) {
 
-    
+
     orthodonticLib.fileUpload(req,res);
+
+  });
+
+  router.post('/file/view', function (req, res) {
+
+    orthodonticLib.fileView(req,res);
 
   });
 
