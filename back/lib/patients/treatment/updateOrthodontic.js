@@ -151,6 +151,35 @@ var fileUpload=function(req, res,model){
 }
 exports.fileUpload = fileUpload;
 
+var fileView=function(req, res,model){
+
+  var ObjectId = require('mongoose').Types.ObjectId;
+
+  orthodonticTreatmentModel.aggregate([{ $unwind : "$files"}
+  ,{$match:{"_id":{"account_id":new ObjectId(model.account_id),"id_number":model.id_number},"files._id":new ObjectId(model.file._id)}}
+  ],
+
+  function(err, doc) {
+
+    if(!err){
+
+      var response={};
+      if(doc.length >0){
+        response.data={"file":doc[0].files};
+        render.RenderModel(req, res, 200,response);//Signup successfully
+      }
+      else
+        render.RenderModel(req, res, 540,response);//Signup successfully
+
+    }
+    else
+      render.RenderDefault(req, res, 539);//Medical record not found
+
+    });
+
+  }
+exports.fileView = fileView;
+
 //###############################################//
 //***************END PUBLIC METHOD***************//
 //###############################################//

@@ -199,3 +199,15 @@ var blockPortlet=function(id,msg){
 
 
 }
+
+var blockModal=function(id,msg){
+
+  Metronic.blockUI({
+    target: id,
+    message: '<b>'+msg+'</b>',
+    cenrerX: true,
+    animate: true,
+  });
+
+
+}

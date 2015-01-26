@@ -1,4 +1,4 @@
-<div id="orthodontic-fileUpload" class="modal fade" tabindex="-1" aria-hidden="true">
+<div id="orthodontic-fileUpload-modal" class="modal fade" tabindex="-1" aria-hidden="true">
   <form id="orthodontic-fileUpload-form" name="orthodontic-fileUpload-form" action="/patients/treatment/orthodontic/file/upload" method="post">
     <input type="hidden" name="_csrf" value="{_csrf}">
     <input type="hidden" name="identity" value="{id_number}">

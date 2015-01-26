@@ -12,7 +12,7 @@
      <form action="patient/pi/update" method="get" class="horizontal-form">
         <input type="hidden" name="identity" value="{identity}">
         <div class="form-body">
-          <div class="row" style="margin-bottom: 20px;"><div class="col-md-12"><a data-toggle="modal" href="#orthodontic-fileUpload" class="btn btn-lg grey">Add <i class="fa fa-plus"></i></a></div></div>
+          <div class="row" style="margin-bottom: 20px;"><div class="col-md-12"><a data-toggle="modal" href="#orthodontic-fileUpload-modal" class="btn btn-lg grey">Add <i class="fa fa-plus"></i></a></div></div>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="portlet-body">
