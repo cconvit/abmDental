@@ -5,7 +5,7 @@ var express = require('express');
 var kraken = require('kraken-js');
 var bodyParser = require('body-parser');
 var social = require('./lib/util/social');
-var redis = require('./lib/util/redis');
+var mongo = require('./lib/util/mongo');
 
 
 var options, app, server;
@@ -24,7 +24,7 @@ options = {
          // to support URL-encoded bodies
          app.use(bodyParser.urlencoded({extended: true}));
          global.config=config._store;
-         redis.config(app);
+         mongo.config(app);
          social.config(app);
 
          next(null, config);
